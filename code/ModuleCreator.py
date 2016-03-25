@@ -3,6 +3,6 @@ from distutils.extension import Extension
 
 setup(
     ext_modules=[
-        Extension("hello", ["RetrieveInfoHandle.cpp"],
+        Extension("mutator", ["Mutator.cpp"],
         libraries = ["boost_python"])
     ])
