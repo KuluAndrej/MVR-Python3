@@ -1,6 +1,7 @@
 from code.modules.mutator import mutation
 import code.StringToModel as StringToModel
 import numpy as np
+from code.structures.Population import Population
 def mutate_population(population, mutations_number, number_of_variables):
     """
     Perform a mutation operation for superpositions stored in the 'population'.
@@ -27,4 +28,4 @@ def mutate_population(population, mutations_number, number_of_variables):
     populationNew = StringToModel.strings_to_population(new_generated_superpositions)
     list(map(lambda model: setattr(model, 'where_from', "mutate"), populationNew))
 
-    return populationNew
+    return Population(populationNew)

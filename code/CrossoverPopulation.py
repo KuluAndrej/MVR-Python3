@@ -1,6 +1,8 @@
 from code.modules.crosser import crossing
 import code.StringToModel as StringToModel
 import numpy as np
+from code.structures.Population import Population
+
 def crossover_population(population, crossings_number):
     """
     Perform a crossing operation for random pairs of superpositions stored in the
@@ -30,4 +32,4 @@ def crossover_population(population, crossings_number):
         setattr(model, 'parents', [parents[ind - ind%2], parents[ind - ind%2 + 1]])
     list(map(lambda model: setattr(model, 'where_from', "cross"), populationNew))
 
-    return populationNew
+    return Population(populationNew)

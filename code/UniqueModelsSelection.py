@@ -1,5 +1,5 @@
 from numpy import unique
-
+from code.structures.Population import Population
 def unique_models_selection(population):
     """
     Selects a subset of unique models from the population
@@ -11,6 +11,6 @@ def unique_models_selection(population):
     """
 
 
-    population = list(set(population))
+    population = Population(list(set(population)))
 
     return population

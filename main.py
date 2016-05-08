@@ -1,5 +1,6 @@
 import cProfile
 
+
 import code.CrossoverPopulation as CrossoverPopulation
 import code.DataLoader as DataLoader
 import code.Evaluator as Evaluator
@@ -38,8 +39,9 @@ for i in range(int(config_for_accuracy["max_number_cycle_count"])):
     populationMutate = MutationPopulation.mutate_population(populationCross, config_for_generation["mutation_number"], number_of_variables)
     populationRandom = RandomPopulation.random_population(config_for_generation["random_models_number"], number_of_variables, 10)
 
-
-    population = population + populationCross + populationMutate + populationRandom
+    population = population + populationCross
+    population = population + populationMutate
+    population = population + populationRandom
 
     population = UniqueModelsSelection.unique_models_selection(population)
 

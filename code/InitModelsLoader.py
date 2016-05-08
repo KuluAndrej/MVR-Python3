@@ -1,5 +1,6 @@
 import os
 from code.StringToModel import strings_to_population
+from code.structures.Population import Population
 def retrieve_init_models(config):
     """
     Return data to fit from the folder specified in 'config'
@@ -26,4 +27,4 @@ def retrieve_init_models(config):
     initial_models = strings_to_population(initial_models)
     list(map(lambda model: setattr(model, 'where_from', "init"), initial_models))
 
-    return initial_models
+    return Population(initial_models)

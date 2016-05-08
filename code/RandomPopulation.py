@@ -1,6 +1,6 @@
 from code.modules.random_model_generator import random_model_generation
 import code.StringToModel as StringToModel
-
+from code.structures.Population import Population
 def random_population(number_of_models, number_of_variables, required_size):
     """
     Perform a generation of random superpositions.
@@ -23,4 +23,4 @@ def random_population(number_of_models, number_of_variables, required_size):
     populationNew = StringToModel.strings_to_population(list_of_new_handles)
     list(map(lambda model: setattr(model, 'where_from', "random"), populationNew))
 
-    return populationNew
+    return Population(populationNew)
