@@ -20,9 +20,11 @@ Author: Kulunchakov Andrei
 // #include <random>
 #include "RetrievePrimitives.h"
 #include "boost/lexical_cast.hpp"
-#include "structures/Superposition.h"
+#include "../structures/Superposition.h"
+#include <boost/python/def.hpp>
+#include <boost/python/module.hpp>
 
-
+namespace bp = boost::python;
 using namespace std;  
 
 // return sorted vector of unique values of 'initial_vector'
@@ -104,15 +106,16 @@ private:
 string recursive_model_generator(const Primitives_Split_by_Arities& split_primitives, int number_variables, 
 								int required_size) {
 	string handle;
+
 	// if the 'required_size' == 1, we have to simply create a random variable
 	if (required_size == 1) {
-		return 'x' + boost::lexical_cast<string>(1 + (rand() % number_variables));
+		return "X[" + boost::lexical_cast<string>(rand() % number_variables) + string("]");
 	}
+
 
 	// generate the random number denoting the arity of the root primitive of the current processed subtree
 	// note that one place in the superposition have already reserved for this primitive
 	PrimitiveFunction root_primitive = split_primitives.random_primitive_bounded_arity(required_size - 1);
-
 	// create random tuple of sizes of the subtrees rooted in children of 'root_primitive'
 	int size_of_random_tuple = root_primitive.numberArguments;
 	// reserve 'root_primitive.numberArguments + 1' positions from 'required_size'
@@ -140,9 +143,8 @@ string recursive_model_generator(const Primitives_Split_by_Arities& split_primit
 
 
 
-string random_model_generator(int number_variables, int required_size) {
-	srand (time(NULL));
-
+string random_model_generation(int number_variables, int required_size) {
+	
 	vector<PrimitiveFunction> primitives;
 	primitives = retriever();
 
@@ -151,3 +153,8 @@ string random_model_generator(int number_variables, int required_size) {
 	return recursive_model_generator(split_primitives, number_variables, required_size);
 }
 
+
+BOOST_PYTHON_MODULE(random_model_generator) {
+    bp::def("random_model_generation", random_model_generation);
+    	
+}

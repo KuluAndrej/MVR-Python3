@@ -16,33 +16,57 @@ Output:
 Author: Kulunchakov Andrei
 */
 
-#include <vector>
-#include <string>
+
 #include <utility>
 #include <stack>
+#include <vector>
+#include <string>
+
+using namespace std;
 
 pair<vector<pair<int, int> >, vector<int> > find_tokens_positions_range(const string& handle) {
 	vector<int> left_positions, right_positions;
 	vector<int> sizes_subtrees;
 	stack<int> stack_for_tokens;
-	left_positions.push_back(0);
-	// temporary value, set for convenience
-	right_positions.push_back(0);
-	stack_for_tokens.push(0);		
+	
 	// the following indicator is set to true if we traverse a token now
-	bool is_smth_being_processed = true;
+	bool is_smth_being_processed = false;
 	for (size_t i = 0; i < handle.size(); ++i) {
 		if (handle[i] == '(') {				
 			is_smth_being_processed = false; 
+			continue;
 		}
+		if (is_smth_being_processed && handle[i] == ',') {				
+			right_positions[stack_for_tokens.top()] = i - 1;			
+			sizes_subtrees[stack_for_tokens.top()] = (right_positions.size() - 1) - stack_for_tokens.top() + 1;
 
-		if (handle[i] == ')') {				
-			right_positions[stack_for_tokens.top()] = i;
-			// +1 to count the root of a subtree
-			sizes_subtrees[stack_for_tokens.top()] = right_positions.size() - stack_for_tokens.top() + 1;
 			stack_for_tokens.pop();
 			// no matter of what value does 'is_smth_being_processed' have, now it becomes 'false'
 			is_smth_being_processed = false; 
+			continue; 
+		}
+
+		if (handle[i] == ')') {
+			// the index of the vertex standing at the top of the stack
+			int processed_root = stack_for_tokens.top();
+			right_positions[processed_root] = i;
+			// +1 to count the root of a subtree
+			sizes_subtrees[processed_root] = (right_positions.size() - 1) - processed_root + 1;
+			// if we've processed a variable, then it does not include ')' symbol
+			if (sizes_subtrees[processed_root] == 1) {
+				right_positions[processed_root]--;
+			}
+			// ... moreover, we should update features of its parent in this case
+			stack_for_tokens.pop();
+			if (sizes_subtrees[processed_root] == 1) {
+				right_positions[stack_for_tokens.top()] = i;
+				sizes_subtrees[stack_for_tokens.top()] = (right_positions.size() - 1) - stack_for_tokens.top() + 1;
+				stack_for_tokens.pop();
+			}
+
+			// no matter of what value does 'is_smth_being_processed' have, now it becomes 'false'
+			is_smth_being_processed = false; 
+			continue;
 		}
 
 		if (!is_smth_being_processed) {
@@ -57,6 +81,11 @@ pair<vector<pair<int, int> >, vector<int> > find_tokens_positions_range(const st
 			}
 		} 
 	}
+	// separately process the right bound of the first token and its subtree size
+	right_positions[0] = handle.size() - 1;
+	sizes_subtrees[0] = right_positions.size();
+
+	// unite two vectors of positions in one for future convenience
 	vector<pair<int, int> > positions_range(left_positions.size());
 	for (size_t i = 0; i < positions_range.size(); ++i) {
 		positions_range[i] = make_pair(left_positions[i], right_positions[i]);

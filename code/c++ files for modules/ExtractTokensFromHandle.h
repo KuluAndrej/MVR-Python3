@@ -1,9 +1,12 @@
 /* 
 
-Returns the list of tokens presented in a superposition.
+Returns the list of tokens presented in a superposition and the positions of their first symbols.
 The order of tokens in list corresponds to their order in the string 'handle'
 Example:
 	sqrt_(ln_(frac2_(x1,x2))) -> ['sqrt_', 'ln_', 'frac2_', 'x1', 'x2']
+
+
+If the 'handle' corresponds to an invalid function, it raises an error
 
 Input:
 	
@@ -11,7 +14,8 @@ Input:
 
 Output:
 
-	tokens 			- the list of tokens presented in the superposition
+	tokens 			- the list of tokens presented in the superposition (vector<PrimitiveFunction>)
+	first_positions	- the list of first positions of tokens
 
 Author: Kulunchakov Andrei
 */
@@ -20,66 +24,91 @@ Author: Kulunchakov Andrei
 #include <utility>
 #include <stack>
 #include <map>
+#include <stdio.h>
 #include <vector>
 #include <string>
+#include "RetrievePrimitives.h"
+#include <boost/regex.hpp>
 
 using namespace std;
 
-vector<Primitives> extract_tokens_from_handle(const string& handle) {
-
+pair<vector<PrimitiveFunction>, vector<int> > extract_tokens_from_handle(const string& handle) {
+	
 	// create a map from primitives names to corresponding objects
+	map<string, PrimitiveFunction> mapNamePrimitive;
+	
+	// If handle is a simple variable, return answer immediately
+	boost::smatch matching_results;
+	if (boost::regex_match(handle, matching_results, boost::regex("X\\[(\\d+)\\]"))) {
+		vector<PrimitiveFunction> tokens_from_handle;
+		PrimitiveFunction variable;
+		variable.name = handle;	
+		variable.numberArguments = 0;
+		variable.numberParameters = 0;
+		tokens_from_handle.push_back(variable);
+		return make_pair(tokens_from_handle, vector<int>(1,0));
+	}
+	
+	// retrieve valid primitives from 'Primitives.py' file
+	vector<PrimitiveFunction> primitives;
+	primitives = retriever();	
 
+	// load them into the map
 
-	vector<int> left_positions, right_positions;
-	vector<int> sizes_subtrees;
-	stack<int> stack_for_tokens;
-	left_positions.push_back(0);
-	right_positions.push_back(handle.size() - 1);
-	stack_for_tokens.push(0);		
-	// the following indicator is set to true if we traverse a token now
-	bool is_smth_being_processed = true;
+	for (int i = 0; i < primitives.size(); ++i) {
+		mapNamePrimitive.insert(make_pair(primitives[i].name, primitives[i]));
+	}
+	
+	// now traverse the 'handle'; extract tokens and their positions
+	vector<PrimitiveFunction> tokens_from_handle;
+	vector<int> first_positions;
+	// position of the first character of a processed token
+	int fetched_position;
+	bool is_smth_being_processed = false;
 	for (size_t i = 0; i < handle.size(); ++i) {
-		if (handle[i] == '(') {				
+		if (handle[i] == '(') {			
+			// the case of a primitive function appearance
 			is_smth_being_processed = false; 
+			string name_of_token(handle.begin() + fetched_position, handle.begin() + i);
+			// check if a token with the 'name_of_token' is presented in the map
+			if (mapNamePrimitive.find(name_of_token) != mapNamePrimitive.end()) {
+				tokens_from_handle.push_back(mapNamePrimitive[name_of_token]);	
+			} else {
+				string error_message = "Token '" + name_of_token + "' is not presented in Primitives.py. \nOr presented in a wrong format\n";
+				perror(error_message.c_str());
+				throw error_message;
+			}			
 			continue;
 		}
-		if (is_smth_being_processed && handle[i] == ',') {				
-			right_positions[stack_for_tokens.top()] = i - 1;
-			// +1 to count the root of a subtree
-			sizes_subtrees[stack_for_tokens.top()] = right_positions.size() - stack_for_tokens.top() + 1;
-			stack_for_tokens.pop();
-			// no matter of what value does 'is_smth_being_processed' have, now it becomes 'false'
-			is_smth_being_processed = false; 
+
+		if (is_smth_being_processed && (handle[i] == ',' || handle[i] == ')')) {
+			is_smth_being_processed = false; 			
+			// the case of a variable appearance
+			PrimitiveFunction variable;
+			variable.name = string(handle.begin() + fetched_position, handle.begin() + i);	
+			// check if it is a valid variable
+			
+			if (boost::regex_match(variable.name, matching_results, boost::regex("X\\[(\\d+)\\]"))) {
+				variable.numberArguments = 0;
+				variable.numberParameters = 0;
+				tokens_from_handle.push_back(variable);
+			} else {
+				string error_message = "Token '" + variable.name + "' is not presented in Primitives.py. \nOr presented in a wrong format\n";
+				perror(error_message.c_str());
+				throw error_message;
+			}					
 			continue; 
 		}
 
-		if (handle[i] == ')') {				
-			right_positions[stack_for_tokens.top()] = i;
-			// +1 to count the root of a subtree
-			sizes_subtrees[stack_for_tokens.top()] = right_positions.size() - stack_for_tokens.top() + 1;
-			// if we've processed a variable, then it does not include ')' symbol
-			right_positions[stack_for_tokens.top()]--;
-			stack_for_tokens.pop();
-			// no matter of what value does 'is_smth_being_processed' have, now it becomes 'false'
-			is_smth_being_processed = false; 
-			continue;
-		}
-
 		if (!is_smth_being_processed) {
-			// if we currently do not process any primitive, we are ready to store one more in stack			
+			// if we currently do not process any token, we are ready to process a new one			
 			if (isalpha(handle[i])) {
 				is_smth_being_processed = true;						
-				left_positions.push_back(i);
-				// 2 temporal values just to increase a capacity
-				right_positions.push_back(i);
-				sizes_subtrees.push_back(i);
-				stack_for_tokens.push(left_positions.size() - 1);					
+				fetched_position = i;		
+				first_positions.push_back(i);		
 			}
 		} 
 	}
-	vector<pair<int, int> > positions_range(left_positions.size());
-	for (size_t i = 0; i < positions_range.size(); ++i) {
-		positions_range[i] = make_pair(left_positions[i], right_positions[i]);
-	}
-	return make_pair(positions_range, sizes_subtrees);
+
+	return make_pair(tokens_from_handle, first_positions);
 }

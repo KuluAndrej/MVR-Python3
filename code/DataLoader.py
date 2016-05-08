@@ -19,7 +19,7 @@ def retrieve_data(config):
     DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH
 
     # retrieve the data to fit from the specified file
-    data_to_fit = np.loadtxt(DATA_FULL_PATH)
+    data_to_fit = np.loadtxt(DATA_FULL_PATH, delimiter = ',')
 
     return data_to_fit
 

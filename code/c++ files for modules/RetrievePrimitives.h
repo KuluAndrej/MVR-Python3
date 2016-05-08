@@ -42,7 +42,7 @@ Author: Kulunchakov Andrei
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
-#include "structures/PrimitiveFunction.h"
+#include "../structures/PrimitiveFunction.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/regex.hpp>
@@ -65,24 +65,32 @@ int extract_parameter (ifstream& input_file, const string& name) {
     	getline(input_file , line);
     }
     // extract the 'number' from the found occurence
-	boost::regex_search(line,  matching_results, boost::regex("[0-9]+") ); 
+	boost::regex_search(line,  matching_results, boost::regex("=[ ]+[0-9]+") ); 
+	string pattern = matching_results[0];
+	boost::regex_search(pattern,  matching_results, boost::regex("[0-9]+") ); 
 	
-	return boost::lexical_cast<int>(matching_results[0]);
+	return boost::lexical_cast<int>(matching_results[matching_results.size() - 1]);
 }
 
 // Check is the version of 'Primitives.py' is newer than 'Primitives.txt'
 
-bool checker_version_of_py_file(const string& FILE_PRIMITIVES) {
+bool checker_version_of_py_file(const string& FILE_PRIMITIVES) {	
+	boost::filesystem::path current_path = boost::filesystem::current_path();
+	boost::filesystem::path current_path_copy = current_path;
+	//boost::filesystem::path parent_path = current_path.parent_path();
+	time_t time_py =  boost::filesystem::last_write_time(current_path.append(FILE_PRIMITIVES + string(".py")));
+	time_t time_txt = boost::filesystem::last_write_time(current_path_copy.append(FILE_PRIMITIVES + string(".txt")));
+	/*
 	time_t time_py =  boost::filesystem::last_write_time(FILE_PRIMITIVES + string(".py"));
 	time_t time_txt = boost::filesystem::last_write_time(FILE_PRIMITIVES + string(".txt"));
-	
+	*/
 	return time_py > time_txt;	
 }
 
 
 // Load primitives retrived from .py file to .txt file
 void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<PrimitiveFunction>& primitives) {
-	
+	cout << "Entered loader_primitives\n";
 	// construct the same filename, but with '.txt' extension
 	string FILE_PRIMITIVES_TXT = FILE_PRIMITIVES_WITHOUT_EXTENSION + string(".txt");
 
@@ -96,6 +104,7 @@ void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<Pr
 							<< primitives[i].numberArguments << "\n";
 	}
 	file_primitives_txt.close();  	
+	cout << "Exited loader_primitives\n";
 }
 
 // Parse 'Primitives.py' and store extracted primitives in the 'Primitives.txt'
@@ -142,6 +151,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 		string error_message = "File '" + FILE_PRIMITIVES + "' does'not exist\n";
 		throw error_message;
 	}		
+
 }
 
 
@@ -149,7 +159,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 
 // Retrieve the list of primitives from one of the files: 'Primitives.py' or 'Primitives.txt'
 vector< PrimitiveFunction > retriever() {
-	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "Primitives";
+	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
 	if (checker_version_of_py_file(FILE_PRIMITIVES_WITHOUT_EXTENSION)) {
 		// if the .py file is newer than the .txt file, we parse it and return the extracted primitives
 		return parse_py_file_with_primitives(FILE_PRIMITIVES_WITHOUT_EXTENSION);

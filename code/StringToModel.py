@@ -1,25 +1,16 @@
-import numpy as np
-import os
+from code.structures.Model import Model
 
-def retrieve_data(config):
+def strings_to_population(handles):
     """
-    Return data to fit from the folder specified in 'config'
+    Get a list of superposition handles and return a list of instances of Model-class
     Inputs:
-     config         - data structure storing MVR attributes
+     handles        - list of superposition handles
 
-     Outputs:
-     data_to_fit    - data from the specified file
+    Outputs:
+     populations    - list of instances of Model-class built from handles
 
-
-    initial_models   - list of handles of initial functions
     """
-    DATA_LOCAL_PATH = config["data_extraction"]["dataset_filename"]
-    script_dir = os.path.dirname(__file__)
-    parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
-    DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH
+    population = list(map(Model, handles))
 
-    # retrieve the data to fit from the specified file
-    data_to_fit = np.loadtxt(DATA_FULL_PATH)
-
-    return data_to_fit
+    return population
 

@@ -1,16 +1,16 @@
+from numpy import unique
 
-
-def unique_models_selection(population, number_of_best_models):
+def unique_models_selection(population):
     """
-    Selects best models from the population
+    Selects a subset of unique models from the population
     Inputs:
-     population             - list of superpositions (models)
-     number_of_best_models  - required number of the best selected models
+     population     - list of superpositions (models)
+
     Outputs:
-     population     - list of best superpositions (models)
+     population     - list of unique superpositions (models)
     """
-    number_of_best_models = int(number_of_best_models)
-    sorted(population, key=lambda model:model.MSE)
-    population = population[:min(number_of_best_models, len(population))]
+
+
+    population = list(set(population))
 
     return population

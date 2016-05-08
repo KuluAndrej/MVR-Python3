@@ -9,7 +9,7 @@ Example:
 	exp_(sqrta_(lnl_(frac2_(x1,x2))))
 
 	parametered_model:
-	exp_(sqrta_(w[1:2],lnl_(w[3:4],frac2_(x1,x2))))
+	exp_(sqrta_(w0, w1, lnl_(w2, w3, frac2_(x1,x2))))
 
 Input:
 
@@ -27,13 +27,16 @@ Author: Kulunchakov Andrei
 #include <vector>
 #include "ExtractTokensFromHandle.h"
 #include "FindTokensPositionsRange.h"
-/*
-#include <boost/python/def.hpp>
-#include <boost/python/module.hpp>
-*/
 #include <boost/lexical_cast.hpp>
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+#include <boost/python/implicit.hpp>
 
-string parametrizing(const char* handle_char) {
+#include <boost/python/module.hpp>
+#include <boost/python/def.hpp>
+namespace bp = boost::python;
+
+using namespace std;
+pair<string, int> parametrizing(const char* handle_char) {
 	string handle(handle_char);
 
 	// extract tokens presented in the superposition	
@@ -43,8 +46,8 @@ string parametrizing(const char* handle_char) {
 	vector<int> first_positions = info_tokens.second;
 
 	// if the superposition is a simple variable, we are nothing to do
-	if (tokens_from_handle.size() == 1) {
-		return string(handle_char);
+	if (tokens_from_handle.size() == 1) {		
+		return make_pair(handle, 0);
 	}
 	
 	// number of parameters inserted in the superposition 'handle' yet
@@ -55,19 +58,15 @@ string parametrizing(const char* handle_char) {
 		parametered_handle += tokens_from_handle[i].name;
 		parametered_handle += handle[first_positions[i] + tokens_from_handle[i].name.size()];
 		
-		if (tokens_from_handle[i].numberParameters == 0) {
-			// check if it is a variable 
-			boost::smatch matching_results;
-			if (!boost::regex_match(tokens_from_handle[i].name, matching_results, boost::regex("x(\\d+)" ))) {
-				parametered_handle += "[],";
-			}
-		} else {
+		if (tokens_from_handle[i].numberParameters > 0) {
 			// insert parameters
-			parametered_handle += "w[";
-			parametered_handle += boost::lexical_cast<string>(number_inserted_params + 1);
-			parametered_handle += ':';
-			parametered_handle += boost::lexical_cast<string>(number_inserted_params + tokens_from_handle[i].numberParameters);
-			parametered_handle += "],";			
+			for (int j = number_inserted_params + 1; 
+				j <= number_inserted_params + tokens_from_handle[i].numberParameters; 
+				++j) {
+			 	parametered_handle += "w";
+			 	parametered_handle += boost::lexical_cast<string>(j);
+			 	parametered_handle += ",";			 	
+			 } 
 			// renew variable
 			number_inserted_params += tokens_from_handle[i].numberParameters;
 		}
@@ -79,16 +78,14 @@ string parametrizing(const char* handle_char) {
 										handle.end());
 		}		
 	}
-	return parametered_handle;
+	return make_pair(parametered_handle, number_inserted_params);
 }
 
-int main() {
-	string str = "frac2_(ln_(frac2_(ln_(ln_(x1)),sqrt_(plus2_(x1,ln_(ln_(sqrt_(x1))))))),x2)";
-	string answer = parametrizing(str.c_str());
-	cout << answer << "\n";
-}
-/*
+
 BOOST_PYTHON_MODULE(parametrizer) {
+	bp::class_<pair<string, int> >("StringIntPair")
+    	.def_readwrite("first", &pair<string, int>::first)
+    	.def_readwrite("second", &pair<string, int>::second);
     bp::def("parametrizing", parametrizing);
     	
-}*/
+}
