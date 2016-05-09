@@ -1,6 +1,7 @@
 import time
 from functools import wraps
 import cProfile
+import numpy as np
 
 def handicraft_timer(func):
     '''
@@ -28,5 +29,18 @@ def handicraft_profiler(func):
         result = func(*args, **kwargs)
         pr.print_stats(sort="calls")
         pr.disable()
+        return result
+    return wrapper
+
+
+def handicraft_exception_handler(func):
+    '''
+    Decorator that reports the execution time.
+    '''
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        with np.errstate(all='ignore'):
+            result = func(*args, **kwargs)
         return result
     return wrapper
