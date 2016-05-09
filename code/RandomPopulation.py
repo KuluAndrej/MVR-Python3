@@ -20,7 +20,7 @@ def random_population(number_of_models, number_of_variables, required_size):
 
 
     # convert new strings to a population and append it to the existed one
-    populationNew = StringToModel.strings_to_population(list_of_new_handles)
-    list(map(lambda model: setattr(model, 'where_from', "random"), populationNew))
+    listOfNewModels = StringToModel.strings_to_population(list_of_new_handles)
+    list(map(lambda model: setattr(model, 'where_from', "random"), listOfNewModels))
 
-    return Population(populationNew)
+    return listOfNewModels

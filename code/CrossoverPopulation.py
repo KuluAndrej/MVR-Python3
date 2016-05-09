@@ -27,9 +27,9 @@ def crossover_population(population, crossings_number):
         new_generated_superpositions.extend([int_pair_object.first, int_pair_object.second])
 
     # convert new strings to a population and append it to the existed one
-    populationNew = StringToModel.strings_to_population(new_generated_superpositions)
-    for (ind, model) in enumerate(populationNew):
+    listOfNewModels = StringToModel.strings_to_population(new_generated_superpositions)
+    for (ind, model) in enumerate(listOfNewModels):
         setattr(model, 'parents', [parents[ind - ind%2], parents[ind - ind%2 + 1]])
-    list(map(lambda model: setattr(model, 'where_from', "cross"), populationNew))
+    list(map(lambda model: setattr(model, 'where_from', "cross"), listOfNewModels))
 
-    return Population(populationNew)
+    return listOfNewModels

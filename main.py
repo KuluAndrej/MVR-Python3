@@ -1,4 +1,4 @@
-import cProfile
+
 
 
 import code.CrossoverPopulation as CrossoverPopulation
@@ -12,11 +12,9 @@ import code.QualityEstimator as QualityEstimator
 import code.RandomPopulation as RandomPopulation
 import code.SelectBestModels as SelectBestModels
 import code.StringToModel as StringToModel
-import code.UniqueModelsSelection as UniqueModelsSelection
 import  code.DataPreprocesser as DataPreprocesser
 
-pr = cProfile.Profile()
-pr.enable()
+
 # get a data structure with the MVR attributes
 config = MVRAttributesExtraction.attributes_extraction()
 
@@ -28,22 +26,17 @@ print(data_to_fit.shape)
 number_of_variables = data_to_fit.shape[1] - 1
 
 population  = InitModelsLoader.retrieve_init_models(config)
-
 population  = Parametrizer.parametrize_population(population)
 
 config_for_generation = config["model_generation"]
 config_for_accuracy   = config["accuracy_requirement"]
 for i in range(int(config_for_accuracy["max_number_cycle_count"])):
     print("iteration# ", i)
-    populationCross  = CrossoverPopulation.crossover_population(population, config_for_generation["crossing_number"])
-    populationMutate = MutationPopulation.mutate_population(populationCross, config_for_generation["mutation_number"], number_of_variables)
-    populationRandom = RandomPopulation.random_population(config_for_generation["random_models_number"], number_of_variables, 10)
+    population.append(CrossoverPopulation.crossover_population(population, config_for_generation["crossing_number"]))
+    population.append(MutationPopulation.mutate_population(population, config_for_generation["mutation_number"], number_of_variables))
+    population.append(RandomPopulation.random_population(config_for_generation["random_models_number"], number_of_variables, 10))
 
-    population = population + populationCross
-    population = population + populationMutate
-    population = population + populationRandom
-
-    population = UniqueModelsSelection.unique_models_selection(population)
+    population.unique_models_selection()
 
 
     population = Parametrizer.parametrize_population(population)
@@ -65,6 +58,6 @@ for i in range(int(config_for_accuracy["max_number_cycle_count"])):
         break
 
 
-pr.disable()
+
 # after your program ends
 #pr.print_stats(sort="calls")
