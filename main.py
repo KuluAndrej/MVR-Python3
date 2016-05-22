@@ -1,6 +1,3 @@
-
-
-
 import code.CrossoverPopulation as CrossoverPopulation
 import code.DataLoader as DataLoader
 import code.Evaluator as Evaluator
@@ -11,7 +8,6 @@ import code.Parametrizer as Parametrizer
 import code.QualityEstimator as QualityEstimator
 import code.RandomPopulation as RandomPopulation
 import code.SelectBestModels as SelectBestModels
-import code.StringToModel as StringToModel
 import  code.DataPreprocesser as DataPreprocesser
 
 
