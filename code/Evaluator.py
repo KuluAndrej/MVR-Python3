@@ -1,15 +1,15 @@
 from code.DefConstructor import def_constructor
 from scipy.optimize import  curve_fit
-from numpy import nan
+from numpy import nan, ones
 
 
-def evaluator(population, data_to_fit):
+def evaluator(population, data_to_fit, is_parametric):
     """
     Evaluate the optimal parameters for each model from the population
     Inputs:
      population         - list of Models to evaluate
      data_to_fit        - approximated data; necessary for the quality determination
-
+     is_parametric      - flag signifying if the parameters of superpositions will be tuned
     Outputs:
      population         - estimated population
     """
@@ -33,7 +33,7 @@ def evaluator(population, data_to_fit):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             fxn()
-            if (not hasattr(model, "optimal_params") and model.number_of_parameters > 0):
+            if (is_parametric == 'True' and not hasattr(model, "optimal_params") and model.number_of_parameters > 0):
                 try:
                     popt, _ = curve_fit(model.def_statement, independent_var, dependent_var)
                 except RuntimeError:
@@ -44,6 +44,8 @@ def evaluator(population, data_to_fit):
                     popt = [nan for i in range(model.number_of_parameters)]
                 setattr(model, "optimal_params", popt)
                 continue
+            else:
+                setattr(model, "optimal_params", ones(model.number_of_parameters))
 
         if model.number_of_parameters == 0:
             model.def_statement_param = model.def_statement

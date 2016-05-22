@@ -1,4 +1,5 @@
 from code.modules.parametrizer import parametrizing
+import re
 
 def parametrize_population(population):
     """
@@ -8,7 +9,6 @@ def parametrize_population(population):
 
     Outputs:
      param_handles_list - list of parametred superposition handles
-
     """
 
     # extract handles of the superpositions from the population and parametrize them
@@ -24,6 +24,15 @@ def parametrize_population(population):
     # insert parametred handles into the class instances
     list(map(lambda ind: setattr(population[ind], 'param_handle', param_handles_list[ind]), range(len(population))))
     list(map(lambda ind: setattr(population[ind], 'number_of_parameters', numbers_of_parameters[ind]), range(len(population))))
+    # specify the number of tokens which models consist of
+    list(map(lambda ind: setattr(population[ind], 'number_of_tokens', find_number_of_tokens(population[ind].handle)), range(len(population))))
 
     return population
 
+
+# Function parsing superposition handle and finding number of tokens which it consists of
+def find_number_of_tokens(handle):
+    # here we use the property of primitive functions: they end with special symbol '_'
+    number_of_primitive_function = len([char for char in list(handle) if char == '_'])
+    number_of_variables = len(re.compile('X\[\d+\]').findall(handle))
+    return number_of_primitive_function + number_of_variables

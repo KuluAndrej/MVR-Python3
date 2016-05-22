@@ -27,6 +27,7 @@ def data_fitting(data_to_fit, config):
 
     config_for_generation = config["model_generation"]
     config_for_accuracy   = config["accuracy_requirement"]
+
     for i in range(int(config_for_accuracy["max_number_cycle_count"])):
         print("iteration# ", i)
         population.append(CrossoverPopulation.crossover_population(population, config_for_generation["crossing_number"]))
@@ -37,9 +38,9 @@ def data_fitting(data_to_fit, config):
 
 
         population = Parametrizer.parametrize_population(population)
-        population = Evaluator.evaluator(population, data_to_fit)
+        population = Evaluator.evaluator(population, data_to_fit, config_for_generation["is_parametric"])
         population = QualityEstimator.quality_estimator(population, data_to_fit)
-        population = SelectBestModels.select_best_models(population, config_for_generation["best_models_number"])
+        population = SelectBestModels.select_best_models(population, config_for_generation["best_models_number"], config_for_generation["type_selection"])
 
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
