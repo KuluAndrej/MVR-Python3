@@ -1,6 +1,7 @@
 from code.DefConstructor import def_constructor
 from scipy.optimize import  curve_fit
 from numpy import nan, ones
+from scipy.optimize import OptimizeWarning
 
 
 def evaluator(population, data_to_fit, is_parametric):
@@ -16,8 +17,8 @@ def evaluator(population, data_to_fit, is_parametric):
 
     # split given data on dependent variables and independent one
     independent_var = data_to_fit[:,1:]
-    # independent_var = tuple(independent_var[:,column] for column in range(independent_var.shape[1]))
-    independent_var = (independent_var[:,0], independent_var[:,1])
+    independent_var = tuple(independent_var[:,column] for column in range(independent_var.shape[1]))
+    #independent_var = (independent_var[:,0], independent_var[:,1])
     dependent_var = data_to_fit[:,0]
 
 

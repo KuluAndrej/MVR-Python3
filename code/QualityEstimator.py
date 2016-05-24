@@ -1,4 +1,4 @@
-from numpy import  sum, isnan, nan, transpose, errstate
+from numpy import  sum, isnan, inf,  nan, transpose, errstate
 from numpy.linalg import norm
 import warnings
 
@@ -42,6 +42,11 @@ def quality_estimator(population, data_to_fit):
                 except RuntimeWarning:
                     dependent_var_estimation = [nan for row in independent_var]
                 setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
+
+    for model in population:
+        if isnan(model.MSE):
+            model.MSE = inf
+
 
     return population
 

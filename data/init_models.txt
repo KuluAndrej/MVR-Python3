@@ -1,10 +1,7 @@
 # Model in short notation; default parameters vector, can be omitted
 # these two fields must be separated with the sign ';'.
 
-expl_(sqrt_(ln_(frac2_(X[0],X[1]))))
-ln_(frac2_(X[0],X[1]))
-frac2_(X[0],X[1])
-sqrt_(ln_(frac2_(X[0],X[1])))
+linear_(X[0])
 
 # sqrt_(frac2_(ln_(X[0]),sqrt_(X[1])))
 # sqrt_(sqrt_(frac2_(X[0],X[1])))

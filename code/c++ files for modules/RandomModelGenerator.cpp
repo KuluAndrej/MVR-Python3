@@ -17,6 +17,7 @@ Author: Kulunchakov Andrei
 #include <stdlib.h>
 #include <time.h>  
 #include <set>  
+#include <utility>
 // #include <random>
 #include "RetrievePrimitives.h"
 #include "boost/lexical_cast.hpp"
@@ -25,6 +26,7 @@ Author: Kulunchakov Andrei
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 #include <boost/lexical_cast.hpp>
+
 
 namespace bp = boost::python;
 using namespace std;  
@@ -144,14 +146,20 @@ string recursive_model_generator(const Primitives_Split_by_Arities& split_primit
 
 
 
-string random_model_generation(int number_variables, int required_size) {
-	
+string random_model_generation(int number_variables, int required_size, int number_of_models, int random_seed) {
+	srand(random_seed);
 	vector<PrimitiveFunction> primitives;
 	primitives = retriever();
 
 	Primitives_Split_by_Arities split_primitives(primitives);
-	
-	return recursive_model_generator(split_primitives, number_variables, required_size);
+
+	// our answer will consist of superpositions divided by '$' symbol
+	string answer = "";
+	for (int i = 0; i < number_of_models; ++i) {
+		answer += recursive_model_generator(split_primitives, number_variables, required_size);
+		answer += "$";
+	}
+	return answer;
 }
 
 
