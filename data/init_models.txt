@@ -1,7 +1,7 @@
 # Model in short notation; default parameters vector, can be omitted
 # these two fields must be separated with the sign ';'.
 
-linear_(X[0])
+plus_(X[0])
 
 # sqrt_(frac2_(ln_(X[0]),sqrt_(X[1])))
 # sqrt_(sqrt_(frac2_(X[0],X[1])))

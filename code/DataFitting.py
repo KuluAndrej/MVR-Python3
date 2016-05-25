@@ -48,15 +48,12 @@ def data_fitting(data_to_fit, config):
         """
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
-        print(population[0].handle)
-        if hasattr(population[0], "optimal_params"):
-            print(population[0].optimal_params)
-        else:
-            print("no params")
+        print(population)
 
         print("")
-        """
+
         if population[0].MSE <= int(config_for_accuracy["required_accuracy"]):
             break
-
+        """
+    print("best generated model", population[0].MSE)
     return population
