@@ -27,8 +27,6 @@ elif type_of_fitting == "time_series_processing":
         print(len(list_ts_to_fit))
 
         for (ind, ts_to_fit) in enumerate(list_ts_to_fit):
-            if label == 'chest_volume' and ind < 174:
-                continue
             print('...part of the ', label, ' ts number ', str(ind))
             ts_to_fit = DataPreprocesser.data_preprocesser(ts_to_fit)
             best_fitting_models = DataFitting.data_fitting(ts_to_fit, config)
