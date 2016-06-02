@@ -11,6 +11,7 @@ def quality_estimator(population, data_to_fit):
     Outputs:
      populations    - list of estimated superpositions (models)
 
+    Author: Kulunchakov Andrei, MIPT
     """
     independent_var = data_to_fit[:,1:]
     independent_var = transpose(independent_var)

@@ -6,8 +6,8 @@ import code.SelectBestModels as SelectBestModels
 import code.Evaluator as Evaluator
 import code.InitModelsLoader as InitModelsLoader
 import code.CrossoverPopulation as CrossoverPopulation
-import numpy as np
-
+import code.SaveData as SaveData
+from numpy import array
 def data_fitting(data_to_fit, config):
     """
     Fit given data by superpositions of primitive functions
@@ -18,11 +18,14 @@ def data_fitting(data_to_fit, config):
 
     Outputs:
      population      - population of new superpositions produced by mutations
+
+    Author: Kulunchakov Andrei, MIPT
     """
 
+    #SaveData.save_data(data_to_fit[:, array([1,0])], "/data/data_to_fit.txt")
+
     # automatically detect and extract the number of features from the given data
-    np.set_printoptions(suppress=True)
-    np.savetxt(filename, data_to_fit[:, np.array([1,0])], fmt='%.4f', delimiter=',', newline='\n')
+
     number_of_variables = data_to_fit.shape[-1] - 1
 
     population  = InitModelsLoader.retrieve_init_models(config)

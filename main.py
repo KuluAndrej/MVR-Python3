@@ -1,3 +1,9 @@
+"""
+Main file of the MVR project.
+
+Author: Kulunchakov Andrei, MIPT
+"""
+
 import code.DataLoader as DataLoader
 import code.MVRAttributesExtraction as MVRAttributesExtraction
 import code.DataFitting as DataFitting
@@ -27,6 +33,7 @@ elif type_of_fitting == "time_series_processing":
         print(len(list_ts_to_fit))
 
         for (ind, ts_to_fit) in enumerate(list_ts_to_fit):
+            
             print('...part of the ', label, ' ts number ', str(ind))
             ts_to_fit = DataPreprocesser.data_preprocesser(ts_to_fit)
             best_fitting_models = DataFitting.data_fitting(ts_to_fit, config)

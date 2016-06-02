@@ -12,6 +12,8 @@ def retrieve_data(config):
 
 
     initial_models   - list of handles of initial functions
+
+    Author: Kulunchakov Andrei, MIPT
     """
     DATA_LOCAL_PATH = config["data_extraction"]["dataset_filename"]
     script_dir = os.path.dirname(__file__)
