@@ -24,6 +24,10 @@ def quality_estimator(population, data_to_fit):
         warnings.simplefilter("always")
         for model in population:
 
+            if (hasattr(model, "is_deprecated")):
+                setattr(model, "MSE", inf)
+                continue
+
             if hasattr(model, "optimal_params"):
                 # insert found parameters into the def_statement
                 model.def_statement_param = lambda row: model.def_statement(row, *model.optimal_params)

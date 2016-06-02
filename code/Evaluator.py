@@ -4,16 +4,20 @@ from numpy import nan, ones
 from scipy.optimize import OptimizeWarning
 
 
-def evaluator(population, data_to_fit, is_parametric):
+def evaluator(population, data_to_fit, config):
     """
     Evaluate the optimal parameters for each model from the population
     Inputs:
-     population         - list of Models to evaluate
-     data_to_fit        - approximated data; necessary for the quality determination
-     is_parametric      - flag signifying if the parameters of superpositions will be tuned
+     population                                         - list of Models to evaluate
+     data_to_fit                                        - approximated data; necessary for the quality determination
+     config.model_generation.is_parametric              - flag signifying if the parameters of superpositions will be tuned
+     config.model_generation.maximum_param_number       - specifies maximum number of parameters
     Outputs:
      population         - estimated population
     """
+
+    is_parametric = config["model_generation"]["is_parametric"]
+    maximum_param_number = int(config["model_generation"]["maximum_param_number"])
 
     # split given data on dependent variables and independent one
     independent_var = data_to_fit[:,1:]
@@ -26,6 +30,10 @@ def evaluator(population, data_to_fit, is_parametric):
         if (not hasattr(model, "def_statement")):
             def_repr = def_constructor(model)
             setattr(model, "def_statement", def_repr)
+        if (model.number_of_parameters > maximum_param_number):
+            setattr(model, "is_deprecated", True)
+            continue
+
         import warnings
 
         def fxn():
