@@ -9,6 +9,8 @@ def parametrize_population(population):
 
     Outputs:
      param_handles_list - list of parametred superposition handles
+
+    Author: Kulunchakov Andrei, MIPT
     """
 
     # extract handles of the superpositions from the population and parametrize them

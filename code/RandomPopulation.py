@@ -14,6 +14,8 @@ def random_population(number_of_variables, config):
 
     Outputs:
      population             - random population
+
+    Author: Kulunchakov Andrei, MIPT
     """
     number_of_models = int(config["model_generation"]["random_models_number"])
     maximum_required_size = int(config["model_generation"]["random_models_complexity"])

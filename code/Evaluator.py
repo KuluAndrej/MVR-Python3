@@ -12,12 +12,16 @@ def evaluator(population, data_to_fit, config):
      data_to_fit                                        - approximated data; necessary for the quality determination
      config.model_generation.is_parametric              - flag signifying if the parameters of superpositions will be tuned
      config.model_generation.maximum_param_number       - specifies maximum number of parameters
+     config.model_generation.maximum_complexity         - specifies maximum structural complexity of a model
     Outputs:
      population         - estimated population
+
+    Author: Kulunchakov Andrei, MIPT
     """
 
     is_parametric = config["model_generation"]["is_parametric"]
     maximum_param_number = int(config["model_generation"]["maximum_param_number"])
+    maximum_complexity = int(config["model_generation"]["maximum_complexity"])
 
     # split given data on dependent variables and independent one
     independent_var = data_to_fit[:,1:]
@@ -30,7 +34,7 @@ def evaluator(population, data_to_fit, config):
         if (not hasattr(model, "def_statement")):
             def_repr = def_constructor(model)
             setattr(model, "def_statement", def_repr)
-        if (model.number_of_parameters > maximum_param_number):
+        if (model.number_of_parameters > maximum_param_number or len(model) > maximum_complexity):
             setattr(model, "is_deprecated", True)
             continue
 
