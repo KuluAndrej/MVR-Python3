@@ -1,4 +1,5 @@
 import configparser
+import code.ValidateConfig as ValidateConfig
 
 def attributes_extraction():
     """
@@ -15,5 +16,8 @@ def attributes_extraction():
     ATTRIBUTES_FILENAME = "config.ini"
     config = configparser.ConfigParser()
     config.read(ATTRIBUTES_FILENAME)
+
+    ValidateConfig.config_validation(config)
+
     return config
 

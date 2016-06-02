@@ -1,4 +1,4 @@
-from numpy import  sum, isnan, inf,  nan, transpose
+from numpy import  sum, isnan, ones,  nan, transpose
 from numpy.linalg import norm
 import warnings
 
@@ -13,10 +13,6 @@ def calculate_model_values(model, independent_var):
 
     Author: Kulunchakov Andrei, MIPT
     """
-    independent_var = data_to_fit[:,1:]
-    independent_var = transpose(independent_var)
-    dependent_var = data_to_fit[:,0]
-
 
 
     # now estimate the error of approximation for each model
@@ -35,7 +31,7 @@ def calculate_model_values(model, independent_var):
                     dependent_var_estimation = [nan for row in independent_var]
                 return dependent_var_estimation
             else:
-                return nan * np.ones(dependent_var.shape)
+                return nan * ones((independent_var.shape[0], 1))
         else:
             try:
                 dependent_var_estimation = model.def_statement(independent_var)
@@ -43,8 +39,6 @@ def calculate_model_values(model, independent_var):
                 dependent_var_estimation = [nan for row in independent_var]
 
             return dependent_var_estimation
-
-
 
     return population
 
