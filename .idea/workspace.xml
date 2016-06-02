@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeb68866-6ac4-407a-861e-c2ceac323e63" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/SaveData.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/CalculatorModelValues.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataFitting.py" afterPath="$PROJECT_DIR$/code/DataFitting.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataLoader.py" afterPath="$PROJECT_DIR$/code/DataLoader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataPreprocesser.py" afterPath="$PROJECT_DIR$/code/DataPreprocesser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/QualityEstimator.py" afterPath="$PROJECT_DIR$/code/QualityEstimator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/data_to_fit.txt" afterPath="$PROJECT_DIR$/data/data_to_fit.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <ignored path="MVR_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4592145">
+            <state vertical-scroll-proportion="0.0">
               <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding>
                 <element signature="e#73#109#0" expanded="true" />
@@ -43,12 +38,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataLoader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
+      <file leaf-file-name="ObserverTheBestFunction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalculatorModelValues.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/CalculatorModelValues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.17220543">
+              <caret line="6" column="90" selection-start-line="6" selection-start-column="90" selection-end-line="6" selection-end-column="90" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QualityEstimator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/QualityEstimator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataFitting.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="37" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,36 +96,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataFitting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SaveData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/SaveData.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QualityEstimator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/QualityEstimator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -138,12 +145,15 @@
         <option value="$PROJECT_DIR$/code/CrossoverPopulation.py" />
         <option value="$PROJECT_DIR$/code/Evaluator.py" />
         <option value="$PROJECT_DIR$/code/Primitives.py" />
-        <option value="$PROJECT_DIR$/code/QualityEstimator.py" />
         <option value="$PROJECT_DIR$/code/DataPreprocesser.py" />
         <option value="$PROJECT_DIR$/code/DataLoader.py" />
         <option value="$PROJECT_DIR$/code/SaveData.py" />
         <option value="$PROJECT_DIR$/code/DataFitting.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/code/ObserveTheBestFunction.py" />
+        <option value="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
+        <option value="$PROJECT_DIR$/code/QualityEstimator.py" />
+        <option value="$PROJECT_DIR$/code/CalculatorModelValues.py" />
       </list>
     </option>
   </component>
@@ -552,6 +562,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/code/QualityEstimator.py</url>
+          <line>1</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -564,20 +575,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/QualityEstimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="45" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/structures/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/DefConstructor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -897,29 +894,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/SaveData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/QualityEstimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,22 +912,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding>
+            <element signature="e#73#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="37" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4592145">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/QualityEstimator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#73#109#0" expanded="true" />
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/CalculatorModelValues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17220543">
+          <caret line="6" column="90" selection-start-line="6" selection-start-column="90" selection-end-line="6" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

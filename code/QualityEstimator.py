@@ -1,4 +1,5 @@
-from numpy import  sum, isnan, inf,  nan, transpose, errstate
+import code.CalculatorModelValues as CalculatorModelValues
+from numpy import  sum, isnan, inf,  nan, transpose
 from numpy.linalg import norm
 import warnings
 
@@ -29,24 +30,8 @@ def quality_estimator(population, data_to_fit):
                 setattr(model, "MSE", inf)
                 continue
 
-            if hasattr(model, "optimal_params"):
-                # insert found parameters into the def_statement
-                model.def_statement_param = lambda row: model.def_statement(row, *model.optimal_params)
-
-                if not isnan(sum(model.optimal_params)):
-                    try:
-                        dependent_var_estimation = model.def_statement_param(independent_var)
-                    except:
-                        dependent_var_estimation = [nan for row in independent_var]
-                    setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
-                else:
-                    setattr(model, "MSE", nan)
-            else:
-                try:
-                    dependent_var_estimation = model.def_statement(independent_var)
-                except RuntimeWarning:
-                    dependent_var_estimation = [nan for row in independent_var]
-                setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
+            dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
+            setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
 
     for model in population:
         if isnan(model.MSE):
