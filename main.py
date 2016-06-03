@@ -21,21 +21,25 @@ if type_of_fitting == "fit_data":
     data_to_fit = DataLoader.retrieve_data(config)
     population  = DataFitting.data_fitting(data_to_fit, config)
 
-    for model in population:
-        print("model = ", model, "MSE = ",model.MSE)
+    print(population)
 
-    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 elif type_of_fitting == "time_series_processing":
+    # last one = 340
+    starting_segment = 0
+    starting_label_index = 42
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
 
-    for label in labels_ts_to_retrieve:
+    for ind_label, label in enumerate(labels_ts_to_retrieve):
         print('now process the label ', label)
         whole_ts_to_fit = DataLoader.retrieve_ts(config,label)
         list_ts_to_fit  = SegmentatorTS.segmentate_ts(whole_ts_to_fit, int(config["time_series_processing"]["number_of_segments"]))
         print(len(list_ts_to_fit))
 
         for (ind, ts_to_fit) in enumerate(list_ts_to_fit):
+            if ind_label < starting_label_index or ind < starting_segment:
+                continue
             print('...part of the ', label, ' ts number ', str(ind))
             ts_to_fit = DataPreprocesser.data_preprocesser(ts_to_fit)
 
