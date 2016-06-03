@@ -19,11 +19,11 @@ type_of_fitting = config["flag_type_of_processing"]["flag"]
 if type_of_fitting == "fit_data":
 
     data_to_fit = DataLoader.retrieve_data(config)
+    print("start fitting...")
     population  = DataFitting.data_fitting(data_to_fit, config)
+    print("fitting is terminated.")
 
-    print(population)
-
-    #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 elif type_of_fitting == "time_series_processing":
     # last one = 340

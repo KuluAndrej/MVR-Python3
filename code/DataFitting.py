@@ -58,5 +58,5 @@ def data_fitting(data_to_fit, config):
         if population[0].MSE <= int(config_for_accuracy["required_accuracy"]):
             break
         """
-    print("best generated model", population[0].MSE)
+    print("best generated model has MSE = ", population[0].MSE)
     return population
