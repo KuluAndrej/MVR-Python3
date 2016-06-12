@@ -22,10 +22,7 @@ def data_fitting(data_to_fit, config):
     Author: Kulunchakov Andrei, MIPT
     """
 
-    #SaveData.save_data(data_to_fit[:, array([1,0])], "/data/data_to_fit.txt")
-
     # automatically detect and extract the number of features from the given data
-
     number_of_variables = data_to_fit.shape[-1] - 1
 
     population  = InitModelsLoader.retrieve_init_models(config)
@@ -33,11 +30,10 @@ def data_fitting(data_to_fit, config):
 
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
-        #print("iteration# ", i)
+        print("iteration# ", i)
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config))
-
         population.unique_models_selection()
 
 
@@ -46,17 +42,19 @@ def data_fitting(data_to_fit, config):
         population = QualityEstimator.quality_estimator(population, data_to_fit)
 
 
+
         population = SelectBestModels.select_best_models(population, config)
 
-        """
+
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
-        print(population)
+        for ind, model in enumerate(population):
+            if ind < 7:
+                print(model, "has MSE", model.MSE)
 
         print("")
 
-        if population[0].MSE <= int(config_for_accuracy["required_accuracy"]):
-            break
-        """
+
     print("best generated model has MSE = ", population[0].MSE)
+    print("optimal parameters = ", population[0].optimal_params)
     return population

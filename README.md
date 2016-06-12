@@ -1,3 +1,6 @@
+Author: Kulunchakov Andrei
+GitHub: KuluAndrej
+
 # Multivariate Regression Composer (Python3)
 
 **MVR** is a project for construction and approximation of nonlinear functions to a given data. Nonlinear functions are represented as 

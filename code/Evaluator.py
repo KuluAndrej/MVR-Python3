@@ -46,7 +46,7 @@ def evaluator(population, data_to_fit, config):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             fxn()
-            if (is_parametric == 'True' and not hasattr(model, "optimal_params") and model.number_of_parameters > 0):
+            if (is_parametric == 'True' and (not hasattr(model, "optimal_params")) and model.number_of_parameters > 0):
                 try:
                     popt, _ = curve_fit(model.def_statement, independent_var, dependent_var)
                 except RuntimeError:
@@ -58,7 +58,8 @@ def evaluator(population, data_to_fit, config):
                 setattr(model, "optimal_params", popt)
                 continue
             else:
-                setattr(model, "optimal_params", ones(model.number_of_parameters))
+                if not hasattr(model, "optimal_params"):
+                    setattr(model, "optimal_params", ones(model.number_of_parameters))
 
         if model.number_of_parameters == 0:
             model.def_statement_param = model.def_statement

@@ -26,9 +26,6 @@ if type_of_fitting == "fit_data":
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 elif type_of_fitting == "time_series_processing":
-    # last one = 340
-    starting_segment = 0
-    starting_label_index = 42
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
 
     for ind_label, label in enumerate(labels_ts_to_retrieve):
@@ -38,8 +35,7 @@ elif type_of_fitting == "time_series_processing":
         print(len(list_ts_to_fit))
 
         for (ind, ts_to_fit) in enumerate(list_ts_to_fit):
-            if ind_label < starting_label_index or ind < starting_segment:
-                continue
+
             print('...part of the ', label, ' ts number ', str(ind))
             ts_to_fit = DataPreprocesser.data_preprocesser(ts_to_fit)
 
