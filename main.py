@@ -11,18 +11,21 @@ import code.DataPreprocesser as DataPreprocesser
 import code.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.SaveData as SaveData
+import code.SavePopulationToFile as SavePopulationToFile
+import thrasher
+import time
 
 # get a data structure with the MVR attributes
 config          = MVRAttributesExtraction.attributes_extraction()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
+print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
 
     data_to_fit = DataLoader.retrieve_data(config)
-    print("start fitting...")
+    start = time.time()
     population  = DataFitting.data_fitting(data_to_fit, config)
-    print("fitting is terminated.")
-
+    print(time.time() - start)
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 elif type_of_fitting == "time_series_processing":
@@ -35,13 +38,23 @@ elif type_of_fitting == "time_series_processing":
         print(len(list_ts_to_fit))
 
         for (ind, ts_to_fit) in enumerate(list_ts_to_fit):
-
             print('...part of the ', label, ' ts number ', str(ind))
-            ts_to_fit = DataPreprocesser.data_preprocesser(ts_to_fit)
-
+            ts_to_fit           = DataPreprocesser.data_preprocesser(ts_to_fit)
             best_fitting_models = DataFitting.data_fitting(ts_to_fit, config)
-            file_to_store_ts    = open(config["time_series_processing"]["where_to_store_models"]+label+"_"+str(ind+1)+config["time_series_processing"]["extension"], "w+")
-            file_to_store_ts .write("%s\n" % best_fitting_models)
+
+            SavePopulationToFile.save_population_to_file(best_fitting_models, config, label, ind + 1)
+elif type_of_fitting == "fit_and_collect":
+
+    labels = ['chest_volume', 'heart_rate', 'oxygen_concentration']
+    for label in labels:
+        thrasher.data_cutter_loader(label)
+        data_to_fit = DataLoader.retrieve_data(config)
+
+        for iteration in range(int(config['fit_and_collect']['number_fittings'])):
+            print('... iteration number', iteration)
+            population  = DataFitting.data_fitting(data_to_fit, config)
+
+            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
 
 
 

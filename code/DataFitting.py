@@ -30,7 +30,8 @@ def data_fitting(data_to_fit, config):
 
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
-        print("iteration# ", i)
+        if config["flag_type_of_processing"]["flag"] == 'fit_data':
+            print("iteration on fitting# ", i)
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config))
@@ -45,7 +46,7 @@ def data_fitting(data_to_fit, config):
 
         population = SelectBestModels.select_best_models(population, config)
 
-
+        """
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
         for ind, model in enumerate(population):
@@ -53,8 +54,9 @@ def data_fitting(data_to_fit, config):
                 print(model, "has MSE", model.MSE)
 
         print("")
-
-
+        """
+    """
     print("best generated model has MSE = ", population[0].MSE)
     print("optimal parameters = ", population[0].optimal_params)
+    """
     return population
