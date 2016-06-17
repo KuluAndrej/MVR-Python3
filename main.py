@@ -12,7 +12,7 @@ import code.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.SaveData as SaveData
 import code.SavePopulationToFile as SavePopulationToFile
-import thrasher
+import CutSegmentStoreToFile
 import time
 import matplotlib.pyplot as plt
 
@@ -50,7 +50,7 @@ elif type_of_fitting == "fit_and_collect":
 
     labels = ['chest_volume', 'heart_rate', 'oxygen_concentration']
     for label in labels:
-        thrasher.data_cutter_loader(label)
+        CutSegmentStoreToFile.data_cutter_loader(label)
         data_to_fit = DataLoader.retrieve_data(config)
 
         for iteration in range(int(config['fit_and_collect']['number_fittings'])):
