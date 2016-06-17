@@ -21,6 +21,7 @@ def observer_the_best_function(population, data_to_fit):
 
     model = population[0]
     print(model)
+    print(model.MSE)
     dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
 
 

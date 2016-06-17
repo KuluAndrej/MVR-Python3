@@ -14,6 +14,7 @@ import code.SaveData as SaveData
 import code.SavePopulationToFile as SavePopulationToFile
 import thrasher
 import time
+import matplotlib.pyplot as plt
 
 # get a data structure with the MVR attributes
 config          = MVRAttributesExtraction.attributes_extraction()
@@ -24,8 +25,10 @@ if type_of_fitting == "fit_data":
 
     data_to_fit = DataLoader.retrieve_data(config)
     start = time.time()
-    population  = DataFitting.data_fitting(data_to_fit, config)
-    print(time.time() - start)
+    population, measurements = DataFitting.data_fitting(data_to_fit, config)
+    print(time.time() - start, population[0].MSE)
+    plt.plot(measurements)
+    plt.show()
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 elif type_of_fitting == "time_series_processing":
