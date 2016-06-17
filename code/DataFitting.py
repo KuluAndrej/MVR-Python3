@@ -38,7 +38,7 @@ def data_fitting(data_to_fit, config):
             measurements[i] = population[0].MSE
         else:
             print("wait some time, the first iteration takes a bit longer than the others")
-        if i > 100 and (measurements[i - 100] - measurements[i])/measurements[i] < 0.01:
+        if i > 200 and (measurements[i - 100] - measurements[i])/measurements[i] < 0.01:
             print("break on iteration #", i, "because of stagnation")
             break
 

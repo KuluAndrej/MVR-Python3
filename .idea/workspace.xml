@@ -2,16 +2,163 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16bc3f1c-d7bf-4d32-ac14-52f0190fd811" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_10.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_11.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_12.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_13.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_14.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_15.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_16.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_17.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_18.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_19.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_20.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_21.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_22.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_23.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_24.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_25.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_26.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_27.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_28.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_29.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_30.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_31.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_33.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_34.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_35.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_36.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_37.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_38.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_39.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_40.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_41.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_42.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_43.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_44.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_45.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_46.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_47.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_48.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_49.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_50.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/chest_volume_9.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_10.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_11.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_12.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_13.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_14.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_15.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_16.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_17.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_18.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_19.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_20.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_21.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_22.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_23.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_24.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_25.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_26.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_27.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_28.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_29.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_30.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_31.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_33.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_34.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_35.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_36.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_37.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_38.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_39.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_40.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_41.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_42.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_43.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_44.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_45.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_46.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_47.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_48.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_49.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_50.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/heart_rate_9.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_10.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_11.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_12.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_13.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_14.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_15.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_16.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_17.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_18.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_19.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_20.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_21.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_22.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_23.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_24.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_25.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_26.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_27.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_28.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_29.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_30.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_31.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_32.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_33.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_34.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_35.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_36.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_37.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_38.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_39.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_40.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_41.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_42.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_43.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_44.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_45.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_46.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_47.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_48.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_49.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_50.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/populations/first_segments2/oxygen_concentration_9.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Structural features creation.ipynb" afterPath="$PROJECT_DIR$/Structural features creation.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataFitting.py" afterPath="$PROJECT_DIR$/code/DataFitting.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/ObserverTheBestFunction.py" afterPath="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.py" afterPath="$PROJECT_DIR$/code/Primitives.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.txt" afterPath="$PROJECT_DIR$/code/Primitives.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/RandomPopulation.py" afterPath="$PROJECT_DIR$/code/RandomPopulation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/structures/Population.py" afterPath="$PROJECT_DIR$/code/structures/Population.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/data_to_fit.txt" afterPath="$PROJECT_DIR$/data/data_to_fit.txt" />
     </list>
     <ignored path="MVR_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +182,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46341464">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.5365854">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
               <folding>
                 <element signature="e#73#109#0" expanded="true" />
               </folding>
@@ -48,7 +195,7 @@
         <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -80,7 +227,7 @@
         <entry file="file://$PROJECT_DIR$/code/structures/Population.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
+              <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -90,9 +237,9 @@
         <entry file="file://$PROJECT_DIR$/code/Primitives.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1466160166299" expanded="true" signature="0:87" placeholder="import ..." />
               </folding>
             </state>
           </provider>
@@ -158,12 +305,12 @@
         <option value="$PROJECT_DIR$/code/SavePopulationToFile.py" />
         <option value="$PROJECT_DIR$/string_levenstein.py" />
         <option value="$PROJECT_DIR$/code/Primitives.py" />
-        <option value="$PROJECT_DIR$/code/structures/Population.py" />
         <option value="$PROJECT_DIR$/thrasher.py" />
         <option value="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
         <option value="$PROJECT_DIR$/code/RandomPopulation.py" />
-        <option value="$PROJECT_DIR$/code/DataFitting.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/code/DataFitting.py" />
+        <option value="$PROJECT_DIR$/code/structures/Population.py" />
       </list>
     </option>
   </component>
@@ -198,7 +345,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,6 +397,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -327,6 +474,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MVR_py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/string_levenstein.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DataFitting" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MVR_py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/DataFitting.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -453,18 +617,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python.thrasher" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
       <item index="3" class="java.lang.String" itemvalue="Python.string_levenstein" />
+      <item index="4" class="java.lang.String" itemvalue="Python.DataFitting" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.thrasher" />
-        <item index="2" class="java.lang.String" itemvalue="Python.string_levenstein" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.DataFitting" />
+        <item index="2" class="java.lang.String" itemvalue="Python.thrasher" />
+        <item index="3" class="java.lang.String" itemvalue="Python.string_levenstein" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
       </list>
     </recent_temporary>
   </component>
@@ -493,20 +659,20 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.8034826" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.78855723" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.19651741" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.21144278" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -866,10 +1032,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/MutationPopulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.051490515">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/RandomPopulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Primitives.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1466160166299" expanded="true" signature="0:87" placeholder="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/SavePopulationToFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thrasher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -884,20 +1099,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/MutationPopulation.py">
+    <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Primitives.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -905,56 +1112,15 @@
     <entry file="file://$PROJECT_DIR$/code/structures/Population.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thrasher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.051490515">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/RandomPopulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46341464">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.5365854">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
           <folding>
             <element signature="e#73#109#0" expanded="true" />
           </folding>

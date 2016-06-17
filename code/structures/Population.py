@@ -44,7 +44,7 @@ class Population:
         if type_of_selection == 'MSE':
             self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE)
         elif type_of_selection == 'Error_structural':
-            self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE * (1 + 0.000001 * model.number_of_tokens) )
+            self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE * (1 + 0.00002 * model.number_of_tokens) )
 
 
     def __getitem__(self, key):
