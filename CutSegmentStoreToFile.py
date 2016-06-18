@@ -32,4 +32,4 @@ def data_cutter_loader(label):
 
         SaveData.save_data(data, filename)
 
-data_cutter_loader('chest_volume')
+#data_cutter_loader('heart_rate')

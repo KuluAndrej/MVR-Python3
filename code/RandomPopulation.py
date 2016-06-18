@@ -22,8 +22,8 @@ def random_population(number_of_variables, config, is_initial_load):
     maximum_required_size = int(config["model_generation"]["random_models_complexity"])
     required_size = randint(10,maximum_required_size)
     if is_initial_load:
-        number_of_models = 10000
-        required_size = 13
+        number_of_models = int(config["model_generation"]["number_of_init_random_models"])
+        required_size = int(config["model_generation"]["size_init_random_models"])
 
     list_of_new_handles = random_model_generation(number_of_variables, required_size, number_of_models, randint(1,100000)).split('$')
     list_of_new_handles = list_of_new_handles[:-1]

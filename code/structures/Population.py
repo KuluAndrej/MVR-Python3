@@ -40,11 +40,11 @@ class Population:
     def sort(self):
         self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE)
 
-    def sort(self,type_of_selection):
+    def sort(self,type_of_selection,structural_penalty):
         if type_of_selection == 'MSE':
             self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE)
         elif type_of_selection == 'Error_structural':
-            self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE * (1 + 0.00002 * model.number_of_tokens) )
+            self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE * (1 + structural_penalty * model.number_of_tokens) )
 
 
     def __getitem__(self, key):

@@ -22,9 +22,15 @@ def data_fitting(data_to_fit, config):
 
     Author: Kulunchakov Andrei, MIPT
     """
+    print("Start data fitting\nNote that the first iteration takes a bit longer than the others")
+    # some useful constants for stagnation recognition
+    lowest_possible_rate = float(config["stagnation"]["lowest_possible_rate"])
+    window_size    = int(config["stagnation"]["window_size"])
+    init_iteration = int(config["stagnation"]["init_iteration"])
 
     # automatically detect and extract the number of features from the given data
     number_of_variables = data_to_fit.shape[-1] - 1
+    # measurements stands fro plotting the dynamics of MSE
     measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]))
 
     population  = InitModelsLoader.retrieve_init_models(config)
@@ -33,12 +39,11 @@ def data_fitting(data_to_fit, config):
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':
-            print("iteration on fitting# ", i)
+            print("iteration on fitting #", i, sep='')
         if i > 0:
             measurements[i] = population[0].MSE
-        else:
-            print("wait some time, the first iteration takes a bit longer than the others")
-        if i > 200 and (measurements[i - 100] - measurements[i])/measurements[i] < 0.01:
+
+        if i > init_iteration and (measurements[max(i - window_size,0)] - measurements[i])/measurements[i] < lowest_possible_rate:
             print("break on iteration #", i, "because of stagnation")
             break
 
@@ -74,6 +79,7 @@ def data_fitting(data_to_fit, config):
     print("best generated model has MSE = ", population[0].MSE)
     print("optimal parameters = ", population[0].optimal_params)
     """
+
     if config["flag_type_of_processing"]["flag"] == 'fit_data':
         return population, measurements
     else:

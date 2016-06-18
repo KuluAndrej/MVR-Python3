@@ -57,7 +57,7 @@ elif type_of_fitting == "fit_and_collect":
             print('... iteration number', iteration)
             population  = DataFitting.data_fitting(data_to_fit, config)
 
-            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
+            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 51)
 
 
 
