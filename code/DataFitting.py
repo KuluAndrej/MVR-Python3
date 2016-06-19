@@ -6,7 +6,6 @@ import code.SelectBestModels as SelectBestModels
 import code.Evaluator as Evaluator
 import code.InitModelsLoader as InitModelsLoader
 import code.CrossoverPopulation as CrossoverPopulation
-import code.SaveData as SaveData
 from numpy import zeros
 
 def data_fitting(data_to_fit, config):
@@ -23,10 +22,11 @@ def data_fitting(data_to_fit, config):
     Author: Kulunchakov Andrei, MIPT
     """
     print("Start data fitting\nNote that the first iteration takes a bit longer than the others")
+
     # some useful constants for stagnation recognition
     lowest_possible_rate = float(config["stagnation"]["lowest_possible_rate"])
-    window_size    = int(config["stagnation"]["window_size"])
-    init_iteration = int(config["stagnation"]["init_iteration"])
+    window_size          = int(config["stagnation"]["window_size"])
+    init_iteration       = int(config["stagnation"]["init_iteration"])
 
     # automatically detect and extract the number of features from the given data
     number_of_variables = data_to_fit.shape[-1] - 1
@@ -35,7 +35,8 @@ def data_fitting(data_to_fit, config):
 
     population  = InitModelsLoader.retrieve_init_models(config)
     population  = Parametrizer.parametrize_population(population)
-    population.append(RandomPopulation.random_population(number_of_variables, config, True))
+    if config["model_generation"]["do_init_random_generation"] == "True":
+        population.append(RandomPopulation.random_population(number_of_variables, config, True))
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':

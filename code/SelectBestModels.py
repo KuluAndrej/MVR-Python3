@@ -16,7 +16,7 @@ def select_best_models(population, config):
 
     number_of_best_models = int(config["model_generation"]["best_models_number"])
     type_of_selection = config["model_generation"]["type_selection"]
-    structural_penalty = config["model_generation"]["structural_penalty"]
+    structural_penalty = float(config["model_generation"]["structural_penalty"])
     population.sort(type_of_selection, structural_penalty)
 
 

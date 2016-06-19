@@ -1,15 +1,14 @@
 """
-Main file of the MVR project.
+Extract first segment in the specified time series and store it to the file
+specified in 'config'
 
 Author: Kulunchakov Andrei, MIPT
 """
 
 import code.DataLoader as DataLoader
 import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.DataFitting as DataFitting
 import code.DataPreprocesser as DataPreprocesser
 import code.SegmentatorTS as SegmentatorTS
-import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.SaveData as SaveData
 
 def data_cutter_loader(label):
@@ -32,4 +31,4 @@ def data_cutter_loader(label):
 
         SaveData.save_data(data, filename)
 
-#data_cutter_loader('heart_rate')
+data_cutter_loader('oxygen_concentration')

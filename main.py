@@ -10,7 +10,6 @@ import code.DataFitting as DataFitting
 import code.DataPreprocesser as DataPreprocesser
 import code.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
-import code.SaveData as SaveData
 import code.SavePopulationToFile as SavePopulationToFile
 import CutSegmentStoreToFile
 import time
@@ -47,17 +46,22 @@ elif type_of_fitting == "time_series_processing":
 
             SavePopulationToFile.save_population_to_file(best_fitting_models, config, label, ind + 1)
 elif type_of_fitting == "fit_and_collect":
-
+    start_label_ind = 1
+    start_index     = 50
     labels = ['chest_volume', 'heart_rate', 'oxygen_concentration']
-    for label in labels:
+    for ind,label in enumerate(labels):
+        if ind < start_label_ind:
+            continue
         CutSegmentStoreToFile.data_cutter_loader(label)
         data_to_fit = DataLoader.retrieve_data(config)
 
         for iteration in range(int(config['fit_and_collect']['number_fittings'])):
+            if ind == start_label_ind and iteration < start_index:
+                continue
             print('... iteration number', iteration)
             population  = DataFitting.data_fitting(data_to_fit, config)
 
-            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 51)
+            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
 
 
 

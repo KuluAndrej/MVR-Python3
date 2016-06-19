@@ -123,6 +123,15 @@ def plus_(w0, x):
 
     return x + w0
 
+
+def mult_(w0, x):
+    plus_.NumParam = 1
+    plus_.NumVars = 1
+
+    return w0 * x
+
+
+
 def minus2_(x, y):
     minus2_.NumParam = 0
     minus2_.NumVars = 2

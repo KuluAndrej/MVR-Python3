@@ -17,6 +17,7 @@ sqrt_ 0 1
 sqrtl_ 2 1
 plus2_ 0 2
 plus_ 1 1
+mult_ 1 1
 minus2_ 0 2
 frac2_ 0 2
 inv_ 0 1
