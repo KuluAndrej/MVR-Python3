@@ -2,21 +2,174 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16bc3f1c-d7bf-4d32-ac14-52f0190fd811" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Structural features creation-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Structural features creation-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" afterPath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CutSegmentStoreToFile.py" afterPath="$PROJECT_DIR$/CutSegmentStoreToFile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataFitting.py" afterPath="$PROJECT_DIR$/code/DataFitting.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" afterPath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Structural features creation.ipynb" afterPath="$PROJECT_DIR$/Structural features creation.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.py" afterPath="$PROJECT_DIR$/code/Primitives.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.txt" afterPath="$PROJECT_DIR$/code/Primitives.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/SelectBestModels.py" afterPath="$PROJECT_DIR$/code/SelectBestModels.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/data_to_fit.txt" afterPath="$PROJECT_DIR$/data/data_to_fit.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/init_models.txt" afterPath="$PROJECT_DIR$/data/init_models.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/numbParam.txt" afterPath="$PROJECT_DIR$/data/numbParam.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/means.txt" afterPath="$PROJECT_DIR$/means.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_1.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_10.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_10.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_11.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_11.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_12.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_12.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_13.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_13.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_14.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_14.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_15.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_15.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_16.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_16.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_17.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_17.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_18.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_18.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_19.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_19.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_2.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_20.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_20.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_21.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_21.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_22.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_22.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_23.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_23.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_24.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_24.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_25.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_25.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_26.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_26.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_27.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_27.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_28.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_28.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_29.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_29.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_3.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_3.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_30.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_30.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_31.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_31.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_32.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_32.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_33.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_33.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_34.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_34.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_35.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_35.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_36.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_36.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_37.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_37.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_38.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_38.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_39.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_39.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_4.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_4.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_40.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_40.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_41.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_41.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_42.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_42.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_43.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_43.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_44.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_44.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_45.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_45.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_46.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_46.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_47.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_47.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_48.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_48.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_49.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_49.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_5.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_5.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_50.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_50.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_6.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_6.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_7.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_7.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_8.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/chest_volume_9.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/chest_volume_9.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_1.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_10.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_10.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_11.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_11.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_12.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_12.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_13.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_13.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_14.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_14.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_15.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_15.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_16.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_16.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_17.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_17.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_18.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_18.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_19.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_19.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_2.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_20.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_20.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_21.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_21.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_22.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_22.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_23.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_23.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_24.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_24.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_25.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_25.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_26.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_26.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_27.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_27.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_28.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_28.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_29.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_29.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_3.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_3.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_30.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_30.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_31.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_31.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_32.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_32.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_33.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_33.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_34.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_34.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_35.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_35.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_36.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_36.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_37.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_37.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_38.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_38.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_39.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_39.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_4.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_4.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_40.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_40.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_41.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_41.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_42.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_42.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_43.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_43.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_44.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_44.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_45.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_45.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_46.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_46.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_47.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_47.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_48.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_48.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_49.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_49.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_5.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_5.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_50.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_50.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_6.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_6.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_7.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_7.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_8.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/heart_rate_9.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/heart_rate_9.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_1.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_10.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_10.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_11.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_11.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_12.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_12.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_13.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_13.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_14.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_14.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_15.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_15.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_16.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_16.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_17.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_17.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_18.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_18.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_19.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_19.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_2.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_20.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_20.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_21.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_21.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_22.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_22.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_23.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_23.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_24.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_24.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_25.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_25.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_26.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_26.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_27.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_27.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_28.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_28.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_29.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_29.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_3.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_3.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_30.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_30.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_31.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_31.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_32.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_32.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_33.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_33.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_34.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_34.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_35.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_35.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_36.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_36.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_37.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_37.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_38.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_38.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_39.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_39.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_4.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_4.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_40.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_40.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_41.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_41.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_42.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_42.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_43.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_43.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_44.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_44.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_45.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_45.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_46.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_46.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_47.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_47.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_48.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_48.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_49.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_49.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_5.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_5.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_50.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_50.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_6.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_6.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_7.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_7.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_8.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_9.txt" afterPath="$PROJECT_DIR$/populations/collected_models3/oxygen_concentration_9.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts_processing/chest_volume.txt" afterPath="$PROJECT_DIR$/ts_processing/chest_volume.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts_processing/heart_rate.txt" afterPath="$PROJECT_DIR$/ts_processing/heart_rate.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts_processing/oxygen_concentration.txt" afterPath="$PROJECT_DIR$/ts_processing/oxygen_concentration.txt" />
     </list>
     <ignored path="MVR_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +193,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.124661244">
-              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.31858408">
+              <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
               <folding>
                 <element signature="e#73#109#0" expanded="true" />
               </folding>
@@ -53,7 +206,7 @@
         <entry file="file://$PROJECT_DIR$/code/Primitives.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+              <caret line="132" column="9" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -85,7 +238,7 @@
         <entry file="file://$PROJECT_DIR$/CutSegmentStoreToFile.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="62" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="62" />
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -123,12 +276,12 @@
         <option value="$PROJECT_DIR$/code/RandomPopulation.py" />
         <option value="$PROJECT_DIR$/code/ValidateConfig.py" />
         <option value="$PROJECT_DIR$/code/SelectBestModels.py" />
-        <option value="$PROJECT_DIR$/CutSegmentStoreToFile.py" />
         <option value="$PROJECT_DIR$/code/CreateBigRandomInitPopulation.py" />
         <option value="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
         <option value="$PROJECT_DIR$/code/DataFitting.py" />
-        <option value="$PROJECT_DIR$/code/Primitives.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/code/Primitives.py" />
+        <option value="$PROJECT_DIR$/CutSegmentStoreToFile.py" />
       </list>
     </option>
   </component>
@@ -163,7 +316,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -199,6 +351,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,23 +393,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="DataFitting" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MVR_py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/DataFitting.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="CreateBigRandomInitPopulation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -289,6 +425,27 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Nosetests in MVR_py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MVR_py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="$PROJECT_DIR$" />
+      <option name="TEST_TYPE" value="TEST_FOLDER" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -416,17 +573,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python.thrasher" />
-      <item index="2" class="java.lang.String" itemvalue="Python.DataFitting" />
-      <item index="3" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation" />
-      <item index="4" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation" />
+      <item index="3" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation" />
-        <item index="3" class="java.lang.String" itemvalue="Python.thrasher" />
-        <item index="4" class="java.lang.String" itemvalue="Python.DataFitting" />
+        <item index="1" class="java.lang.String" itemvalue="Python.thrasher" />
+        <item index="2" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
+        <item index="4" class="java.lang.String" itemvalue="Python.CreateBigRandomInitPopulation" />
       </list>
     </recent_temporary>
   </component>
@@ -447,6 +604,9 @@
     <history-entry file="Nosetests_in_MVR_py - 2016.06.15 at 18h 15m 07s.xml">
       <configuration name="Nosetests in MVR_py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Nosetests_in_MVR_py - 2016.06.20 at 23h 04m 08s.xml">
+      <configuration name="Nosetests in MVR_py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
@@ -455,18 +615,18 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.73383087" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.66555184" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.26616916" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.33444816" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -833,38 +993,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CreateBigRandomInitPopulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/DataLoader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.124661244">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-          <folding>
-            <element signature="e#73#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Primitives.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,6 +1007,21 @@
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Primitives.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="132" column="9" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CreateBigRandomInitPopulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021680217">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -889,8 +1036,18 @@
     <entry file="file://$PROJECT_DIR$/CutSegmentStoreToFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="62" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="62" />
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31858408">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding>
+            <element signature="e#73#109#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -31,4 +31,4 @@ def data_cutter_loader(label):
 
         SaveData.save_data(data, filename)
 
-data_cutter_loader('oxygen_concentration')
+data_cutter_loader('open_apple')
