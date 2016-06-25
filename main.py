@@ -33,14 +33,14 @@ if type_of_fitting == "fit_data":
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
     start_label_ind = 0
-    start_index     = 0
+    start_index     = 3
 
     for ind_label, label in enumerate(labels_ts_to_retrieve):
         print('now process the label ', label)
         if ind_label < start_label_ind:
             continue
 
-        whole_ts_to_fit = DataLoader.retrieve_ts(config,label)
+        whole_ts_to_fit = DataLoader.retrieve_ts(config, label)
         list_ts_to_fit  = SegmentatorTS.segmentate_ts(whole_ts_to_fit, int(config["time_series_processing"]["number_of_segments"]))
         print(len(list_ts_to_fit))
 
@@ -69,10 +69,6 @@ elif type_of_fitting == "fit_and_collect":
             print('... iteration number', iteration)
             population  = DataFitting.data_fitting(data_to_fit, config)
 
-            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 51)
-
-
-
-
+            SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
 # after your program ends
-#pr.print_stats(sort="calls")
+# pr.print_stats(sort="calls")

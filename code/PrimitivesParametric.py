@@ -124,6 +124,67 @@ def plus_(w0, x):
     return x + w0
 
 
+def normal_(x):
+    normal_.NumParam = 0
+    normal_.NumVars = 1
+
+    return np.exp(-x**2)
+
+def hypo2_(x,y):
+    hypo2_.NumParam = 0
+    hypo2_.NumVars = 2
+
+    return np.hypot(x,y)
+
+def sinh_(x):
+    sinh_.NumParam = 0
+    sinh_.NumVars = 1
+
+    return np.sinh(x)
+
+def cosh_(x):
+    cosh_.NumParam = 0
+    cosh_.NumVars = 1
+
+    return np.cosh(x)
+
+def tanh_(x):
+    tanh_.NumParam = 0
+    tanh_.NumVars = 1
+
+    return np.tanh(x)
+
+def arcsinh_(x):
+    arcsinh_.NumParam = 0
+    arcsinh_.NumVars = 1
+
+    return np.arcsinh(x)
+
+def arccosh_(x):
+    arccosh_.NumParam = 0
+    arccosh_.NumVars = 1
+
+    return np.arccosh(x)
+
+def arctanh_(x):
+    arctanh_.NumParam = 0
+    arctanh_.NumVars = 1
+
+    return np.arctanh(x)
+
+def bessel_(x):
+    bessel_.NumParam = 0
+    bessel_.NumVars = 1
+
+    return np.i0(x)
+
+def sinc_(x):
+    sinc_.NumParam = 0
+    sinc_.NumVars = 1
+
+    return np.sinc(x)
+    
+
 def mult_(w0, x):
     plus_.NumParam = 1
     plus_.NumVars = 1
