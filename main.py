@@ -4,8 +4,8 @@ Main file of the MVR project.
 Author: Kulunchakov Andrei, MIPT
 """
 
-import code.DataLoader as DataLoader
 import code.MVRAttributesExtraction as MVRAttributesExtraction
+import code.DataLoader as DataLoader
 import code.DataFitting as DataFitting
 import code.DataPreprocesser as DataPreprocesser
 import code.SegmentatorTS as SegmentatorTS
@@ -21,7 +21,10 @@ type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
+    label = 'chest_volume'
+    index_to_observe = 15
 
+    CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
     data_to_fit = DataLoader.retrieve_data(config)
     start = time.time()
     population, measurements = DataFitting.data_fitting(data_to_fit, config)
@@ -33,8 +36,8 @@ if type_of_fitting == "fit_data":
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
     start_label_ind = 0
-    start_index     = 3
-
+    #start_index     = 44
+    start_index     = 0
     for ind_label, label in enumerate(labels_ts_to_retrieve):
         print('now process the label ', label)
         if ind_label < start_label_ind:

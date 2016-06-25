@@ -34,6 +34,7 @@ def data_fitting(data_to_fit, config):
     measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]))
 
     population  = InitModelsLoader.retrieve_init_models(config)
+
     population  = Parametrizer.parametrize_population(population)
     if config["model_generation"]["do_init_random_generation"] == "True":
         population.append(RandomPopulation.random_population(number_of_variables, config, True))

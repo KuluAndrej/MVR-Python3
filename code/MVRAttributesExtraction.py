@@ -1,7 +1,7 @@
 import configparser
 import code.ValidateConfig as ValidateConfig
 
-def attributes_extraction():
+def attributes_extraction(root = ''):
     """
     Extract MVR options specified in config.ini
     Inputs:
@@ -15,7 +15,7 @@ def attributes_extraction():
     # retrieve attributes of MVR necessary for a future work
     ATTRIBUTES_FILENAME = "config.ini"
     config = configparser.ConfigParser()
-    config.read(ATTRIBUTES_FILENAME)
+    config.read(root + ATTRIBUTES_FILENAME)
 
     ValidateConfig.config_validation(config)
 

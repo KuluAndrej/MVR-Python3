@@ -25,3 +25,10 @@ def save_population_to_file(population, config, label, number_of_file):
     # save the population to the specified file
     file_to_store_ts  = open(filename, "w+")
     file_to_store_ts .write("%s\n" % population)
+
+    file_to_store_params  = open('populations/optimal_params/' + label+"_"+str(number_of_file)+config["time_series_processing"]["extension"], "w+")
+    for model in population:
+        if hasattr(model, 'optimal_params'):
+            file_to_store_params .write("%s\n" % model.optimal_params)
+        else:
+            file_to_store_params .write("[]\n")
