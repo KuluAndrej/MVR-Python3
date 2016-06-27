@@ -56,7 +56,6 @@ def evaluator(population, data_to_fit, config):
                 except OptimizeWarning:
                     popt = [nan for i in range(model.number_of_parameters)]
                 except ZeroDivisionError:
-                    print('catched ZeroDivisionError')
                     popt = [nan for i in range(model.number_of_parameters)]
                 setattr(model, "optimal_params", popt)
                 continue

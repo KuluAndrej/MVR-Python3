@@ -22,10 +22,11 @@ print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
     label = 'chest_volume'
-    index_to_observe = 15
+    index_to_observe = 1
 
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
     data_to_fit = DataLoader.retrieve_data(config)
+
     start = time.time()
     population, measurements = DataFitting.data_fitting(data_to_fit, config)
     print(time.time() - start, population[0].MSE)
@@ -36,7 +37,6 @@ if type_of_fitting == "fit_data":
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
     start_label_ind = 0
-    #start_index     = 44
     start_index     = 0
     for ind_label, label in enumerate(labels_ts_to_retrieve):
         print('now process the label ', label)

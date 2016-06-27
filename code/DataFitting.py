@@ -66,10 +66,8 @@ def data_fitting(data_to_fit, config):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':
             print(len(population), " models are selected")
             print("best yet generated model", population[0].MSE)
-            for ind, model in enumerate(population):
-                if ind < 3:
-                    print(model, "has MSE", model.MSE)
-
+            for ind in range(3):
+                print(population[ind], "has MSE", population[ind].MSE)
             print("")
 
         if config["flag_type_of_processing"]["flag"] == 'fit_data' and \

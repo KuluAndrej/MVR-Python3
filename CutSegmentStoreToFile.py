@@ -38,7 +38,6 @@ def data_cutter_loader(label, number_of_segment):
 
 
         data = DataPreprocesser.data_preprocesser(list_ts_to_fit[number_of_segment])
-        print(data.shape)
         filename = '/data/data_to_fit.txt'
 
         SaveData.save_data(data, filename)

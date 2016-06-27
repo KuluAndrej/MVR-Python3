@@ -1,7 +1,10 @@
 #Name #NumPar #NumArg
 bump_ 2 1
 hvs_ 1 1
-sina_ 2 1
+sinla_ 2 1
+sinm1a_ 2 1
+sinm2a_ 2 1
+sinha_ 2 1
 tana_ 2 1
 sin_ 0 1
 cos_ 0 1

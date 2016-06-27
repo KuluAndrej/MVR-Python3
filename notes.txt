@@ -1,0 +1,2 @@
+minus2_(minus2_(X[0],parabola_(times2_(sinc_(X[0]),sinc_(X[0])))),linear_(normal_(times2_(sinc_(X[0]),tanh_(X[0])))))
+times2_(mult_(times2_(mult_(parabola_(X[0])),sinc_(times2_(lnl_(sina_(times2_(X[0],sinc_(X[0])))),plus2_(X[0],sinc_(X[0])))))),sinc_(X[0]))

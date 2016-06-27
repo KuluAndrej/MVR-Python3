@@ -25,39 +25,37 @@ import matplotlib.pyplot as plt
 from numpy import empty
 from code.structures.Population import Population
 
-def get_population_from_file(filename):
+def validate_final_model(label, index_to_observe):
+    def get_population_from_file(filename):
 
-    files_path = 'populations/collected_models6/'
-    print(files_path + filename)
-    lines_file_content = open(files_path + filename, 'r').readlines()
-    population = empty(len(lines_file_content), dtype = object)
+        files_path = 'populations/collected_models9/'
 
-    for ind, entity in enumerate(lines_file_content):
-        population[ind] = entity.split(' ')[-1].strip()
-    return [model for model in population]
+        lines_file_content = open(files_path + filename, 'r').readlines()
+        population = empty(len(lines_file_content), dtype = object)
 
-label = 'chest_volume'
-index_to_observe = 2
-config          = MVRAttributesExtraction.attributes_extraction()
-whole_ts_to_fit = DataLoader.retrieve_ts(config, label)
-list_ts_to_fit  = SegmentatorTS.segmentate_ts(whole_ts_to_fit, int(config["time_series_processing"]["number_of_segments"]))
-data_to_fit     = DataPreprocesser.data_preprocesser(list_ts_to_fit[index_to_observe - 1])
+        for ind, entity in enumerate(lines_file_content):
+            population[ind] = entity.split(' ')[-1].strip()
+        return [model for model in population]
 
-independent_var = data_to_fit[:,1:]
-independent_var = transpose(independent_var)
-dependent_var   = data_to_fit[:,0]
 
-models_names         = get_population_from_file(label + '_' + str(index_to_observe) + '.txt')
-initial_models       = strings_to_population(models_names)
-untrained_population = Population(initial_models[0:1])
+    config          = MVRAttributesExtraction.attributes_extraction()
+    whole_ts_to_fit = DataLoader.retrieve_ts(config, label)
+    list_ts_to_fit  = SegmentatorTS.segmentate_ts(whole_ts_to_fit, int(config["time_series_processing"]["number_of_segments"]))
+    data_to_fit     = DataPreprocesser.data_preprocesser(list_ts_to_fit[index_to_observe - 1])
 
-population  = Parametrizer.parametrize_population(untrained_population)
-population = Evaluator.evaluator(population, data_to_fit, config)
-population = QualityEstimator.quality_estimator(population, data_to_fit)
 
-print(population)
+    models_names         = get_population_from_file(label + '_' + str(index_to_observe) + '.txt')
+    initial_models       = strings_to_population(models_names)
+    print("model = ", initial_models[0:1])
+    untrained_population = Population(initial_models[0:1])
 
-if hasattr(population[0], 'optimal_params'):
-    print(population[0].optimal_params)
+    population  = Parametrizer.parametrize_population(untrained_population)
+    population = Evaluator.evaluator(population, data_to_fit, config)
+    population = QualityEstimator.quality_estimator(population, data_to_fit)
 
-ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+
+
+    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+
+import sys
+validate_final_model(sys.argv[1], int(sys.argv[2]))

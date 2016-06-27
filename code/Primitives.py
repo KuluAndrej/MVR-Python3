@@ -15,9 +15,33 @@ def hvs_(w0, x):
     return w0 < x
 
 @handicraft_exception_handler
-def sina_(w0, w1, x):
-    sina_.NumParam = 2
-    sina_.NumVars = 1
+def sinla_(w0, w1, x):
+    if abs(w1) > 1:
+        return np.inf
+    sinla_.NumParam = 2
+    sinla_.NumVars = 1
+    return np.sin(x * w1 + w0)
+
+def sinm1a_(w0, w1, x):
+    if abs(w1) < 1 and abs(w1) > 3:
+        return np.inf
+    sinm1a_.NumParam = 2
+    sinm1a_.NumVars = 1
+    return np.sin(x * w1 + w0)
+
+def sinm2a_(w0, w1, x):
+    if abs(w1) < 3 and abs(w1) > 10:
+        return np.inf
+    sinm2a_.NumParam = 2
+    sinm2a_.NumVars = 1
+    return np.sin(x * w1 + w0)
+
+
+def sinha_(w0, w1, x):
+    if abs(w1) < 10:
+        return np.inf
+    sinha_.NumParam = 2
+    sinha_.NumVars = 1
     return np.sin(x * w1 + w0)
 
 @handicraft_exception_handler
@@ -62,6 +86,8 @@ def lnl_(w0, w1, x):
 
 @handicraft_exception_handler
 def expl_(w0, w1, x):
+    #if abs(w1)+abs(w0) > 6:
+    #    return np.inf
     expl_.NumParam = 2
     expl_.NumVars = 1
     return np.exp(x * w1 + w0)
@@ -95,7 +121,7 @@ def normal_(w0, w1, x):
     normal_.NumParam = 2
     normal_.NumVars = 1
 
-    return w0 * np.exp(-(x - w1)**2)
+    return (1/w0) * np.exp(-(x - w1)**2/w0)
 
 
 def bessel_(x):

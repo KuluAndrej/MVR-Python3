@@ -19,7 +19,7 @@ def create_big_random_init_population():
 
     DATA_FULL_PATH = script_dir + DATA_LOCAL_PATH
     file = open(DATA_FULL_PATH, 'w')
-    desired_numb_rows = 5000
+    desired_numb_rows = 500
     for ind, item in enumerate(init_models):
         if desired_numb_rows > ind:
             file.write("%s\n" % item)

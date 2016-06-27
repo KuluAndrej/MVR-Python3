@@ -1,6 +1,6 @@
 /*
 
-Structure storing all necessary info about a primitive function : 
+Structure storing all necessary info about a primitive function
 
 Author: Kulunchakov Andrei
 */
