@@ -54,7 +54,7 @@ elif type_of_fitting == "time_series_processing":
 
             ts_to_fit           = DataPreprocesser.data_preprocesser(ts_to_fit)
             best_fitting_models = DataFitting.data_fitting(ts_to_fit, config)
-
+            #ObserverTheBestFunction.observer_the_best_function(best_fitting_models, ts_to_fit)
             SavePopulationToFile.save_population_to_file(best_fitting_models, config, label, ind + 1)
 elif type_of_fitting == "fit_and_collect":
     start_label_ind = 0
@@ -71,7 +71,7 @@ elif type_of_fitting == "fit_and_collect":
                 continue
             print('... iteration number', iteration)
             population  = DataFitting.data_fitting(data_to_fit, config)
-
+            ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
             SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
 # after your program ends
 # pr.print_stats(sort="calls")

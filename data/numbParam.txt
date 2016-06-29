@@ -1,9 +1,10 @@
 bump_ 2 1
 hvs_ 1 1
-sina_ 2 1
 sinla_ 2 1
 sinm1a_ 2 1
 sinm2a_ 2 1
+sinm3a_ 2 1
+sinm4a_ 2 1
 sinha_ 2 1
 tana_ 2 1
 sin_ 0 1
@@ -16,11 +17,11 @@ sqrtl_ 2 1
 plus2_ 0 2
 plus_ 1 1
 normal_ 2 1
-bessel_ 2 1
+bessel_ 0 1
 mult_ 1 1
 minus2_ 0 2
 frac2_ 0 2
-inv_ 1 1
+inv_ 0 1
 hyperbola_ 1 1
 times2_ 0 2
 linear_ 2 1

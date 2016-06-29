@@ -4,6 +4,8 @@ hvs_ 1 1
 sinla_ 2 1
 sinm1a_ 2 1
 sinm2a_ 2 1
+sinm3a_ 2 1
+sinm4a_ 2 1
 sinha_ 2 1
 tana_ 2 1
 sin_ 0 1

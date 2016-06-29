@@ -23,22 +23,35 @@ def sinla_(w0, w1, x):
     return np.sin(x * w1 + w0)
 
 def sinm1a_(w0, w1, x):
-    if abs(w1) < 1 and abs(w1) > 3:
+    if abs(w1) < 1 or abs(w1) > 2:
         return np.inf
     sinm1a_.NumParam = 2
     sinm1a_.NumVars = 1
     return np.sin(x * w1 + w0)
 
 def sinm2a_(w0, w1, x):
-    if abs(w1) < 3 and abs(w1) > 10:
+    if abs(w1) < 2 or abs(w1) > 3:
         return np.inf
     sinm2a_.NumParam = 2
     sinm2a_.NumVars = 1
     return np.sin(x * w1 + w0)
 
+def sinm3a_(w0, w1, x):
+    if abs(w1) < 3 or abs(w1) > 4:
+        return np.inf
+    sinm3a_.NumParam = 2
+    sinm3a_.NumVars = 1
+    return np.sin(x * w1 + w0)
+
+def sinm4a_(w0, w1, x):
+    if abs(w1) < 4 or abs(w1) > 5:
+        return np.inf
+    sinm4a_.NumParam = 2
+    sinm4a_.NumVars = 1
+    return np.sin(x * w1 + w0)
 
 def sinha_(w0, w1, x):
-    if abs(w1) < 10:
+    if abs(w1) < 5:
         return np.inf
     sinha_.NumParam = 2
     sinha_.NumVars = 1

@@ -30,6 +30,9 @@ class Population:
         final_str = ''
         for ind, model in enumerate(self.__instance.Models):
             final_str += repr(ind) + ". " + repr(model) + "\n"
+            if hasattr(model, 'optimal_params'):
+                final_str += str([item for item in model.optimal_params])[1:-1]
+            final_str += "\n"
         return final_str
 
     def __setitem__(self, index, model):
