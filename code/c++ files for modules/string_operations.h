@@ -22,7 +22,7 @@ pair<map<string, int>, int> read_info_primitives () {
   string token;
   vector<int> number_parameters(NUMBER_OF_TOKENS);
   for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
-    input_stream >> token >> useless_feature1 >> useless_feature1;
+    input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
     map_tokens.insert(make_pair(token, i));
     if (!isset && token[0] == 'x' && (token.size() > 1) &&  isdigit(token[1])) {
       minimum_code_for_var = i;
@@ -44,7 +44,7 @@ pair<map<string, int>, vector<int> > read_info_commutativenes () {
   
   string token;
   for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
-    input_stream >> token >> useless_feature1 >> commutativeness[i];
+    input_stream >> token >> useless_feature1 >> useless_feature1 >> commutativeness[i];
     map_tokens.insert(make_pair(token, i));    
   }
 
@@ -60,7 +60,7 @@ pair<vector<string>, vector<int> > retrieve_tokens() {
   vector<string> tokens(NUMBER_OF_TOKENS);
   vector<int> number_parameters(NUMBER_OF_TOKENS);
   for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
-    input_stream >> tokens[i] >> number_parameters[i] >> useless_feature;
+    input_stream >> tokens[i] >> number_parameters[i] >> useless_feature >> useless_feature;
   }
   input_stream.close();
   return make_pair(tokens, number_parameters);

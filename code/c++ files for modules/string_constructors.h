@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <sstream>
 #include <ctype.h>
-
+#include <iostream>
 using namespace std;  
 
 

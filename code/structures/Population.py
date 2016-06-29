@@ -38,7 +38,7 @@ class Population:
     def __setitem__(self, index, model):
         if index >= len(self):
             raise IndexError
-        self.Models[index] = model
+        self.__instance.Models[index] = model
 
     def sort(self):
         self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE)

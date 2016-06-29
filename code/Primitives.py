@@ -15,46 +15,9 @@ def hvs_(w0, x):
     return w0 < x
 
 @handicraft_exception_handler
-def sinla_(w0, w1, x):
-    if abs(w1) > 1:
-        return np.inf
-    sinla_.NumParam = 2
-    sinla_.NumVars = 1
-    return np.sin(x * w1 + w0)
-
-def sinm1a_(w0, w1, x):
-    if abs(w1) < 1 or abs(w1) > 2:
-        return np.inf
-    sinm1a_.NumParam = 2
-    sinm1a_.NumVars = 1
-    return np.sin(x * w1 + w0)
-
-def sinm2a_(w0, w1, x):
-    if abs(w1) < 2 or abs(w1) > 3:
-        return np.inf
-    sinm2a_.NumParam = 2
-    sinm2a_.NumVars = 1
-    return np.sin(x * w1 + w0)
-
-def sinm3a_(w0, w1, x):
-    if abs(w1) < 3 or abs(w1) > 4:
-        return np.inf
-    sinm3a_.NumParam = 2
-    sinm3a_.NumVars = 1
-    return np.sin(x * w1 + w0)
-
-def sinm4a_(w0, w1, x):
-    if abs(w1) < 4 or abs(w1) > 5:
-        return np.inf
-    sinm4a_.NumParam = 2
-    sinm4a_.NumVars = 1
-    return np.sin(x * w1 + w0)
-
-def sinha_(w0, w1, x):
-    if abs(w1) < 5:
-        return np.inf
-    sinha_.NumParam = 2
-    sinha_.NumVars = 1
+def sina_(w0, w1, x):
+    sina_.NumParam = 2
+    sina_.NumVars = 1
     return np.sin(x * w1 + w0)
 
 @handicraft_exception_handler
@@ -62,24 +25,6 @@ def tana_(w0, w1, x):
     tana_.NumParam = 2
     tana_.NumVars = 1
     return np.tan(x * w1 + w0)
-
-@handicraft_exception_handler
-def sin_(x):
-    sin_.NumParam = 0
-    sin_.NumVars = 1
-    return np.sin(x)
-
-@handicraft_exception_handler
-def cos_(x):
-    cos_.NumParam = 0
-    cos_.NumVars = 1
-    return np.cos(x)
-
-@handicraft_exception_handler
-def tan_(x):
-    tan_.NumParam = 0
-    tan_.NumVars = 1
-    return np.tan(x)
 
 @handicraft_exception_handler
 def atana_(w0, w1, x):
@@ -137,13 +82,6 @@ def normal_(w0, w1, x):
     return (1/w0) * np.exp(-(x - w1)**2/w0)
 
 
-def bessel_(x):
-    bessel_.NumParam = 0
-    bessel_.NumVars = 1
-
-    return np.i0(x)
-
-
 def mult_(w0, x):
     if abs(w0 - 1) < .05:
         return np.inf
@@ -175,14 +113,6 @@ def inv_(x):
 
     return 1 / x
 
-@handicraft_exception_handler
-def hyperbola_(w0, x):
-
-    hyperbola_.NumParam = 1
-    hyperbola_.NumVars = 1
-
-    return w0 / x
-
 
 def times2_(x, y):
     times2_.NumParam = 0
@@ -197,11 +127,3 @@ def linear_(w0, w1, x):
     linear_.NumVars = 1
 
     return x * w1 + w0
-
-def parabola_(w0, w1, w2, x):
-    if abs(w2) < .003:
-        return np.inf
-    parabola_.NumParam = 3
-    parabola_.NumVars = 1
-    
-    return x * x * w2 +  x * w1 + w0

@@ -21,7 +21,7 @@ type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
-    label = 'chest_volume'
+    label = 'heart_rate'
     index_to_observe = 1
 
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)

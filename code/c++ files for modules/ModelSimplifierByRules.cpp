@@ -10,13 +10,16 @@ Author: Kulunchakov Andrei
 #include <fstream> 
 #include <stdlib.h>
 #include "tree_operations.h"
-#include "string_constructors.h"
 #include "create_data_by_handle.h"
+
+using namespace std;
+
+
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 
-using namespace std;
 namespace bp = boost::python;
+
 
 const int UNFILLED_SIBSTITUTION = -1;
 int MINIMUM_CODE_OF_VARIABLES;
@@ -72,7 +75,9 @@ void replaceAll( string &s, const string &search, const string &replace ) {
     for( int pos = 0; ; pos += replace.length() ) {
         // Locate the substring to replace
         pos = s.find( search, pos );
-        if( pos == string::npos ) break;
+        if( pos == string::npos ) {
+          break;
+        }
         // Replace by erasing and inserting
         s = eraser(s, pos, search.length() );
         s.insert( pos, replace );
@@ -93,7 +98,8 @@ string launch_substitute(vector<vector<int> >& model_matr, vector<int>& model_en
       continue;
     }
     string substring_in_model = string_constructor_unparametred(model_matr, tokens, model_encoding, representatives[substitutions[i]]);
-    string var = "x" + SSTR( i + 1 );
+    string var = "x" + SSTR( i );
+    cout << "replaceAll = " << replace_handle << " " <<  var << " " << substring_in_model << '\n';
     replaceAll(replace_handle, var, substring_in_model);    
   }  
   return replace_handle;
@@ -116,9 +122,14 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
   vector<vector<int> > model_matr = model_data.first;  
   vector<int> model_encoding = model_data.second;
   vector<int> equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
+  cout << "equivalence_classes == ";
+  for (int y = 0; y < equivalence_classes.size(); ++y)  {
+    cout << equivalence_classes[y] << ' ';
+  }
   vector<int> representatives = find_representatives_of_equivalence_classes(equivalence_classes);
   pair<vector<string>, vector<int> > tokens_data = retrieve_tokens();
   vector<string> tokens = tokens_data.first;
+  cout << "number_of_rules = " << number_of_rules << '\n';
   // vector of substitutions for variables from patter trees
   for (int i = 0; i < number_of_rules; ++i) {
     pair<int, int> token_counters = find_number_of_tokens(rules_pattern[i]);
@@ -128,22 +139,34 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
     vector<int> pattern_encodings = pattern_data.second;
     vector<int> canditates_for_search = find_candidates_for_search(model_encoding, pattern_encodings[0]);
     
-  	
     for (int j = 0; j < canditates_for_search.size(); ++j) {
       // the size of substitutions is equal to the size of variables
-      vector<int> substitutions(token_counters.second, UNFILLED_SIBSTITUTION);
 
+      vector<int> substitutions(token_counters.second, UNFILLED_SIBSTITUTION);
+      cout << "token_counters= " << token_counters.second <<'\n';
       bool matches = check_for_matching(pattern_matr, pattern_encodings, substitutions, equivalence_classes, model_matr, model_encoding, canditates_for_search[j], 0);
-      
+      cout << "substitutions == ";
+      for (int y = 0; y < substitutions.size(); ++y)  {
+        cout << substitutions[y] << ' ';
+      }
+      cout << '\n';
       if (matches) {
+        cout << "model = " << modelhandle << "; ";
+        cout << rules_pattern[i] << " " << rules_replace[i] <<'\n';
+        cout << "candidate " << j << "; " << matches <<'\n';
+
         string inserted_submodel = launch_substitute(model_matr, model_encoding, rules_replace[i], substitutions, representatives, map_tokens, tokens);
         string substituted_string = string_constructor_unparametred(model_matr, tokens, model_encoding, canditates_for_search[j]);
+        cout << "inserted_submodel = " << inserted_submodel << "; substituted_string = " << substituted_string <<'\n';
         replaceAll(modelhandle, substituted_string, inserted_submodel);
         model_data = create_incid_matrix_tokens(map_tokens, modelhandle);            
-        vector<vector<int> > model_matr = model_data.first;  
-        vector<int> model_encoding = model_data.second;
-        vector<int> equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
-        vector<int> representatives = find_representatives_of_equivalence_classes(equivalence_classes);        
+        model_matr = model_data.first;  
+        model_encoding = model_data.second;
+        equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
+        representatives = find_representatives_of_equivalence_classes(equivalence_classes);     
+        // if the model is simplified, the rules rejected before could be applicable now
+        // therefore, we check each rule again
+        i = 0;        
       }    
     }
     
@@ -173,8 +196,18 @@ string simplify_by_rules(const string handle){
   	return Simplifier(rules, handle);  	
 }
 
-
 BOOST_PYTHON_MODULE(model_simplifier_by_rules) {
 	bp::def("simplify_by_rules", simplify_by_rules);
     	
 }
+
+/*
+int main(){
+  //string s = "plus2_(minus2_(x0,x0),hyperbola_(linear_(parabola_(x0))))";
+  //string s = "inv_(hyperbola_(hyperbola_(linear_(parabola_(x0))))))";
+  
+  cout << s << "-->" << simplify_by_rules(s) << '\n';
+  return 0;
+}
+
+*/

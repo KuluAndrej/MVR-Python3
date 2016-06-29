@@ -1,30 +1,30 @@
-bump_ 2 1
-hvs_ 1 1
-sinla_ 2 1
-sinm1a_ 2 1
-sinm2a_ 2 1
-sinm3a_ 2 1
-sinm4a_ 2 1
-sinha_ 2 1
-tana_ 2 1
-sin_ 0 1
-cos_ 0 1
-tan_ 0 1
-atana_ 2 1
-lnl_ 2 1
-expl_ 2 1
-sqrtl_ 2 1
-plus2_ 0 2
-plus_ 1 1
-normal_ 2 1
-bessel_ 0 1
-mult_ 1 1
-minus2_ 0 2
-frac2_ 0 2
-inv_ 0 1
-hyperbola_ 1 1
-times2_ 0 2
-linear_ 2 1
-parabola_ 3 1
-x0 0 0
-x1 0 0
+bump_ 2 1 0
+hvs_ 1 1 0
+sinla_ 2 1 0
+sinm1a_ 2 1 0
+sinm2a_ 2 1 0
+sinm3a_ 2 1 0
+sinm4a_ 2 1 0
+sinha_ 2 1 0
+tana_ 2 1 0
+sin_ 0 1 0
+cos_ 0 1 0
+tan_ 0 1 0
+atana_ 2 1 0
+lnl_ 2 1 0
+expl_ 2 1 0
+sqrtl_ 2 1 0
+plus2_ 0 2 1
+plus_ 1 1 0
+normal_ 2 1 0
+bessel_ 0 1 0
+mult_ 1 1 0
+minus2_ 0 2 0
+frac2_ 0 2 0
+inv_ 0 1 0
+hyperbola_ 1 1 0
+times2_ 0 2 1
+linear_ 2 1 0
+parabola_ 3 1 0
+x0 0 0 0
+x1 0 0 0
