@@ -57,6 +57,14 @@ def evaluator(population, data_to_fit, config):
                     popt = [nan for i in range(model.number_of_parameters)]
                 except ZeroDivisionError:
                     popt = [nan for i in range(model.number_of_parameters)]
+                except IndexError:
+                    if hasattr(model, "backup_handle"):
+                        print("problem with simplification:")
+                        print(model.backup_handle,'-->',model.handle)
+                    else:
+                        print("problem NOT with simplification")
+                        print(model)
+                    raise
                 setattr(model, "optimal_params", popt)
                 continue
             else:

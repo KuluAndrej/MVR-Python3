@@ -14,18 +14,26 @@ from code.structures import Model
 import re
 
 def rule_simplify(population):
-
+    fopen = open('log.txt','w')
     for ind, model in enumerate(population):
         handle = model.handle
-        print(handle)
+        print(handle,file = fopen)
         handle = re.sub(r'X\[(\d+)\]', r'x\1', handle)
-
+        backup_handle = handle
         handle = model_reconstruct(handle)
-        print('reconstruct terminated', handle)
         handle = simplify_by_rules(handle)
-        print('simplify_by_rules terminated')
+        # here we fix some freaky bug
+        # only the God knows the reasons of it
+        while handle.find('x1') != -1:
+            ind = handle.find('x1')
+            handle = handle[0:ind] + 'bump_(x0)' + handle[ind+2:]
 
+        new_handle = handle
         handle = re.sub(r'x(\d+)', r'X[\1]', handle)
-        population[ind] = Model.Model(handle)
+        population[ind].handle = handle
+        if len(backup_handle) > len(new_handle):
+            #print(backup_handle, '-->\n', new_handle)
+            #print(model_reconstruct(backup_handle))
+            setattr(population[ind], "backup_handle", backup_handle)
 
     return population
