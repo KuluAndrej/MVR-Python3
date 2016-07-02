@@ -6,7 +6,10 @@ import code.SelectBestModels as SelectBestModels
 import code.Evaluator as Evaluator
 import code.InitModelsLoader as InitModelsLoader
 import code.CrossoverPopulation as CrossoverPopulation
+import code.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
 import code.RuleSimplifier as RuleSimplifier
+import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+
 from numpy import zeros
 
 def data_fitting(data_to_fit, config):
@@ -29,14 +32,16 @@ def data_fitting(data_to_fit, config):
     window_size          = int(config["stagnation"]["window_size"])
     init_iteration       = int(config["stagnation"]["init_iteration"])
 
+    dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
+
     # automatically detect and extract the number of features from the given data
     number_of_variables = data_to_fit.shape[-1] - 1
     # measurements stands fro plotting the dynamics of MSE
     measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]))
 
     population  = InitModelsLoader.retrieve_init_models(config)
-
     population  = Parametrizer.parametrize_population(population)
+
     if config["model_generation"]["do_init_random_generation"] == "True":
         population.append(RandomPopulation.random_population(number_of_variables, config, True))
 
@@ -54,12 +59,12 @@ def data_fitting(data_to_fit, config):
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
         population.unique_models_selection()
-
+        ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
         #population = RuleSimplifier.rule_simplify(population)
 
 
         population = Parametrizer.parametrize_population(population)
-        population = Evaluator.evaluator(population, data_to_fit, config)
+        population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
 
 

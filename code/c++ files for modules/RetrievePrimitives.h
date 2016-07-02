@@ -106,10 +106,10 @@ string extract_vector_bounds_params (ifstream& input_file, const string& name) {
 	string line;
 	
 	getline(input_file , line);
-	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\(\\[[\\d. ,]*\\][ ]*,[ ]*\\[[\\d. ,]*\\]\\)[ ]*" ) ) ) {		
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\(\\[[\\d\\w. ,]*\\][ ]*,[ ]*\\[[\\d\\w. ,]*\\]\\)[ ]*" ) ) ) {		
     	getline(input_file , line);
     }
-    boost::regex_search(line,  matching_results, boost::regex("\\(\\[[\\d. ,]*\\][ ]*,[ ]*\\[[\\d. ,]*\\]\\)") ); 
+    boost::regex_search(line,  matching_results, boost::regex("\\(\\[[\\d\\w. ,]*\\][ ]*,[ ]*\\[[\\d\\w. ,]*\\]\\)") ); 
     string output_string = matching_results[0];
 
 	size_t found = output_string.find(" ");
@@ -141,7 +141,6 @@ void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<Pr
 	// construct the same filename, but with '.txt' extension
 	string FILE_PRIMITIVES_TXT = FILE_PRIMITIVES_WITHOUT_EXTENSION + string(".txt");
 	string FILE_PRIMITIVES_INFO_FOR_OPTIMIZATION_TXT = FILE_PRIMITIVES_WITHOUT_EXTENSION + string("InfoForOptimization.txt");
-
 	// load primitive in txt-file
 	ofstream file_primitives_txt;
 	ofstream file_primitives_info_for_optimization_txt;
@@ -223,7 +222,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 // Retrieve the list of primitives from one of the files: 'Primitives.py' or 'Primitives.txt'
 vector< PrimitiveFunction > retriever() {
 	//string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
-	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "Primitives";
+	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
 	if (checker_version_of_py_file(FILE_PRIMITIVES_WITHOUT_EXTENSION)) {
 		// if the .py file is newer than the .txt file, we parse it and return the extracted primitives
 		return parse_py_file_with_primitives(FILE_PRIMITIVES_WITHOUT_EXTENSION);

@@ -4,12 +4,13 @@ from numpy import nan, ones
 from scipy.optimize import OptimizeWarning
 import numpy as np
 
-def evaluator(population, data_to_fit, config):
+def evaluator(population, data_to_fit, dict_tokens_info, config):
     """
     Evaluate the optimal parameters for each model from the population
     Inputs:
      population                                         - list of Models to evaluate
      data_to_fit                                        - approximated data; necessary for the quality determination
+     dict_tokens_info                                   - info about parameters of tokens used in optimization
      config.model_generation.is_parametric              - flag signifying if the parameters of superpositions will be tuned
      config.model_generation.maximum_param_number       - specifies maximum number of parameters
      config.model_generation.maximum_complexity         - specifies maximum structural complexity of a model
@@ -48,8 +49,9 @@ def evaluator(population, data_to_fit, config):
             fxn()
             if (is_parametric == 'True' and (not hasattr(model, "optimal_params")) and model.number_of_parameters > 0):
                 try:
+                    #print(model, model.curve_fit_init_params, model.curve_fit_bounds)
                     popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
-                                        p0 = 5 * np.ones(model.number_of_parameters))
+                                        p0 = model.curve_fit_init_params, bounds=model.curve_fit_bounds)
                 except RuntimeError:
                     popt = [nan for i in range(model.number_of_parameters)]
                 except RuntimeWarning:
@@ -57,6 +59,8 @@ def evaluator(population, data_to_fit, config):
                 except OptimizeWarning:
                     popt = [nan for i in range(model.number_of_parameters)]
                 except ZeroDivisionError:
+                    popt = [nan for i in range(model.number_of_parameters)]
+                except ValueError:
                     popt = [nan for i in range(model.number_of_parameters)]
                 except IndexError:
                     if hasattr(model, "backup_handle"):
