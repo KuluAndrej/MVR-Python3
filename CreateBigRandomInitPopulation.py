@@ -11,7 +11,7 @@ def create_big_random_init_population():
         init_models = init_models.union(RandomPopulation.random_population(1, config, True))
         new_size = len(init_models)
 
-        if (new_size - previous_size) / previous_size < .1:
+        if (new_size - previous_size) / previous_size < .01:
             break
 
     DATA_LOCAL_PATH = config["data_extraction"]["init_models_filename"]

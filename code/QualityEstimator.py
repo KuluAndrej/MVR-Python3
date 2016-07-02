@@ -2,13 +2,15 @@ import code.CalculatorModelValues as CalculatorModelValues
 from numpy import  sum, isnan, inf,  nan, transpose
 from numpy.linalg import norm
 import warnings
+from numpy.linalg import norm as norm
 
-def quality_estimator(population, data_to_fit):
+def quality_estimator(population, data_to_fit, config):
     """
     Estimates the errors of approximation for models in the population
     Inputs:
      population     - list of superpositions (models)
      data_to_fit    - data which were approximated
+     config
     Outputs:
      populations    - list of estimated superpositions (models)
 
@@ -37,6 +39,10 @@ def quality_estimator(population, data_to_fit):
         if isnan(model.MSE):
             model.MSE = inf
 
-
+        if config["model_generation"]["type_selection"] == "Penalize_params":
+            if hasattr(model, "optimal_params"):
+                setattr(model,"Penalized_error", model.MSE + float(config["model_generation"]["parameters_penalty"]) * norm(model.optimal_params))
+            else:
+                setattr(model,"Penalized_error", model.MSE)
     return population
 

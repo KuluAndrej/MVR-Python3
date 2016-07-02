@@ -48,7 +48,8 @@ class Population:
             self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE)
         elif type_of_selection == 'Error_structural':
             self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.MSE * (1 + structural_penalty * model.number_of_tokens) )
-
+        elif type_of_selection == 'Penalize_params':
+            self.__instance.Models = sorted(self.__instance.Models, key=lambda model: model.Penalized_error)
 
     def __getitem__(self, key):
         if isinstance (key, slice):

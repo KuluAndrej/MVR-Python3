@@ -6,22 +6,28 @@ from code.Decorators import handicraft_exception_handler
 def bump_(w0, w1, x):
     bump_.NumParam = 2
     bump_.NumVars = 1
+    bump_.InitParams = [.25,.75]
     return np.logical_and(w0 < x, x < w1)
 
 @handicraft_exception_handler
 def hvs_(w0, x):
     hvs_.NumParam = 1
     hvs_.NumVars = 1
+    hvs_.InitParams = [.5]
     return w0 < x
 
 @handicraft_exception_handler
 def sina_(w0, w1, x):
+    if abs(w1) < 1.5:
+        return np.inf
     sina_.NumParam = 2
     sina_.NumVars = 1
     return np.sin(x * w1 + w0)
 
 @handicraft_exception_handler
 def tana_(w0, w1, x):
+    if abs(w1) < 1:
+        return np.inf
     tana_.NumParam = 2
     tana_.NumVars = 1
     return np.tan(x * w1 + w0)
@@ -29,7 +35,7 @@ def tana_(w0, w1, x):
 @handicraft_exception_handler
 def atana_(w0, w1, x):
     if abs(w1) < 2:
-        return 1000000
+        return np.inf
     atana_.NumParam = 2
     atana_.NumVars = 1
 
@@ -37,6 +43,8 @@ def atana_(w0, w1, x):
 
 @handicraft_exception_handler
 def lnl_(w0, w1, x):
+    if abs(w1) < 0.5:
+        return np.inf
     lnl_.NumParam = 2
     lnl_.NumVars = 1
 
@@ -44,8 +52,8 @@ def lnl_(w0, w1, x):
 
 @handicraft_exception_handler
 def expl_(w0, w1, x):
-    #if abs(w1)+abs(w0) > 6:
-    #    return np.inf
+    if abs(w1)+abs(w0) > 6:
+        return np.inf
     expl_.NumParam = 2
     expl_.NumVars = 1
     return np.exp(x * w1 + w0)

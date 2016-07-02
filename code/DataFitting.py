@@ -57,9 +57,10 @@ def data_fitting(data_to_fit, config):
 
         #population = RuleSimplifier.rule_simplify(population)
 
+
         population = Parametrizer.parametrize_population(population)
         population = Evaluator.evaluator(population, data_to_fit, config)
-        population = QualityEstimator.quality_estimator(population, data_to_fit)
+        population = QualityEstimator.quality_estimator(population, data_to_fit, config)
 
 
 

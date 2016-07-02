@@ -2,7 +2,7 @@ from code.DefConstructor import def_constructor
 from scipy.optimize import  curve_fit
 from numpy import nan, ones
 from scipy.optimize import OptimizeWarning
-
+import numpy as np
 
 def evaluator(population, data_to_fit, config):
     """
@@ -48,7 +48,8 @@ def evaluator(population, data_to_fit, config):
             fxn()
             if (is_parametric == 'True' and (not hasattr(model, "optimal_params")) and model.number_of_parameters > 0):
                 try:
-                    popt, _ = curve_fit(model.def_statement, independent_var, dependent_var)
+                    popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
+                                        p0 = 5 * np.ones(model.number_of_parameters))
                 except RuntimeError:
                     popt = [nan for i in range(model.number_of_parameters)]
                 except RuntimeWarning:

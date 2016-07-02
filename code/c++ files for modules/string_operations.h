@@ -7,10 +7,48 @@
 #include <sstream>
 #include <fstream>
 #include <ctype.h>
+#include <set>
+
 #include <map>
 using namespace std;  
 
 const int NUMBER_OF_TOKENS = 33;  
+
+set<string> read_special_tokens(const string type) {
+  set<string> linkers;
+  string filename = string("data/tokens_") + type + string(".txt");
+  ifstream input_stream(filename.c_str());
+
+  string giglet_string;  
+  string useless_feature;  
+
+  while (true) {
+    input_stream >> giglet_string >> useless_feature >> useless_feature >> useless_feature;
+    linkers.insert(giglet_string);
+    if(input_stream.eof()) break;
+  }
+
+  input_stream.close();
+  return linkers;
+}
+
+vector<string> read_dummy_linkers() {
+  vector<string> linkers;
+
+  ifstream input_stream("data/tokens_linkers.txt");
+
+  string giglet_string;  
+  string useless_feature;  
+
+  while (true) {
+    input_stream >> giglet_string >> useless_feature >> useless_feature >> useless_feature;
+    linkers.push_back(giglet_string);
+    if(input_stream.eof()) break;
+  }
+
+  input_stream.close();
+  return linkers;
+}
 
 pair<map<string, int>, int> read_info_primitives () {
   int minimum_code_for_var;
@@ -20,7 +58,6 @@ pair<map<string, int>, int> read_info_primitives () {
   
   int useless_feature1;
   string token;
-  vector<int> number_parameters(NUMBER_OF_TOKENS);
   for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
     map_tokens.insert(make_pair(token, i));

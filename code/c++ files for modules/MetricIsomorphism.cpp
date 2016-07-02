@@ -71,6 +71,13 @@ int isomorphism_distance(string handle_first, string handle_second) {
 			metric = max(metric, subtrees_sizes[i]);
 		}
 	}
+
+	tree_first = create_incid_matrix_tokens(map_tokens, handle_first);
+	metric = tree_first.second.size() - 2*metric;
+	tree_first = create_incid_matrix_tokens(map_tokens, handle_second);
+	metric += tree_first.second.size();
+
+
 	return metric;
 }
 

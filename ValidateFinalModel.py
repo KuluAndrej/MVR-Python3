@@ -28,7 +28,7 @@ from code.structures.Population import Population
 def validate_final_model(label, index_to_observe):
     def get_population_from_file(filename):
 
-        files_path = 'populations/collected_models10/'
+        files_path = 'populations/collected_models13/'
 
         lines_file_content = open(files_path + filename, 'r').readlines()
         population = empty(len(lines_file_content), dtype = object)
@@ -51,11 +51,13 @@ def validate_final_model(label, index_to_observe):
 
     population  = Parametrizer.parametrize_population(untrained_population)
     population = Evaluator.evaluator(population, data_to_fit, config)
-    population = QualityEstimator.quality_estimator(population, data_to_fit)
+    population = QualityEstimator.quality_estimator(population, data_to_fit, config)
 
 
 
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 import sys
+print(sys.argv[1], sys.argv[2])
 validate_final_model(sys.argv[1], int(sys.argv[2]))
+#validate_final_model('heart_rate', 1)
