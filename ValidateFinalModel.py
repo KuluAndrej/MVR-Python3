@@ -8,7 +8,6 @@ Author: Kulunchakov Andrei, MIPT
 
 import code.DataLoader as DataLoader
 import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.DataPreprocesser as DataPreprocesser
 import code.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
@@ -16,12 +15,6 @@ import code.QualityEstimator as QualityEstimator
 import code.Evaluator as Evaluator
 import code.Parametrizer as Parametrizer
 from code.StringToModel import strings_to_population
-import time
-import matplotlib.pyplot as plt
-import code.CalculatorModelValues as CalculatorModelValues
-from numpy import  sum, isnan, inf,  nan, transpose, errstate
-import os, re
-import matplotlib.pyplot as plt
 from numpy import empty
 from code.structures.Population import Population
 

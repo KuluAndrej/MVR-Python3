@@ -72,6 +72,53 @@ int extract_parameter (ifstream& input_file, const string& name) {
 	return boost::lexical_cast<int>(matching_results[matching_results.size() - 1]);
 }
 
+
+// Search for a string of the following format
+// 		name.InitParams = [numbers]
+// Extract 'numbers' from this string.
+// Note that these parameters will be treated in Py-files, so we read them only for
+// storing in file, providing the future work of these Py-files
+string extract_vector_init_params (ifstream& input_file, const string& name) {
+	boost::smatch matching_results;
+	string line;
+	
+	getline(input_file , line);
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\[[\\d. ,]*\\][ ]*" ) ) ) {		
+    	getline(input_file , line);
+    }
+    boost::regex_search(line,  matching_results, boost::regex("\\[[\\d. ,]*\\]") ); 
+	string output_string = matching_results[0];
+
+	size_t found = output_string.find(" ");
+	if (found != string::npos) {
+		throw name + string(" token contains excessive blank spaces in the InitParams field\n");
+	}
+	return matching_results[0];
+}
+
+// Search for a string of the following format
+// 		name.BoundsParams = ([numbers_1],[numbers_2])
+// Extract the tuple ([numbers_1],[numbers_2]) from this string.
+// Note that these parameters will be treated in Py-files, so we read them only for
+// storing in file, providing the future work of these Py-files
+string extract_vector_bounds_params (ifstream& input_file, const string& name) {
+	boost::smatch matching_results;
+	string line;
+	
+	getline(input_file , line);
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\(\\[[\\d. ,]*\\][ ]*,[ ]*\\[[\\d. ,]*\\]\\)[ ]*" ) ) ) {		
+    	getline(input_file , line);
+    }
+    boost::regex_search(line,  matching_results, boost::regex("\\(\\[[\\d. ,]*\\][ ]*,[ ]*\\[[\\d. ,]*\\]\\)") ); 
+    string output_string = matching_results[0];
+
+	size_t found = output_string.find(" ");
+	if (found != string::npos) {
+		throw name + string(" token contains excessive blank spaces in the BoundsParams field\n");
+	}
+	return matching_results[0];
+}
+
 // Check is the version of 'Primitives.py' is newer than 'Primitives.txt'
 
 bool checker_version_of_py_file(const string& FILE_PRIMITIVES) {	
@@ -93,17 +140,30 @@ void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<Pr
 	cout << "Entered loader_primitives\n";
 	// construct the same filename, but with '.txt' extension
 	string FILE_PRIMITIVES_TXT = FILE_PRIMITIVES_WITHOUT_EXTENSION + string(".txt");
+	string FILE_PRIMITIVES_INFO_FOR_OPTIMIZATION_TXT = FILE_PRIMITIVES_WITHOUT_EXTENSION + string("InfoForOptimization.txt");
 
 	// load primitive in txt-file
 	ofstream file_primitives_txt;
+	ofstream file_primitives_info_for_optimization_txt;
+  	
   	file_primitives_txt.open ( FILE_PRIMITIVES_TXT.c_str() );
+  	file_primitives_info_for_optimization_txt.open(FILE_PRIMITIVES_INFO_FOR_OPTIMIZATION_TXT.c_str());
 
 	file_primitives_txt << "#Name #NumPar #NumArg\n";
+	file_primitives_info_for_optimization_txt << "#Name #InitParams #BoundsParams\n";
+
 	for (size_t i = 0; i < primitives.size(); ++i) {
 		file_primitives_txt << primitives[i].name << " " << primitives[i].numberParameters << " " 
-							<< primitives[i].numberArguments << "\n";
+												  << primitives[i].numberArguments << "\n";
 	}
+	
+	for (size_t i = 0; i < primitives.size(); ++i) {
+		file_primitives_info_for_optimization_txt << primitives[i].name << " " << primitives[i].initParams << " " 
+							<< primitives[i].boundsParams << "\n";
+	}
+
 	file_primitives_txt.close();  	
+	file_primitives_info_for_optimization_txt.close();  	
 	cout << "Exited loader_primitives\n";
 }
 
@@ -139,9 +199,12 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 		        // now extract 'numberParameters' and 'numberArguments'
 		        
 				primitive.numberParameters = extract_parameter( file_primitives, primitive.name);
-				primitive.numberArguments = extract_parameter( file_primitives, primitive.name);
-				
+				primitive.numberArguments  = extract_parameter( file_primitives, primitive.name);
+				primitive.initParams 	   = extract_vector_init_params (file_primitives, primitive.name);
+				primitive.boundsParams 	   = extract_vector_bounds_params(file_primitives, primitive.name);
+
 				primitives.push_back(primitive);
+
 			} 
 		}
 		loader_primitives(FILE_PRIMITIVES_WITHOUT_EXTENSION, primitives);
@@ -159,7 +222,8 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 
 // Retrieve the list of primitives from one of the files: 'Primitives.py' or 'Primitives.txt'
 vector< PrimitiveFunction > retriever() {
-	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
+	//string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
+	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "Primitives";
 	if (checker_version_of_py_file(FILE_PRIMITIVES_WITHOUT_EXTENSION)) {
 		// if the .py file is newer than the .txt file, we parse it and return the extracted primitives
 		return parse_py_file_with_primitives(FILE_PRIMITIVES_WITHOUT_EXTENSION);
