@@ -49,7 +49,7 @@ def evaluator(population, data_to_fit, dict_tokens_info, config):
             fxn()
             if (is_parametric == 'True' and (not hasattr(model, "optimal_params")) and model.number_of_parameters > 0):
                 try:
-                    #print(model, model.curve_fit_init_params, model.curve_fit_bounds)
+                    #, model.curve_fit_init_params, model.curve_fit_bounds
                     popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
                                         p0 = model.curve_fit_init_params, bounds=model.curve_fit_bounds)
                 except RuntimeError:

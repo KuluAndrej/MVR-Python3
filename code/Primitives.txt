@@ -14,5 +14,6 @@ mult_ 1 1
 minus2_ 0 2
 frac2_ 0 2
 inv_ 0 1
+neg_ 0 1
 times2_ 0 2
 linear_ 2 1

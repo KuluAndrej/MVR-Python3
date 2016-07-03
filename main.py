@@ -33,14 +33,14 @@ if type_of_fitting == "fit_data":
     plt.plot(measurements)
     plt.show()
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
-
+    print(population[0].optimal_params)
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
     start_label_ind = 0
     start_index     = 0
     number_of_segments = int(config["time_series_processing"]["number_of_segments"])
-#    for ind_segment in enumerate(list_ts_to_fit):, ts_to_fit)
+#   for ind_segment in enumerate(list_ts_to_fit):, ts_to_fit)
 
     for ind_segment in range(number_of_segments):
         if ind_segment < start_index:

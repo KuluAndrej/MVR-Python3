@@ -83,7 +83,7 @@ string extract_vector_init_params (ifstream& input_file, const string& name) {
 	string line;
 	
 	getline(input_file , line);
-	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\[[\\d. ,]*\\][ ]*" ) ) ) {		
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\[[-\\d. ,]*\\][ ]*" ) ) ) {		
     	getline(input_file , line);
     }
     boost::regex_search(line,  matching_results, boost::regex("\\[[\\d. ,]*\\]") ); 
@@ -106,10 +106,10 @@ string extract_vector_bounds_params (ifstream& input_file, const string& name) {
 	string line;
 	
 	getline(input_file , line);
-	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\(\\[[\\d\\w. ,]*\\][ ]*,[ ]*\\[[\\d\\w. ,]*\\]\\)[ ]*" ) ) ) {		
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\(\\[[-\\d\\w. ,]*\\][ ]*,[ ]*\\[[-\\d\\w. ,]*\\]\\)[ ]*" ) ) ) {		
     	getline(input_file , line);
     }
-    boost::regex_search(line,  matching_results, boost::regex("\\(\\[[\\d\\w. ,]*\\][ ]*,[ ]*\\[[\\d\\w. ,]*\\]\\)") ); 
+    boost::regex_search(line,  matching_results, boost::regex("\\(\\[[-\\d\\w. ,]*\\][ ]*,[ ]*\\[[-\\d\\w. ,]*\\]\\)") ); 
     string output_string = matching_results[0];
 
 	size_t found = output_string.find(" ");
@@ -196,7 +196,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 				primitive.name = matching_results[1];
 				
 		        // now extract 'numberParameters' and 'numberArguments'
-		        
+		        // cout << primitive.name << '\n';
 				primitive.numberParameters = extract_parameter( file_primitives, primitive.name);
 				primitive.numberArguments  = extract_parameter( file_primitives, primitive.name);
 				primitive.initParams 	   = extract_vector_init_params (file_primitives, primitive.name);
@@ -221,8 +221,8 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 
 // Retrieve the list of primitives from one of the files: 'Primitives.py' or 'Primitives.txt'
 vector< PrimitiveFunction > retriever() {
-	//string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
 	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
+	//string FILE_PRIMITIVES_WITHOUT_EXTENSION = "Primitives";
 	if (checker_version_of_py_file(FILE_PRIMITIVES_WITHOUT_EXTENSION)) {
 		// if the .py file is newer than the .txt file, we parse it and return the extracted primitives
 		return parse_py_file_with_primitives(FILE_PRIMITIVES_WITHOUT_EXTENSION);

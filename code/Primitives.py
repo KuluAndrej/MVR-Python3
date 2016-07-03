@@ -25,7 +25,7 @@ def sina_(w0, w1, x):
     sina_.NumParam = 2
     sina_.NumVars = 1
     sina_.InitParams = [0,2]
-    sina_.BoundsParams = ([0,2],[1,np.inf])
+    sina_.BoundsParams = ([-1,1.5],[1,np.inf])
 
     return np.sin(x * w1 + w0)
 
@@ -34,7 +34,7 @@ def tana_(w0, w1, x):
     tana_.NumParam = 2
     tana_.NumVars = 1
     tana_.InitParams = [0,1]
-    tana_.BoundsParams = ([0,1],[1,np.inf])
+    tana_.BoundsParams = ([-1,1],[1,np.inf])
 
     return np.tan(x * w1 + w0)
 
@@ -43,7 +43,7 @@ def atana_(w0, w1, x):
     atana_.NumParam = 2
     atana_.NumVars = 1
     atana_.InitParams = [0,1]
-    atana_.BoundsParams = ([0,1],[1,np.inf])
+    atana_.BoundsParams = ([-1,1],[1,np.inf])
 
     return np.arctan(x * w1 + w0)
 
@@ -51,8 +51,8 @@ def atana_(w0, w1, x):
 def lnl_(w0, w1, x):
     lnl_.NumParam = 2
     lnl_.NumVars = 1
-    lnl_.InitParams = [0,0.5]
-    lnl_.BoundsParams = ([0,0.5],[1,np.inf])
+    lnl_.InitParams = [0,1]
+    lnl_.BoundsParams = ([-1,0.5],[1,np.inf])
 
     return np.log10(abs(x * w1 + w0))
 
@@ -60,8 +60,8 @@ def lnl_(w0, w1, x):
 def expl_(w0, w1, x):
     expl_.NumParam = 2
     expl_.NumVars = 1
-    expl_.InitParams = [0,0.5]
-    expl_.BoundsParams = ([0,0.5],[1,5])
+    expl_.InitParams = [0,1]
+    expl_.BoundsParams = ([-1,0.5],[1,5])
 
     return np.exp(x * w1 + w0)
 
@@ -69,8 +69,8 @@ def expl_(w0, w1, x):
 def sqrtl_(w0, w1, x):
     sqrtl_.NumParam = 2
     sqrtl_.NumVars = 1
-    sqrtl_.InitParams = [0,0.2]
-    sqrtl_.BoundsParams = ([0,0.2],[1,np.inf])
+    sqrtl_.InitParams = [0,0.5]
+    sqrtl_.BoundsParams = ([-1,0.2],[1,np.inf])
 
     return np.sqrt(np.abs(x * w1 + w0))
 
@@ -87,7 +87,7 @@ def plus_(w0, x):
     plus_.NumParam = 1
     plus_.NumVars = 1
     plus_.InitParams = [0.2]
-    plus_.BoundsParams = ([0.2],[1])
+    plus_.BoundsParams = ([-1],[1])
 
     return x + w0
 
@@ -96,17 +96,17 @@ def normal_(w0, w1, x):
     
     normal_.NumParam = 2
     normal_.NumVars = 1
-    normal_.InitParams = [0,0.05]
-    normal_.BoundsParams = ([0,0.05],[1,np.inf])
+    normal_.InitParams = [0,1]
+    normal_.BoundsParams = ([-1,0.05],[1,np.inf])
 
-    return (1/w0) * np.exp(-(x - w1)**2/w0)
+    return (1/w1) * np.exp(-(x - w0)**2/w1)
 
 
 def mult_(w0, x):
     mult_.NumParam = 1
     mult_.NumVars = 1
-    mult_.InitParams = [1]
-    mult_.BoundsParams = ([0.2],[np.inf])
+    mult_.InitParams = [0.5]
+    mult_.BoundsParams = ([0.3],[np.inf])
 
     return w0 * x
 
@@ -138,6 +138,14 @@ def inv_(x):
 
     return 1 / x
 
+@handicraft_exception_handler
+def neg_(x):
+    neg_.NumParam = 0
+    neg_.NumVars = 1
+    neg_.InitParams = []
+    neg_.BoundsParams = ([],[])
+
+    return -x
 
 def times2_(x, y):
     times2_.NumParam = 0
@@ -150,8 +158,8 @@ def times2_(x, y):
 def linear_(w0, w1, x):
     linear_.NumParam = 2
     linear_.NumVars = 1
-    linear_.InitParams = [0,0.2]
-    linear_.BoundsParams = ([0,0.2],[5,5])
+    linear_.InitParams = [0,0.5]
+    linear_.BoundsParams = ([-5,0.2],[5,5])
 
     return x * w1 + w0
 
