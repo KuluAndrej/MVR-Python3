@@ -1,7 +1,6 @@
 import code.RandomPopulation as RandomPopulation
-import code.MVRAttributesExtraction as MVRAttributesExtraction
+from code.modules.patterns_extracter import extract_patterns
 import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
 
-config = MVRAttributesExtraction.attributes_extraction()
-dicto = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
-print(dicto["minus2_"])
+model = 'tana_(normal_(normal_(mult_(sina_(x0)))))'
+print(extract_patterns(model).split('&'))

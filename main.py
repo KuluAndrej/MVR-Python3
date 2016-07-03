@@ -20,7 +20,7 @@ config          = MVRAttributesExtraction.attributes_extraction()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
-if type_of_fitting == "fit_data":
+if type_of_fitting == "open_apple":
     label = 'heart_rate'
     index_to_observe = 1
 

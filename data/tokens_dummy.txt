@@ -1,3 +1,4 @@
 plus_ 1 1 0
 mult_ 1 1 0
 linear_ 2 1 0
+atana_ 2 1 0

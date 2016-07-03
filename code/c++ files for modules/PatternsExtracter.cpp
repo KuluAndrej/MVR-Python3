@@ -68,17 +68,30 @@ bool retrieve_patterns_ranges( const vector<vector<int> >& matr, const vector<in
                                                                         pos_current_root, matr[pos_current_root][i], 
                                                                         matr[pos_current_root][i], patterns_range);
         }
+        bool should_whole_subtree_be_extracted = true;
         for (int i = 0; i < matr[pos_current_root].size(); ++i) {
+          should_whole_subtree_be_extracted &= !is_child_subtree_contain_linker[i];
           if (!is_child_subtree_contain_linker[i]) {
             patterns_range.push_back(make_pair(matr[pos_current_root][i],right_bounds[matr[pos_current_root][i]]));
           }
         }
+        if (should_whole_subtree_be_extracted) {
+          patterns_range.push_back(make_pair(pos_current_root,right_bounds[matr[pos_current_root].back()]));
+        }
     }
     if (type_of_nodes[pos_current_root] == 1 || type_of_nodes[pos_current_root] == 0) {
+      bool should_whole_subtree_be_extracted = true;
+                
       for (int i = 0; i < matr[pos_current_root].size(); ++i) {
         is_child_linker_encountered |= retrieve_patterns_ranges(matr, type_of_nodes, right_bounds, false, 
                                                                 pos_current_parent, pos_parents_child, 
                                                                 matr[pos_current_root][i], patterns_range);
+        should_whole_subtree_be_extracted &= !is_child_linker_encountered;        
+      }
+      if (should_whole_subtree_be_extracted) {
+        if (matr[pos_current_root].size() > 0) {
+          patterns_range.push_back(make_pair(pos_current_root,right_bounds[matr[pos_current_root].back()]));
+        }
       }
     }
   }
@@ -175,11 +188,15 @@ string extract_pattern_substring(const vector<vector<int> >& matr, const vector<
   if (current_root == end) {
     return this_token;
   } 
-  if (matr[current_root].size() > 0) {
-    this_token += string("(");
+  if (matr[current_root].size() == 0) {
+    return string("");
   }
+
+  this_token += string("(");
   for (int i = 0; i < int(matr[current_root].size()) - 1; ++i) {
-    this_token += extract_pattern_substring(matr, encodings, tokens_names, type_of_nodes, end, matr[current_root][i]);
+    if (matr[matr[current_root][i]].size() > 0) {
+      this_token += extract_pattern_substring(matr, encodings, tokens_names, type_of_nodes, end, matr[current_root][i]);
+    }    
     this_token += string(",");
   }  
   if (matr[current_root].size() > 0) {
@@ -201,7 +218,6 @@ vector<string> ranges_to_strings(const vector<vector<int> >& matr, const vector<
   return patterns;
 }
 
-
 string extract_patterns(string handle){
   vector<string> patterns;
   set<string> linkers      = read_special_tokens("linkers");
@@ -220,9 +236,6 @@ string extract_patterns(string handle){
 
 
   vector<int> type_of_nodes = get_types_of_nodes(linkers, dummy_tokens, map_tokens, encodings);
-  for (int i = 0; i < encodings.size(); ++i) {
-    cout << encodings[i] << " ";
-  }
 
   vector<int> right_bounds(encodings.size());
   find_right_bounds_of_rooted_subtrees(matr, 0, right_bounds);
@@ -230,17 +243,14 @@ string extract_patterns(string handle){
   vector<pair<int, int> > patterns_range;   
   retrieve_patterns_ranges(matr, type_of_nodes, right_bounds, false, -1, -1, 0, patterns_range);
   patterns_range = process_ranges(matr, patterns_range, type_of_nodes);
-
   patterns = ranges_to_strings(matr, encodings, type_of_nodes, tokens_names, patterns_range);
   
-  cout << '\n';
+  /*
   if (patterns.size() == 0 || (patterns.size() == 1 and patterns[0] == handle)) {
-    cout << "entered\n";
     patterns_range.clear();
     int start = 0;
     for (int i = 0; i < type_of_nodes.size(); ++i) {
       if (type_of_nodes[i] == DUMMY_TOKEN) {
-        cout << "pushed\n";
 
         patterns_range.push_back(make_pair(start, i));
         start = i + 1;
@@ -254,11 +264,10 @@ string extract_patterns(string handle){
     }
     patterns = ranges_to_strings(matr, encodings, type_of_nodes, tokens_names, patterns_range);
     if (patterns.size() == 1 and patterns[0] == handle) {
-      cout << "cleared\n";
       patterns.clear();
     }
   }
-
+  */
   string unite_patterns("");
   for (int i = 0; i < int(patterns.size()) - 1; ++i) {
     unite_patterns += patterns[i];
@@ -270,7 +279,6 @@ string extract_patterns(string handle){
   return unite_patterns;
 } 
 
-
 /*
 BOOST_PYTHON_MODULE(patterns_extracter) {
 	bp::def("extract_patterns", extract_patterns);
@@ -280,12 +288,11 @@ BOOST_PYTHON_MODULE(patterns_extracter) {
 
 int main(){
   //string s = "times2_(lnl_(plus2_(x0,sina_(x0))),plus_(sina_(lnl_(times2_(sina_(x0),x0)))))";
-  string s = "lnl_(normal_(linear_(sina_(sina_(sina_(x0))))))";
+  string s = "linear_(sina_(sina_(sina_(atana_(x0)))))";
   //string s = "times2_(tana_(hvs_(normal_(x0))),atana_(x0))";
   cout << "init_model = " << s <<'\n';
   cout << extract_patterns(s) << '\n';
   cout << s <<'\n';
   return 0;
 }
-
 
