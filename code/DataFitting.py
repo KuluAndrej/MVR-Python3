@@ -59,7 +59,7 @@ def data_fitting(data_to_fit, config):
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
         population.unique_models_selection()
 
-        # population = RuleSimplifier.rule_simplify(population)
+        #population = RuleSimplifier.rule_simplify(population)
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
 
@@ -74,8 +74,10 @@ def data_fitting(data_to_fit, config):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':
             print(len(population), " models are selected")
             print("best yet generated model", population[0].MSE)
-            for ind in range(3):
+            for ind in range(5):
                 print(population[ind], "has MSE", population[ind].MSE)
+                if hasattr(population[ind],'optimal_params'):
+                    print(population[ind].optimal_params)
             print("")
 
         if config["flag_type_of_processing"]["flag"] == 'fit_data' and \

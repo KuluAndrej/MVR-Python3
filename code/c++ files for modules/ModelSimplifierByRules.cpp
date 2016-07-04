@@ -14,12 +14,11 @@ Author: Kulunchakov Andrei
 
 using namespace std;
 
-/*
+
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 
 namespace bp = boost::python;
-*/
 
 const int UNFILLED_SIBSTITUTION = -1;
 int MINIMUM_CODE_OF_VARIABLES;
@@ -174,7 +173,8 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
 
 
 string simplify_by_rules(const string handle){
-	ifstream file_rules_txt;
+  try {
+  	ifstream file_rules_txt;
   	file_rules_txt.open ("data/rules.txt");
   	
   	vector<string> rules_pattern;
@@ -184,20 +184,29 @@ string simplify_by_rules(const string handle){
   	string giglet_string;
   	while( file_rules_txt) {
   		file_rules_txt >> giglet_string;
-		rules_pattern.push_back(giglet_string);
-		file_rules_txt >> giglet_string;
-		rules_replace.push_back(giglet_string);
+  	rules_pattern.push_back(giglet_string);
+  	file_rules_txt >> giglet_string;
+  	rules_replace.push_back(giglet_string);
   	}
+    file_rules_txt.close();
+    
   	pair<vector<string>, vector<string> > rules = make_pair(rules_pattern, rules_replace);
-  	return Simplifier(rules, handle);  	
+    return Simplifier(rules, handle);   
+  }
+  catch(...) {
+    cout << "Failed simplification with " << handle << '\n';
+    return handle;
+  }
+	return handle;
 }
 
-/*
+
 BOOST_PYTHON_MODULE(model_simplifier_by_rules) {
 	bp::def("simplify_by_rules", simplify_by_rules);
     	
 }
-*/
+
+/*
 int main(){
   //string s = "plus2_(minus2_(x0,x0),hyperbola_(linear_(parabola_(x0))))";
   //string s = "inv_(hyperbola_(hyperbola_(linear_(parabola_(x0))))))";
@@ -205,5 +214,5 @@ int main(){
   cout << s << "-->\n" << simplify_by_rules(s) << '\n';
   return 0;
 }
-
+*/
 

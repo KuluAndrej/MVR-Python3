@@ -20,8 +20,8 @@ config          = MVRAttributesExtraction.attributes_extraction()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
-if type_of_fitting == "open_apple":
-    label = 'heart_rate'
+if type_of_fitting == "fit_data":
+    label = 'open_apple'
     index_to_observe = 1
 
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
@@ -33,7 +33,7 @@ if type_of_fitting == "open_apple":
     plt.plot(measurements)
     plt.show()
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
-    print(population[0].optimal_params)
+    print(repr(population[0].optimal_params))
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')

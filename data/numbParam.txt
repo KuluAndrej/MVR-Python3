@@ -2,6 +2,7 @@ bump_ 2 1 0
 hvs_ 1 1 0
 cos_ 0 1 0
 tan_ 0 1 0
+abs_ 1 1 0
 sina_ 2 1 0
 sinla_ 2 1 0
 sinma_ 2 1 0

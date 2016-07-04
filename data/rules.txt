@@ -9,6 +9,7 @@ plus_(plus_(x0)) plus_(x0)
 inv_(expl_(x0)) expl_(x0)
 inv_(mult_(x0)) inv_(x0)
 inv_(inv_(x0)) x0
+neg_(neg_(x0)) x0
 inv_(hyperbola_(x0)) mult_(x0)
 linear_(linear_(x0)) linear_(x0)
 linear_(mult_(x0)) linear_(x0)

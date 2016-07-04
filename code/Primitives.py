@@ -2,57 +2,43 @@ import math
 import numpy as np
 from code.Decorators import handicraft_exception_handler
 
-@handicraft_exception_handler
-def bump_(w0, w1, x):
-    bump_.NumParam = 2
-    bump_.NumVars = 1
-    bump_.InitParams = [.25,.75]
-    bump_.BoundsParams = ([0,0],[1,1])
-
-    return np.logical_and(w0 < x, x < w1)
 
 @handicraft_exception_handler
-def hvs_(w0, x):
-    hvs_.NumParam = 1
-    hvs_.NumVars = 1
-    hvs_.InitParams = [.5]
-    hvs_.BoundsParams = ([0],[1])
-
-    return w0 < x
-
-@handicraft_exception_handler
-def sina_(w0, w1, x):
-    sina_.NumParam = 2
-    sina_.NumVars = 1
-    sina_.InitParams = [0,2]
-    sina_.BoundsParams = ([-1,1.5],[1,np.inf])
+def sinla_(w0, w1, x):
+    sinla_.NumParam = 2
+    sinla_.NumVars = 1
+    sinla_.InitParams = [0,4]
+    sinla_.BoundsParams = ([-5,3.5],[5,5])
 
     return np.sin(x * w1 + w0)
 
 @handicraft_exception_handler
-def tana_(w0, w1, x):
-    tana_.NumParam = 2
-    tana_.NumVars = 1
-    tana_.InitParams = [0,1]
-    tana_.BoundsParams = ([-1,1],[1,np.inf])
+def sinha_(w0, w1, x):
+    sinha_.NumParam = 2
+    sinha_.NumVars = 1
+    sinha_.InitParams = [0,9]
+    sinha_.BoundsParams = ([-5,5.1],[5,np.inf])
 
-    return np.tan(x * w1 + w0)
+    return np.sin(x * w1 + w0)
+
 
 @handicraft_exception_handler
 def atana_(w0, w1, x):
     atana_.NumParam = 2
     atana_.NumVars = 1
     atana_.InitParams = [0,1]
-    atana_.BoundsParams = ([-1,1],[1,np.inf])
+    atana_.BoundsParams = ([-5,2],[5,200])
 
     return np.arctan(x * w1 + w0)
+
+
 
 @handicraft_exception_handler
 def lnl_(w0, w1, x):
     lnl_.NumParam = 2
     lnl_.NumVars = 1
     lnl_.InitParams = [0,1]
-    lnl_.BoundsParams = ([-1,0.5],[1,np.inf])
+    lnl_.BoundsParams = ([-5,0.5],[5,np.inf])
 
     return np.log10(abs(x * w1 + w0))
 
@@ -61,19 +47,9 @@ def expl_(w0, w1, x):
     expl_.NumParam = 2
     expl_.NumVars = 1
     expl_.InitParams = [0,1]
-    expl_.BoundsParams = ([-1,0.5],[1,5])
+    expl_.BoundsParams = ([-5,0.5],[5,5])
 
     return np.exp(x * w1 + w0)
-
-@handicraft_exception_handler
-def sqrtl_(w0, w1, x):
-    sqrtl_.NumParam = 2
-    sqrtl_.NumVars = 1
-    sqrtl_.InitParams = [0,0.5]
-    sqrtl_.BoundsParams = ([-1,0.2],[1,np.inf])
-
-    return np.sqrt(np.abs(x * w1 + w0))
-
 
 def plus2_(x, y):
     plus2_.NumParam = 0
@@ -82,14 +58,6 @@ def plus2_(x, y):
     plus2_.BoundsParams = ([],[])
 
     return x + y
-
-def plus_(w0, x):
-    plus_.NumParam = 1
-    plus_.NumVars = 1
-    plus_.InitParams = [0.2]
-    plus_.BoundsParams = ([-1],[1])
-
-    return x + w0
 
 
 def normal_(w0, w1, x):
@@ -101,24 +69,6 @@ def normal_(w0, w1, x):
 
     return (1/w1) * np.exp(-(x - w0)**2/w1)
 
-
-def mult_(w0, x):
-    mult_.NumParam = 1
-    mult_.NumVars = 1
-    mult_.InitParams = [0.5]
-    mult_.BoundsParams = ([0.3],[np.inf])
-
-    return w0 * x
-
-
-
-def minus2_(x, y):
-    minus2_.NumParam = 0
-    minus2_.NumVars = 2
-    minus2_.InitParams = []
-    minus2_.BoundsParams = ([],[])
-
-    return x - y
 
 @handicraft_exception_handler
 def frac2_(x, y):
@@ -137,6 +87,14 @@ def inv_(x):
     inv_.BoundsParams = ([],[])
 
     return 1 / x
+
+def abs_(w0,x):
+    abs_.NumParam = 1
+    abs_.NumVars = 1
+    abs_.InitParams = [0]
+    abs_.BoundsParams = ([-.9],[.9])
+
+    return abs(x + w0)
 
 @handicraft_exception_handler
 def neg_(x):
@@ -159,7 +117,16 @@ def linear_(w0, w1, x):
     linear_.NumParam = 2
     linear_.NumVars = 1
     linear_.InitParams = [0,0.5]
-    linear_.BoundsParams = ([-5,0.2],[5,5])
+    linear_.BoundsParams = ([-50,0.2],[50,5])
 
     return x * w1 + w0
+
+
+def parabola_(w0, w1, w2, x):
+    parabola_.NumParam = 3
+    parabola_.NumVars = 1
+    parabola_.InitParams = [0,0,2]
+    parabola_.BoundsParams = ([-np.inf,-4,1],[np.inf,4,np.inf])
+    
+    return x * x * w2 +  x * w1 + w0
 
