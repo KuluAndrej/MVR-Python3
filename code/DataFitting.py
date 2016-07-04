@@ -59,7 +59,7 @@ def data_fitting(data_to_fit, config):
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
         population.unique_models_selection()
 
-        #population = RuleSimplifier.rule_simplify(population)
+        population = RuleSimplifier.rule_simplify(population)
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
 

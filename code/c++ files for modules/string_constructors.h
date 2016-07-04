@@ -101,6 +101,7 @@ void print_vector(vector<int> to_print){
 }
 
 string string_constructor_unparametred(vector<vector<int> >& matr, vector<string>& tokens, vector<int>& encoding, int root) {
+
   if (tokens[encoding[root]][0] == 'x' && (tokens[encoding[root]][1] >= '0' ) && 
       tokens[encoding[root]][1] <= '9') {    
     return tokens[encoding[root]];

@@ -12,7 +12,7 @@
 #include <map>
 using namespace std;  
 
-const int NUMBER_OF_TOKENS = 33;  
+const int NUMBER_OF_TOKENS = 50;  
 
 set<string> read_special_tokens(const string type) {
   set<string> linkers;
@@ -58,14 +58,19 @@ pair<map<string, int>, int> read_info_primitives () {
   
   int useless_feature1;
   string token;
-  for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
+  int counter = 0;
+  while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
-    map_tokens.insert(make_pair(token, i));
+    map_tokens.insert(make_pair(token, counter));
     if (!isset && token[0] == 'x' && (token.size() > 1) &&  isdigit(token[1])) {
-      minimum_code_for_var = i;
+      minimum_code_for_var = counter;
       isset = true;
     }
+    counter++;
+
+    if(input_stream.eof()) break;
   }
+  
 
   input_stream.close();
   return make_pair(map_tokens, minimum_code_for_var);
@@ -75,14 +80,17 @@ pair<map<string, int>, int> read_info_primitives () {
 pair<map<string, int>, vector<int> > read_info_commutativenes () {
   ifstream input_stream("data/numbParam.txt");
   map<string, int> map_tokens;
-  vector<int> commutativeness(NUMBER_OF_TOKENS);
+  vector<int> commutativeness;
   
-  int useless_feature1;
-  
+  int useless_feature1, is_commutative;
+  int counter = 0;
   string token;
-  for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
-    input_stream >> token >> useless_feature1 >> useless_feature1 >> commutativeness[i];
-    map_tokens.insert(make_pair(token, i));    
+  while (true) {
+    input_stream >> token >> useless_feature1 >> useless_feature1 >> is_commutative;
+    commutativeness.push_back(is_commutative);
+    map_tokens.insert(make_pair(token, counter));    
+    counter++;
+    if(input_stream.eof()) break;
   }
 
   input_stream.close();
@@ -94,12 +102,22 @@ pair<vector<string>, vector<int> > retrieve_tokens() {
   ifstream input_stream("data/numbParam.txt");
   
   int useless_feature;
-  vector<string> tokens(NUMBER_OF_TOKENS);
-  vector<int> number_parameters(NUMBER_OF_TOKENS);
-  for (int i = 0; i < NUMBER_OF_TOKENS; ++i) {
-    input_stream >> tokens[i] >> number_parameters[i] >> useless_feature >> useless_feature;
+  vector<string> tokens;
+  vector<int> number_parameters;
+
+  string token_input;
+  int number_of_parameters_input;
+
+  while (true) {
+    input_stream >> token_input >> number_of_parameters_input >> useless_feature >> useless_feature;
+    
+    tokens.push_back(token_input);
+    number_parameters.push_back(number_of_parameters_input);
+    if(input_stream.eof()) break;
   }
+
   input_stream.close();
+  
   return make_pair(tokens, number_parameters);
 }
 

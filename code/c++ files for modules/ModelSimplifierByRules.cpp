@@ -20,6 +20,7 @@ using namespace std;
 
 namespace bp = boost::python;
 
+
 const int UNFILLED_SIBSTITUTION = -1;
 int MINIMUM_CODE_OF_VARIABLES;
 
@@ -104,12 +105,13 @@ string launch_substitute(vector<vector<int> >& model_matr, vector<int>& model_en
   pair<vector<vector<int> >, vector<int> > replace_data  = create_incid_matrix_tokens(map_tokens, replace_handle);
   vector<vector<int> > replace_matr = replace_data.first;  
   vector<int> replace_encodings = replace_data.second;
-  
   for (int i = 0; i < substitutions.size(); ++i) {
     if (substitutions[i] == UNFILLED_SIBSTITUTION) {
       continue;
     }
+    
     string substring_in_model = string_constructor_unparametred(model_matr, tokens, model_encoding, representatives[substitutions[i]]);
+    
     string var = "x" + SSTR( i );
     replaceAll(replace_handle, var, substring_in_model);    
   }  
@@ -129,7 +131,7 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
   
   pair<vector<vector<int> >, vector<int> > model_data;
   model_data = create_incid_matrix_tokens(map_tokens, modelhandle);
-  
+
   vector<vector<int> > model_matr = model_data.first;  
   vector<int> model_encoding = model_data.second;
   vector<int> equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
@@ -151,7 +153,9 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
       vector<int> substitutions(token_counters.second, UNFILLED_SIBSTITUTION);
       bool matches = check_for_matching(pattern_matr, pattern_encodings, substitutions, equivalence_classes, model_matr, model_encoding, canditates_for_search[j], 0);
       if (matches) {
+        //cout << rules_pattern[i] << ' ' << rules_replace[i] << '\n';
         string inserted_submodel = launch_substitute(model_matr, model_encoding, rules_replace[i], substitutions, representatives, map_tokens, tokens);
+        
         string substituted_string = string_constructor_unparametred(model_matr, tokens, model_encoding, canditates_for_search[j]);
         replaceAll(modelhandle, substituted_string, inserted_submodel);
         model_data = create_incid_matrix_tokens(map_tokens, modelhandle);            
@@ -159,6 +163,7 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
         model_encoding = model_data.second;
         equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
         representatives = find_representatives_of_equivalence_classes(equivalence_classes);     
+
         // if the model is simplified, the rules rejected before could be applicable now
         // therefore, we check each rule again
         i = 0;      
@@ -182,16 +187,20 @@ string simplify_by_rules(const string handle){
 
   	// extract rules from text file
   	string giglet_string;
-  	while( file_rules_txt) {
+  	while( true) {
   		file_rules_txt >> giglet_string;
-  	rules_pattern.push_back(giglet_string);
-  	file_rules_txt >> giglet_string;
-  	rules_replace.push_back(giglet_string);
+    	rules_pattern.push_back(giglet_string);
+    	file_rules_txt >> giglet_string;
+    	rules_replace.push_back(giglet_string);
+
+      if(file_rules_txt.eof()) break;
   	}
     file_rules_txt.close();
-    
+
   	pair<vector<string>, vector<string> > rules = make_pair(rules_pattern, rules_replace);
-    return Simplifier(rules, handle);   
+    string answer = Simplifier(rules, handle);   
+    
+    return answer;
   }
   catch(...) {
     cout << "Failed simplification with " << handle << '\n';
@@ -199,7 +208,6 @@ string simplify_by_rules(const string handle){
   }
 	return handle;
 }
-
 
 BOOST_PYTHON_MODULE(model_simplifier_by_rules) {
 	bp::def("simplify_by_rules", simplify_by_rules);
@@ -210,9 +218,11 @@ BOOST_PYTHON_MODULE(model_simplifier_by_rules) {
 int main(){
   //string s = "plus2_(minus2_(x0,x0),hyperbola_(linear_(parabola_(x0))))";
   //string s = "inv_(hyperbola_(hyperbola_(linear_(parabola_(x0))))))";
-  string s = "tana_(minus2_(minus2_(x0,sina_(times2_(plus2_(bump_(x0),plus_(expl_(x0))),x0))),x0))";
+
+  string s = "expl_(parabola_(normal_(x0)))";
   cout << s << "-->\n" << simplify_by_rules(s) << '\n';
   return 0;
 }
-*/
 
+
+*/

@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/main.py" line="40" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/main.py" line="45" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16bc3f1c-d7bf-4d32-ac14-52f0190fd811" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/c++ files for modules/a.out" afterPath="$PROJECT_DIR$/code/c++ files for modules/a.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/modules/model_simplifier_by_rules.so" afterPath="$PROJECT_DIR$/code/modules/model_simplifier_by_rules.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Data Analyzer (Plots, hists, etc)-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Data Analyzer (Plots, hists, etc)-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" afterPath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" afterPath="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" afterPath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ValidateFinalModel.py" afterPath="$PROJECT_DIR$/ValidateFinalModel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataFitting.py" afterPath="$PROJECT_DIR$/code/DataFitting.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.py" afterPath="$PROJECT_DIR$/code/Primitives.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Primitives.txt" afterPath="$PROJECT_DIR$/code/Primitives.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/PrimitivesInfoForOptimization.txt" afterPath="$PROJECT_DIR$/code/PrimitivesInfoForOptimization.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/RuleSimplifier.py" afterPath="$PROJECT_DIR$/code/RuleSimplifier.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/c++ files for modules/ModelSimplifierByRules.cpp" afterPath="$PROJECT_DIR$/code/c++ files for modules/ModelSimplifierByRules.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/c++ files for modules/data/numbParam.txt" afterPath="$PROJECT_DIR$/code/c++ files for modules/data/numbParam.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/c++ files for modules/string_constructors.h" afterPath="$PROJECT_DIR$/code/c++ files for modules/string_constructors.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/c++ files for modules/string_operations.h" afterPath="$PROJECT_DIR$/code/c++ files for modules/string_operations.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/data_to_fit.txt" afterPath="$PROJECT_DIR$/data/data_to_fit.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/init_models.txt" afterPath="$PROJECT_DIR$/data/init_models.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/numbParam.txt" afterPath="$PROJECT_DIR$/data/numbParam.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/rules.txt" afterPath="$PROJECT_DIR$/data/rules.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
@@ -44,14 +42,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5543478">
-              <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
-              <folding>
-                <element signature="e#73#135#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+              <caret line="61" column="35" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="35" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -68,11 +64,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValidateFinalModel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ValidateFinalModel.py">
+      <file leaf-file-name="RuleSimplifier.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/RuleSimplifier.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ValidateFinalModel.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ValidateFinalModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.29076087">
+              <caret line="22" column="48" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="48" />
               <folding>
                 <element signature="e#194#230#0" expanded="true" />
               </folding>
@@ -84,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/CreateBigRandomInitPopulation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -129,13 +135,13 @@
         <option value="$PROJECT_DIR$/code/ReadTokensInfoForOptimization.py" />
         <option value="$PROJECT_DIR$/code/ConstructScipyOptimizeAttributes.py" />
         <option value="$PROJECT_DIR$/code/Parametrizer.py" />
-        <option value="$PROJECT_DIR$/code/RuleSimplifier.py" />
         <option value="$PROJECT_DIR$/code/Evaluator.py" />
         <option value="$PROJECT_DIR$/do_some.py" />
-        <option value="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
-        <option value="$PROJECT_DIR$/ValidateFinalModel.py" />
         <option value="$PROJECT_DIR$/code/DataFitting.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/CreateBigRandomInitPopulation.py" />
+        <option value="$PROJECT_DIR$/code/RuleSimplifier.py" />
+        <option value="$PROJECT_DIR$/ValidateFinalModel.py" />
       </list>
     </option>
   </component>
@@ -471,7 +477,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -479,7 +485,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981357" sideWeight="0.5323383" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24981357" sideWeight="0.46766168" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -555,9 +561,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#73#135#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -593,9 +597,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#73#135#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -817,13 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/RuleSimplifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/ReadTokensInfoForOptimization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1548913">
@@ -852,7 +847,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -862,45 +857,51 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#0#48#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ValidateFinalModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
-          <folding>
-            <element signature="e#194#230#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CreateBigRandomInitPopulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+          <caret line="61" column="35" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="35" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/RuleSimplifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5543478">
-          <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CreateBigRandomInitPopulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ValidateFinalModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.29076087">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="48" />
           <folding>
-            <element signature="e#73#135#0" expanded="true" />
+            <element signature="e#194#230#0" expanded="true" />
           </folding>
         </state>
       </provider>

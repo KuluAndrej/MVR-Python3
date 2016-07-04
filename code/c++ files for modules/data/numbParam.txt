@@ -2,6 +2,7 @@ bump_ 2 1 0
 hvs_ 1 1 0
 cos_ 0 1 0
 tan_ 0 1 0
+abs_ 1 1 0
 sina_ 2 1 0
 sinla_ 2 1 0
 sinma_ 2 1 0
@@ -24,8 +25,8 @@ plus_ 1 1 0
 minus2_ 0 2 0
 mult_ 1 1 0
 frac2_ 0 2 0
-inv_ 0 1 0
 neg_ 0 1 0
+inv_ 0 1 0
 hyperbola_ 1 1 0
 times2_ 0 2 1
 linear_ 2 1 0

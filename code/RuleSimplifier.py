@@ -14,6 +14,7 @@ from code.structures import Model
 import re
 
 def rule_simplify(population):
+
     fopen = open('log.txt','w')
     for ind, model in enumerate(population):
         handle = model.handle

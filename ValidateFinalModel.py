@@ -23,7 +23,7 @@ from code.structures.Population import Population
 def validate_final_model(label, index_to_observe):
     def get_population_from_file(filename):
 
-        files_path = 'populations/collected_models15/'
+        files_path = 'populations/collected_models16/'
 
         lines_file_content = open(files_path + filename, 'r').readlines()
         population = empty(len(lines_file_content), dtype = object)
