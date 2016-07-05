@@ -52,12 +52,14 @@ def validate_final_model(label, index_to_observe):
     population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
     population = QualityEstimator.quality_estimator(population, data_to_fit, config)
 
-    print("optimal params= ", initial_models[0].optimal_params)
+    print("optimal params= ", repr(initial_models[0].optimal_params))
 
 
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
 
 import sys
-print(sys.argv[1], sys.argv[2])
-validate_final_model(sys.argv[1], int(sys.argv[2]))
+#print(sys.argv[1], sys.argv[2])
+#validate_final_model(sys.argv[1], int(sys.argv[2]))
+
+Parametrizer.parametrizing('sinla_(normal_(normal_(normal_(abs_(x0)))))')
 #validate_final_model('heart_rate', 1)

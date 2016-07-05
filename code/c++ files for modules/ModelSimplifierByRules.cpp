@@ -14,12 +14,12 @@ Author: Kulunchakov Andrei
 
 using namespace std;
 
-
+/*
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 
 namespace bp = boost::python;
-
+*/
 
 const int UNFILLED_SIBSTITUTION = -1;
 int MINIMUM_CODE_OF_VARIABLES;
@@ -209,20 +209,20 @@ string simplify_by_rules(const string handle){
 	return handle;
 }
 
+/*
 BOOST_PYTHON_MODULE(model_simplifier_by_rules) {
 	bp::def("simplify_by_rules", simplify_by_rules);
     	
 }
+*/
 
-/*
 int main(){
   //string s = "plus2_(minus2_(x0,x0),hyperbola_(linear_(parabola_(x0))))";
   //string s = "inv_(hyperbola_(hyperbola_(linear_(parabola_(x0))))))";
 
-  string s = "expl_(parabola_(normal_(x0)))";
+  string s = "sinla_(sinha_(expl_(x0)))";
   cout << s << "-->\n" << simplify_by_rules(s) << '\n';
   return 0;
 }
 
 
-*/

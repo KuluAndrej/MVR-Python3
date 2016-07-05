@@ -4,3 +4,5 @@ import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
 
 model = 'tana_(normal_(normal_(mult_(sina_(x0)))))'
 print(extract_patterns(model).split('&'))
+
+Parametrizer.parametrizing('sinla_(normal_(normal_(normal_(abs_(x0)))))')
