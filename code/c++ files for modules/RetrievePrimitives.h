@@ -241,6 +241,7 @@ vector< PrimitiveFunction > retriever() {
   		while (file_primitives >> primitive.name >> primitive.numberParameters >> primitive.numberArguments) {
   			primitives.push_back(primitive);
   		}
+  		file_primitives.close();
   		return primitives;
 	}
 }

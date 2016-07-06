@@ -22,7 +22,7 @@ def rule_simplify(population):
         backup_handle = handle
         handle = model_reconstruct(handle)
         handle = simplify_by_rules(handle)
-        # here we fix some freaky bug
+            # here we fix some freaky bug
         # only the God knows the reasons of it
         while handle.find('x1') != -1:
             ind = handle.find('x1')

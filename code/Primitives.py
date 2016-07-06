@@ -21,18 +21,6 @@ def sinha_(w0, w1, x):
 
     return np.sin(x * w1 + w0)
 
-
-@handicraft_exception_handler
-def atana_(w0, w1, x):
-    atana_.NumParam = 2
-    atana_.NumVars = 1
-    atana_.InitParams = [0,1]
-    atana_.BoundsParams = ([-5,2],[5,200])
-
-    return np.arctan(x * w1 + w0)
-
-
-
 @handicraft_exception_handler
 def lnl_(w0, w1, x):
     lnl_.NumParam = 2
@@ -65,7 +53,7 @@ def normal_(w0, w1, x):
     normal_.NumParam = 2
     normal_.NumVars = 1
     normal_.InitParams = [0,1]
-    normal_.BoundsParams = ([-1,0.05],[1,np.inf])
+    normal_.BoundsParams = ([-.75,0.05],[1,np.inf])
 
     return (1/w1) * np.exp(-(x - w0)**2/w1)
 
@@ -87,14 +75,6 @@ def inv_(x):
     inv_.BoundsParams = ([],[])
 
     return 1 / x
-
-def abs_(w0,x):
-    abs_.NumParam = 1
-    abs_.NumVars = 1
-    abs_.InitParams = [0]
-    abs_.BoundsParams = ([-.9],[.9])
-
-    return abs(x + w0)
 
 @handicraft_exception_handler
 def neg_(x):

@@ -1,15 +1,13 @@
 sinla_ 2 1
 sinha_ 2 1
-atana_ 2 1
 lnl_ 2 1
 expl_ 2 1
 plus2_ 0 2
 normal_ 2 1
 frac2_ 0 2
 inv_ 0 1
-abs_ 1 1
 neg_ 0 1
 times2_ 0 2
 linear_ 2 1
 parabola_ 3 1
-x0 0 0
+x0 0 1

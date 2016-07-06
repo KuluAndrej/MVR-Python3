@@ -53,6 +53,7 @@ pair<vector<PrimitiveFunction>, vector<int> > extract_tokens_from_handle(const s
 	vector<PrimitiveFunction> primitives;
 	primitives = retriever();	
 
+
 	// load them into the map
 
 	for (int i = 0; i < primitives.size(); ++i) {

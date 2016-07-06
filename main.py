@@ -21,7 +21,7 @@ type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
-    label = 'chest_volume'
+    label = 'open_apple'
     index_to_observe = 1
 
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
@@ -38,7 +38,7 @@ if type_of_fitting == "fit_data":
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
     start_label_ind = 0
-    start_index     = 0
+    start_index     = 81
     number_of_segments = int(config["time_series_processing"]["number_of_segments"])
 #   for ind_segment in enumerate(list_ts_to_fit):, ts_to_fit)
 
