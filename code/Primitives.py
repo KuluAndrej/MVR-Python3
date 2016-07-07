@@ -2,6 +2,23 @@ import math
 import numpy as np
 from code.Decorators import handicraft_exception_handler
 
+@handicraft_exception_handler
+def bump_(w0, w1, x):
+    bump_.NumParam = 2
+    bump_.NumVars = 1
+    bump_.InitParams = [0,1]
+    bump_.BoundsParams = ([-1,-1],[1,1])
+
+    return x * np.logical_and(w0 < x, x < w1)
+
+@handicraft_exception_handler
+def hvs_(w0, x):
+    hvs_.NumParam = 1
+    hvs_.NumVars = 1
+    hvs_.InitParams = [0]
+    hvs_.BoundsParams = ([-1],[1])
+
+    return x * (w0 < x)
 
 @handicraft_exception_handler
 def sinla_(w0, w1, x):

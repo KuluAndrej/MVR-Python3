@@ -86,7 +86,7 @@ string extract_vector_init_params (ifstream& input_file, const string& name) {
 	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.[\\w]+[ ]+=[ ]*\\[[-\\d. ,]*\\][ ]*" ) ) ) {		
     	getline(input_file , line);
     }
-    boost::regex_search(line,  matching_results, boost::regex("\\[[\\d. ,]*\\]") ); 
+    boost::regex_search(line,  matching_results, boost::regex("\\[[-\\d. ,]*\\]") ); 
 	string output_string = matching_results[0];
 
 	size_t found = output_string.find(" ");
