@@ -26,7 +26,7 @@ import re
 def validate_final_model(label, index_to_observe):
     def get_population_from_file(filename):
 
-        files_path = 'populations/collected_models19/'
+        files_path = 'populations/collected_models20/'
 
 
         lines_file_content = []

@@ -1,3 +1,6 @@
+bump_ 2 1
+sinc_ 2 1
+hvs_ 1 1
 sinla_ 2 1
 sinha_ 2 1
 lnl_ 2 1

@@ -74,7 +74,7 @@ def data_fitting(data_to_fit, config):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':
             print(len(population), " models are selected")
             print("best yet generated model", population[0].MSE)
-            for ind in range(5):
+            for ind in range(3):
                 print(population[ind], "has MSE", population[ind].MSE)
                 if hasattr(population[ind],'optimal_params'):
                     print(population[ind].optimal_params)

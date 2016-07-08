@@ -1,5 +1,6 @@
 #Name #InitParams #BoundsParams
 bump_ [0,1] ([-1,-1],[1,1])
+sinc_ [0,3] ([-1,2],[0.5,np.inf])
 hvs_ [0] ([-1],[1])
 sinla_ [0,4] ([-5,3.5],[5,5])
 sinha_ [0,9] ([-5,5.1],[5,np.inf])

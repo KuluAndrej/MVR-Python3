@@ -21,8 +21,8 @@ type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
 if type_of_fitting == "fit_data":
-    label = 'open_apple'
-    index_to_observe = 40
+    label = 'heart_rate'
+    index_to_observe = 27
 
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
     data_to_fit = DataLoader.retrieve_data(config)
@@ -34,7 +34,6 @@ if type_of_fitting == "fit_data":
     plt.show()
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
     print(repr(population[0].optimal_params))
-    print(population)
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
