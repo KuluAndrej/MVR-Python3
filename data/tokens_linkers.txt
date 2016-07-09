@@ -1,3 +1,4 @@
 plus2_ 0 2 1
 minus2_ 0 2 0
 times2_ 0 2 1
+frac2_ 0 2 0

@@ -49,6 +49,6 @@ def retrieve_ts(config,label):
     # retrieve the data to fit from the specified file
     data_to_fit = np.loadtxt(DATA_FULL_PATH, delimiter = ',')
     data_to_fit = np.vstack((data_to_fit, np.linspace(-1,1, len(data_to_fit)))).T
-    print('data.shape = ', data_to_fit.shape)
+    #print('data.shape = ', data_to_fit.shape)
     return data_to_fit
 
