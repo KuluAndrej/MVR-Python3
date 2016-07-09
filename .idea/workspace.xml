@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16bc3f1c-d7bf-4d32-ac14-52f0190fd811" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Classifications of populations from one segment-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" afterPath="$PROJECT_DIR$/Classifications of populations from one segment.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" afterPath="$PROJECT_DIR$/Data Analyzer (Plots, hists, etc).ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataLoader.py" afterPath="$PROJECT_DIR$/code/DataLoader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/tokens_linkers.txt" afterPath="$PROJECT_DIR$/data/tokens_linkers.txt" />
     </list>
     <ignored path="MVR_py.iws" />
     <ignored path=".idea/workspace.xml" />
