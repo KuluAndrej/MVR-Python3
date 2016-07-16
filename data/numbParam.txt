@@ -7,6 +7,7 @@ sina_ 2 1 0
 sinla_ 2 1 0
 sinma_ 2 1 0
 sinha_ 2 1 0
+hypot_ 0 2 1
 sin_ 0 1 0
 cos_ 0 1 0
 cosa_ 2 1 0

@@ -7,6 +7,7 @@ sina_ 2 1 0
 sinla_ 2 1 0
 sinma_ 2 1 0
 sinha_ 2 1 0
+hypot_ 0 2 1
 sin_ 0 1 0
 cos_ 0 1 0
 cosa_ 2 1 0
@@ -30,6 +31,7 @@ inv_ 0 1 0
 hyperbola_ 1 1 0
 times2_ 0 2 1
 linear_ 2 1 0
+sinc_ 2 1 0
 parabola_ 3 1 0
 x0 0 0 0
 x1 0 0 0

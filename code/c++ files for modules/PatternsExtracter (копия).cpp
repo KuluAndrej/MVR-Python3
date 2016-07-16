@@ -16,10 +16,12 @@ Author: Kulunchakov Andrei
 
 using namespace std;
 
+/*
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 
 namespace bp = boost::python;
+*/
 
 const int UNFILLED_SIBSTITUTION = -1;
 const int USUAL_TOKEN = 0;
@@ -183,14 +185,12 @@ string extract_pattern_substring(const vector<vector<int> >& matr, const vector<
   }
   
   string this_token = tokens_names[encodings[current_root]];
-  
-  if (matr[current_root].size() == 0) {
-    return string("");
-  }
-  
   if (current_root == end) {
     return this_token;
   } 
+  if (matr[current_root].size() == 0) {
+    return string("");
+  }
 
   this_token += string("(");
   for (int i = 0; i < int(matr[current_root].size()) - 1; ++i) {
@@ -279,18 +279,20 @@ string extract_patterns(string handle){
   return unite_patterns;
 } 
 
+/*
 BOOST_PYTHON_MODULE(patterns_extracter) {
 	bp::def("extract_patterns", extract_patterns);
     	
 }
-/*
+*/
+
 int main(){
   //string s = "times2_(lnl_(plus2_(x0,sina_(x0))),plus_(sina_(lnl_(times2_(sina_(x0),x0)))))";
-  string s = "times2_(parabola_(frac2_(x0,hypot_(x0,normal_(x0)))),times2_(parabola_(x0),plus2_(sinla_(normal_(x0)),times2_(sinla_(x0),sinha_(x0)))))";
+  string s = "linear_(sina_(sina_(sina_(atana_(x0)))))";
   //string s = "times2_(tana_(hvs_(normal_(x0))),atana_(x0))";
-  cout << "init_model = " << s <<"\n\n";
+  cout << "init_model = " << s <<'\n';
   cout << extract_patterns(s) << '\n';
+  cout << s <<'\n';
   return 0;
 }
 
-*/

@@ -93,15 +93,6 @@ def frac2_(x, y):
     return x / y
 
 @handicraft_exception_handler
-def inv_(x):
-    inv_.NumParam = 0
-    inv_.NumVars = 1
-    inv_.InitParams = []
-    inv_.BoundsParams = ([],[])
-
-    return 1 / x
-
-@handicraft_exception_handler
 def neg_(x):
     neg_.NumParam = 0
     neg_.NumVars = 1
@@ -109,6 +100,14 @@ def neg_(x):
     neg_.BoundsParams = ([],[])
 
     return -x
+
+def hypot_(x, y):
+    hypot_.NumParam = 0
+    hypot_.NumVars = 2
+    hypot_.InitParams = []
+    hypot_.BoundsParams = ([],[])
+
+    return np.hypot(x, y)
 
 def times2_(x, y):
     times2_.NumParam = 0

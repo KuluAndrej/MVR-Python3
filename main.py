@@ -37,8 +37,8 @@ if type_of_fitting == "fit_data":
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
-    start_label_ind = 0
-    start_index     = 0
+    start_label_ind = 1
+    start_index     = 62
     number_of_segments = int(config["time_series_processing"]["number_of_segments"])
 #   for ind_segment in enumerate(list_ts_to_fit):, ts_to_fit)
 
