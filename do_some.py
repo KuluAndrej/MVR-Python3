@@ -1,10 +1,3 @@
-import code.RandomPopulation as RandomPopulation
-from code.modules.patterns_extracter import extract_patterns
-import code.Parametrizer as Parametrizer
-
-import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
-
-model = 'tana_(normal_(normal_(mult_(sina_(x0)))))'
-print(extract_patterns(model).split('&'))
-
-Parametrizer.parametrizing('sinla_(normal_(normal_(normal_(abs_(x0)))))')
+models = open('/home/kuluandrej/Ipython3_notebook_projects/MVR_py/data/init_models.txt', 'r').readlines()
+models = list(map(lambda x: x.strip(), models))
+print(models)

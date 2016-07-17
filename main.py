@@ -16,7 +16,7 @@ import time
 import matplotlib.pyplot as plt
 
 # get a data structure with the MVR attributes
-config          = MVRAttributesExtraction.attributes_extraction()
+config          = MVRAttributesExtraction.extract_config()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
@@ -34,6 +34,7 @@ if type_of_fitting == "fit_data":
     plt.show()
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
     print(repr(population[0].optimal_params))
+    print()
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')

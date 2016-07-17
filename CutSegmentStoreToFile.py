@@ -25,7 +25,7 @@ def data_cutter_loader(label, number_of_segment):
     Author: Kulunchakov Andrei, MIPT
     """
     # get a data structure with the MVR attributes
-    config          = MVRAttributesExtraction.attributes_extraction()
+    config          = MVRAttributesExtraction.extract_config()
     type_of_fitting = config["flag_type_of_processing"]["flag"]
 
 

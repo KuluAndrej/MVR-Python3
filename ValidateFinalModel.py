@@ -51,7 +51,7 @@ def validate_final_model(label, index_to_observe):
         return population
 
     print("label =", label)
-    config          = MVRAttributesExtraction.attributes_extraction()
+    config          = MVRAttributesExtraction.extract_config()
     whole_ts_to_fit = DataLoader.retrieve_ts(config, label)
     list_ts_to_fit  = SegmentatorTS.segmentate_ts(whole_ts_to_fit, int(config["time_series_processing"]["number_of_segments"]))
     data_to_fit     = DataPreprocesser.data_preprocesser(list_ts_to_fit[index_to_observe - 1])

@@ -3,7 +3,7 @@ import code.MVRAttributesExtraction as MVRAttributesExtraction
 import os
 
 def create_big_random_init_population():
-    config = MVRAttributesExtraction.attributes_extraction()
+    config = MVRAttributesExtraction.extract_config()
     init_models = set(RandomPopulation.random_population(1, config, True))
 
     while True:
