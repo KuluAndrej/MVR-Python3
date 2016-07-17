@@ -10,7 +10,16 @@ def retrieve_init_models(config):
     Outputs:
      init_models    - handles of the initial models from the specified file (list of strings)
     """
-    DATA_LOCAL_PATH = config["data_extraction"]["init_models_filename"]
+    if config["flag_type_of_processing"]["flag"] == "rules_creation":
+        DATA_LOCAL_PATH = config["rules_creation"]["rules_folder"]
+
+        if config["rules_creation"]["regime"] == "create_patterns":
+            DATA_LOCAL_PATH += config["rules_creation"]["init_replacements_filename"]
+        elif config["rules_creation"]["regime"] == "create_replacements":
+            DATA_LOCAL_PATH += config["rules_creation"]["init_patterns_filename"]
+    else:
+        DATA_LOCAL_PATH = config["data_extraction"]["init_models_filename"]
+
     script_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
     DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH

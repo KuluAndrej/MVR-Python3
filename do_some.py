@@ -1,3 +1,5 @@
-models = open('/home/kuluandrej/Ipython3_notebook_projects/MVR_py/data/init_models.txt', 'r').readlines()
-models = list(map(lambda x: x.strip(), models))
-print(models)
+from code.modules.extract_model_tokens_encodings import extract_tokens
+import re
+
+print(re.sub(r'X\[(\d+)\]', r'x\1', 'normal_(X[0])'))
+print(extract_tokens('normal_(X[0])'))

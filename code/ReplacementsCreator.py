@@ -16,4 +16,3 @@ def creator(model, config):
     grid = np.linspace(grid_limits[0], grid_limits[1],
                        int(config["rules_creation"]["number_of_samples"]))
 
-    
