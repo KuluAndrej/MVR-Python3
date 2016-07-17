@@ -23,13 +23,13 @@ import matplotlib.pyplot as plt
 config = MVRAttributesExtraction.extract_config(root = '../')
 
 init_models_for_rules = InitModelsRulesLoader.loader(config)
-if config['rules_creation']['regime'] == "from_replacements":
+if config['rules_creation']['regime'] == "create_patterns":
 
     for model in init_models_for_rules:
         # if we have fixed replacement model, we are to find a set of proper patterns
         PatternsCreator.creator(model)
 
-elif config['rules_creation']['regime'] == "from_patterns":
+elif config['rules_creation']['regime'] == "create_replacements":
 
     for model in init_models_for_rules:
         # if we have fixed replacement model, we are to find a set of proper patterns

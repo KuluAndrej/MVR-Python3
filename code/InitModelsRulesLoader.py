@@ -11,10 +11,10 @@ def loader(config):
     filename_root = config['rules_creation']['rules_folder']
     regime   = config['rules_creation']['regime']
 
-    if regime == 'from_replacements':
-        filename = filename_root + config['rules_creation']['init_replacements_filename']
-    elif regime == 'from_patterns':
+    if regime == 'create_replacements':
         filename = filename_root + config['rules_creation']['init_patterns_filename']
+    elif regime == 'create_patterns':
+        filename = filename_root + config['rules_creation']['init_replacements_filename']
     else:
         raise("regime of rules creation is not set")
 
