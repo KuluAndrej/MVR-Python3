@@ -1,0 +1,4 @@
+linear_(times2_(parabola_(x0),sinla_(linear_(times2_(parabola_(x0),x0)))))
+parabola_(normal_(sinha_(bump_(times2_(x0,linear_(bump_(normal_(linear_(plus2_(x0,x0))))))))))
+plus2_(sinha_(plus2_(x0,x0)),times2_(x0,linear_(sinha_(x0))))
+linear_(sinla_(normal_(neg_(normal_(hypot_(sinla_(x0),normal_(normal_(sinla_(normal_(x0))))))))))
