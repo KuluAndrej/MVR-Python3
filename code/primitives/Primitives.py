@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from code.Decorators import handicraft_exception_handler
+from code.primitives.Decorators import handicraft_exception_handler
 
 @handicraft_exception_handler
 def bump_(w0, w1, x):

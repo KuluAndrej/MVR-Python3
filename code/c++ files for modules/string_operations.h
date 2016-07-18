@@ -16,7 +16,7 @@ const int NUMBER_OF_TOKENS = 50;
 
 set<string> read_special_tokens(const string type) {
   set<string> linkers;
-  string filename = string("data/tokens_") + type + string(".txt");
+  string filename = string("data/Patterns Creation/tokens_") + type + string(".txt");
   ifstream input_stream(filename.c_str());
 
   string giglet_string;  
@@ -35,7 +35,7 @@ set<string> read_special_tokens(const string type) {
 vector<string> read_dummy_linkers() {
   vector<string> linkers;
 
-  ifstream input_stream("data/tokens_linkers.txt");
+  ifstream input_stream("data/Patterns Creation/tokens_linkers.txt");
 
   string giglet_string;  
   string useless_feature;  

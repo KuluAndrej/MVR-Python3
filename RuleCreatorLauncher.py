@@ -7,17 +7,17 @@ Author: Kulunchakov Andrei
 """
 
 import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.DataLoader as DataLoader
-import code.Parametrizer as Parametrizer
+import code.input_output.DataLoader as DataLoader
+import code.model_processing.Parametrizer as Parametrizer
 import code.DataFitting as DataFitting
-import code.DataPreprocesser as DataPreprocesser
-import code.SegmentatorTS as SegmentatorTS
+import code.model_processing.DataPreprocesser as DataPreprocesser
+import code.data_processing.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
-import code.SavePopulationToFile as SavePopulationToFile
-import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
-import code.InitModelsLoader as InitModelsLoader
-import code.PatternsCreator as PatternsCreator
-import code.ReplacementsCreator as ReplacementsCreator
+import code.input_output.SavePopulationToFile as SavePopulationToFile
+import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+import code.input_output.InitModelsLoader as InitModelsLoader
+import code.rule_simplification.PatternsCreator as PatternsCreator
+import code.rule_simplification.ReplacementsCreator as ReplacementsCreator
 import CutSegmentStoreToFile
 import time
 import matplotlib.pyplot as plt

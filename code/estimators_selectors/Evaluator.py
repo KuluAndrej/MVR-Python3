@@ -18,7 +18,6 @@ def evaluator(population, data_to_fit, dict_tokens_info, config):
 
     Author: Kulunchakov Andrei, MIPT
     """
-
     is_parametric = config["model_generation"]["is_parametric"]
     maximum_param_number = int(config["model_generation"]["maximum_param_number"])
     maximum_complexity = int(config["model_generation"]["maximum_complexity"])

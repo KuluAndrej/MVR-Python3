@@ -14,6 +14,7 @@ import code.input_output.SavePopulationToFile as SavePopulationToFile
 import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import time
 import matplotlib.pyplot as plt
+from code.primitives.Primitives import *
 
 # get a data structure with the MVR attributes
 config          = MVRAttributesExtraction.extract_config()

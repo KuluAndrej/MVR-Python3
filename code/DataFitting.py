@@ -9,7 +9,6 @@ import code.genetic_operations.CrossoverPopulation as CrossoverPopulation
 import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
 import code.rule_simplification.RuleSimplifier as RuleSimplifier
 import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
-
 from numpy import zeros
 
 def data_fitting(data_to_fit, config):
@@ -62,7 +61,6 @@ def data_fitting(data_to_fit, config):
         population = RuleSimplifier.rule_simplify(population)
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
-
         population = Parametrizer.parametrize_population(population)
         population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
