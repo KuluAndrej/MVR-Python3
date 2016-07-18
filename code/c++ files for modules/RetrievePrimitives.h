@@ -221,7 +221,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 
 // Retrieve the list of primitives from one of the files: 'Primitives.py' or 'Primitives.txt'
 vector< PrimitiveFunction > retriever() {
-	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/Primitives";
+	string FILE_PRIMITIVES_WITHOUT_EXTENSION = "code/primitives/Primitives";
 	//string FILE_PRIMITIVES_WITHOUT_EXTENSION = "Primitives";
 	if (checker_version_of_py_file(FILE_PRIMITIVES_WITHOUT_EXTENSION)) {
 		// if the .py file is newer than the .txt file, we parse it and return the extracted primitives

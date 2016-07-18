@@ -1,6 +1,4 @@
 from code.modules.extract_model_tokens_encodings import extract_tokens
-import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
 from functools import reduce
 from re import sub, compile
 

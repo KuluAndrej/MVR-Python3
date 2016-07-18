@@ -1,7 +1,4 @@
-from code.modules.crosser import crossing
-import code.StringToModel as StringToModel
 import numpy as np
-from sklearn import preprocessing
 
 def data_preprocesser(data_to_process):
     """

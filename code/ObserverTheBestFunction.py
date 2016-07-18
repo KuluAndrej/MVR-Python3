@@ -1,7 +1,5 @@
-import numpy as np
-import code.CalculatorModelValues as CalculatorModelValues
+import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 from numpy import  sum, isnan, inf,  nan, transpose, errstate
-import os
 import matplotlib.pyplot as plt
 
 def observer_the_best_function(population, data_to_fit):

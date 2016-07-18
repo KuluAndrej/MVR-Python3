@@ -1,4 +1,5 @@
 import numpy as np
+import os
 def read_info_tokens_for_optimization(config):
     """
     Read info about tokens from specified file.
@@ -17,6 +18,9 @@ def read_info_tokens_for_optimization(config):
     """
 
     file_with_info = open(config["tokens_info"]["info_for_curve_fit"], 'r')
+    script_dir = os.path.dirname(__file__)
+    parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
+    parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
 
     lines = file_with_info.readlines()
 

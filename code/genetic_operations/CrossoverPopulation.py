@@ -1,5 +1,5 @@
 from code.modules.crosser import crossing
-import code.StringToModel as StringToModel
+import code.model_processing.StringToModel as StringToModel
 import numpy as np
 from code.structures.Population import Population
 

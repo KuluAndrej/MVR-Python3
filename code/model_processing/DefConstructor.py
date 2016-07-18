@@ -1,6 +1,3 @@
-from code.modules.random_model_generator import random_model_generation
-import code.StringToModel as StringToModel
-from code.Primitives import *
 
 def def_constructor(model):
     """

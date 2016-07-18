@@ -1,14 +1,14 @@
-import code.MutationPopulation as MutationPopulation
-import code.Parametrizer as Parametrizer
-import code.QualityEstimator as QualityEstimator
-import code.RandomPopulation as RandomPopulation
-import code.SelectBestModels as SelectBestModels
-import code.Evaluator as Evaluator
-import code.InitModelsLoader as InitModelsLoader
-import code.CrossoverPopulation as CrossoverPopulation
-import code.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
-import code.RuleSimplifier as RuleSimplifier
-import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+import code.genetic_operations.MutationPopulation as MutationPopulation
+import code.model_processing.Parametrizer as Parametrizer
+import code.estimators_selectors.QualityEstimator as QualityEstimator
+import code.genetic_operations.RandomPopulation as RandomPopulation
+import code.estimators_selectors.SelectBestModels as SelectBestModels
+import code.estimators_selectors.Evaluator as Evaluator
+import code.input_output.InitModelsLoader as InitModelsLoader
+import code.genetic_operations.CrossoverPopulation as CrossoverPopulation
+import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
+import code.rule_simplification.RuleSimplifier as RuleSimplifier
+import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
 
 from numpy import zeros
 

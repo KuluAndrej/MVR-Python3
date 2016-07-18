@@ -1,8 +1,7 @@
-from code.DefConstructor import def_constructor
+from code.model_processing.DefConstructor import def_constructor
 from scipy.optimize import  curve_fit
 from numpy import nan, ones
 from scipy.optimize import OptimizeWarning
-import numpy as np
 
 def evaluator(population, data_to_fit, dict_tokens_info, config):
     """

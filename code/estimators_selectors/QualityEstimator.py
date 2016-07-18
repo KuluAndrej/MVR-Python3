@@ -1,6 +1,5 @@
-import code.CalculatorModelValues as CalculatorModelValues
+import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 from numpy import  sum, isnan, inf,  nan, transpose
-from numpy.linalg import norm
 import warnings
 from numpy.linalg import norm as norm
 

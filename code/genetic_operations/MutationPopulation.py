@@ -1,5 +1,5 @@
 from code.modules.mutator import mutation
-import code.StringToModel as StringToModel
+import code.model_processing.StringToModel as StringToModel
 import numpy as np
 from code.structures.Population import Population
 def mutate_population(population, number_of_variables, config):

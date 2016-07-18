@@ -1,7 +1,3 @@
-from code.structures.Population import Population
-from code.Decorators import handicraft_timer
-
-
 def select_best_models(population, config):
     """
     Selects best models from the population

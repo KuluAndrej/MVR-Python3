@@ -1,5 +1,5 @@
 import os
-from code.StringToModel import strings_to_population
+from code.model_processing.StringToModel import strings_to_population
 from code.structures.Population import Population
 def retrieve_init_models(config):
     """

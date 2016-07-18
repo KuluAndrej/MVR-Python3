@@ -1,5 +1,4 @@
 from code.structures.Model import Model
-from functools import wraps
 
 class Population:
     class __Population:

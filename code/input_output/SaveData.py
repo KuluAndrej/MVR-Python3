@@ -16,6 +16,8 @@ def save_data(data, filename):
     DATA_LOCAL_PATH = filename
     script_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
+    parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+
     DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH
 
     # save the data to fit from the specified file

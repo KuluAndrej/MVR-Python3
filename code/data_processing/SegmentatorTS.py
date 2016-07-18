@@ -1,8 +1,3 @@
-from code.modules.crosser import crossing
-import code.StringToModel as StringToModel
-import numpy as np
-from sklearn import preprocessing
-
 def segmentate_ts(ts_to_segmentate, number_of_segments):
     """
     Split ts on 'number_of_segments' approximately equal sized parts

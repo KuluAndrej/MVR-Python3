@@ -1,6 +1,5 @@
 from code.modules.random_model_generator import random_model_generation
-import code.StringToModel as StringToModel
-from code.structures.Population import Population
+import code.model_processing.StringToModel as StringToModel
 from random import randint
 
 def random_population(number_of_variables, config, is_initial_load):

@@ -10,7 +10,6 @@ Author: Kulunchakov Andrei, MIPT
 """
 from code.modules.model_simplifier_by_rules import simplify_by_rules
 from code.modules.model_reconstructer import model_reconstruct
-from code.structures import Model
 import re
 
 def rule_simplify(population):
