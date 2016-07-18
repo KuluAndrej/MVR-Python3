@@ -14,6 +14,23 @@ def random_parameters(model, dict_tokens_info, config):
     processed_handle= re.sub(r'X\[(\d+)\]', r'x\1', model.handle)
     tokens = extract_tokens(processed_handle).split('&')
 
-    inf_replace = config["rules_creation"]["inf_replace"]
+    inf_replace = float(config["rules_creation"]["inf_replace"])
+    cur_pos_in_random_parameters = 0
     for token in tokens:
-        if 
+        if is_var(token):
+            continue
+        bounds = dict_tokens_info[token][1]
+        numb_token_params = len(bounds[0])
+        # if the token is parametric
+        if numb_token_params:
+            for i in range(numb_token_params):
+                left_bound  = bounds[0][i] if not np.isinf(bounds[0][i]) else inf_replace * np.sign(bounds[0][i])
+                right_bound = bounds[1][i] if not np.isinf(bounds[1][i]) else inf_replace * np.sign(bounds[1][i])
+                rand_param  = np.random.uniform(left_bound, right_bound)
+                random_parameters[cur_pos_in_random_parameters + i] = rand_param
+            cur_pos_in_random_parameters += numb_token_params
+
+    return random_parameters
+
+def is_var(token):
+    return re.match(r'x(\d+)', token)

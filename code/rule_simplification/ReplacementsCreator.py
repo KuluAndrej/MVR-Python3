@@ -1,6 +1,7 @@
 import numpy as np
+import code.CreateModelRandomParameters as CreateModelRandomParameters
 
-def creator(model, dict_tokens_info, config):
+def creator(pattern, dict_tokens_info, config):
     """
     Gets a 'model' and creates rules, where this model acts as the 'replacement' model.
     Inputs:
@@ -15,4 +16,6 @@ def creator(model, dict_tokens_info, config):
     grid_limits = eval(config["rules_creation"]["range_independent_var"])
     grid = np.linspace(grid_limits[0], grid_limits[1],
                        int(config["rules_creation"]["number_of_samples"]))
+
+    random_parameters = CreateModelRandomParameters.random_parameters(pattern, dict_tokens_info, config)
 

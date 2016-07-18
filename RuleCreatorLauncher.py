@@ -21,6 +21,7 @@ import code.ReplacementsCreator as ReplacementsCreator
 import CutSegmentStoreToFile
 import time
 import matplotlib.pyplot as plt
+import code.CreateModelRandomParameters as CreateModelRandomParameters
 
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
