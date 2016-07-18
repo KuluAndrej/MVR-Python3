@@ -4,14 +4,14 @@ Main file of the MVR project.
 Author: Kulunchakov Andrei, MIPT
 """
 
-import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.DataLoader as DataLoader
+import code.input_output.MVRAttributesExtraction as MVRAttributesExtraction
+import code.input_output.DataLoader as DataLoader
 import code.DataFitting as DataFitting
-import code.DataPreprocesser as DataPreprocesser
-import code.SegmentatorTS as SegmentatorTS
+import code.data_processing.DataPreprocesser as DataPreprocesser
+import code.data_processing.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
-import code.SavePopulationToFile as SavePopulationToFile
-import CutSegmentStoreToFile
+import code.input_output.SavePopulationToFile as SavePopulationToFile
+import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import time
 import matplotlib.pyplot as plt
 
@@ -24,7 +24,7 @@ if type_of_fitting == "fit_data":
     label = 'heart_rate'
     index_to_observe = 27
 
-    CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe)
+    CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe, config)
     data_to_fit = DataLoader.retrieve_data(config)
 
     start = time.time()

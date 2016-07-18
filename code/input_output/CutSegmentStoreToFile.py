@@ -5,13 +5,12 @@ specified in 'config'
 Author: Kulunchakov Andrei, MIPT
 """
 
-import code.DataLoader as DataLoader
-import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.DataPreprocesser as DataPreprocesser
-import code.SegmentatorTS as SegmentatorTS
-import code.SaveData as SaveData
+import code.input_output.DataLoader as DataLoader
+import code.data_processing.DataPreprocesser as DataPreprocesser
+import code.data_processing.SegmentatorTS as SegmentatorTS
+import code.input_output.SaveData as SaveData
 
-def data_cutter_loader(label, number_of_segment):
+def data_cutter_loader(label, number_of_segment, config):
     """
     Extract arbitrary segment in the specified time series and store it to the file
     specified in 'config'
@@ -19,14 +18,12 @@ def data_cutter_loader(label, number_of_segment):
     Inputs:
      label              - label of the time series, which we'll cut from
      number_of_segment  - index of retrieved segment
-
+     config
     Outputs:
      init_models    - handles of the initial models from the specified file (list of strings)
     Author: Kulunchakov Andrei, MIPT
     """
     # get a data structure with the MVR attributes
-    config          = MVRAttributesExtraction.extract_config()
-    type_of_fitting = config["flag_type_of_processing"]["flag"]
 
 
     labels_ts_to_retrieve = [label]

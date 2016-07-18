@@ -1,5 +1,4 @@
 import configparser
-import code.ValidateConfig as ValidateConfig
 
 def extract_config(root =''):
     """
