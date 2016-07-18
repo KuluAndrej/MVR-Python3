@@ -3,14 +3,9 @@
 
 """
 
-def creator(model):
+def creator(model, dict_tokens_info):
     """
     Gets a 'model' and creates rules, where this model is the 'replacement' model.
-    Inputs:
-     -
-
-     Outputs:
-     config  - data structure storing MVR attributes
 
     Author: Kulunchakov Andrei
     """

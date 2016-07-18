@@ -1,6 +1,6 @@
 import numpy as np
 
-def creator(model, config):
+def creator(model, dict_tokens_info, config):
     """
     Gets a 'model' and creates rules, where this model acts as the 'replacement' model.
     Inputs:

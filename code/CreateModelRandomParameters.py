@@ -1,6 +1,7 @@
 from code.modules.extract_model_tokens_encodings import extract_tokens
 import re
-def create(model, config):
+import numpy as np
+def create(model, dict_tokens_info, config):
     """
     Given 'model', we are to create a set of random parameters. We get into account, that
     each parameter is from its own specified range. Its range is written in
@@ -12,6 +13,5 @@ def create(model, config):
 
     processed_handle= re.sub(r'X\[(\d+)\]', r'x\1', model.handle)
     tokens = extract_tokens(processed_handle)
-
 
     for token in tokens:
