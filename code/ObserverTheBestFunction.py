@@ -18,9 +18,8 @@ def observer_the_best_function(population, data_to_fit):
     dependent_var = data_to_fit[:,0]
 
     model = population[0]
-    print(model.MSE)
     #if hasattr(model, 'optimal_params'):
-    #print(model.optimal_params)
+    print(independent_var.shape)
     dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
 
 

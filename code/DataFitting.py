@@ -27,21 +27,22 @@ def data_fitting(data_to_fit, config):
     print("Start data fitting\nNote that the first iteration takes a bit longer than the others")
 
     # some useful constants for stagnation recognition
-    lowest_possible_rate = float(config["stagnation"]["lowest_possible_rate"])
-    window_size          = int(config["stagnation"]["window_size"])
-    init_iteration       = int(config["stagnation"]["init_iteration"])
+    lowest_possible_rate = eval(config["stagnation"]["lowest_possible_rate"])
+    window_size          = eval(config["stagnation"]["window_size"])
+    init_iteration       = eval(config["stagnation"]["init_iteration"])
+    # measurements stands fro plotting the dynamics of MSE
+    measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]) + 1)
+
 
     dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
-
-    # automatically detect and extract the number of features from the given data
+    # automatically find the number of features in the given data
     number_of_variables = data_to_fit.shape[-1] - 1
-    # measurements stands fro plotting the dynamics of MSE
-    measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]))
 
-    population  = InitModelsLoader.retrieve_init_models(config)
 
-    if config["model_generation"]["do_init_random_generation"] == "True":
-        population.append(RandomPopulation.random_population(number_of_variables, config, True))
+    if eval(config["model_generation"]["do_init_random_generation"]):
+        population = RandomPopulation.random_population(number_of_variables, config, True)
+    else:
+        population = InitModelsLoader.retrieve_init_models(config)
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':

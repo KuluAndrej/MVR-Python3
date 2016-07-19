@@ -30,7 +30,8 @@ def random_parameters(model, dict_tokens_info, config):
                 random_parameters[cur_pos_in_random_parameters + i] = rand_param
             cur_pos_in_random_parameters += numb_token_params
 
-    return random_parameters
+    setattr(model, "init_params", random_parameters)
+    return model
 
 def is_var(token):
     return re.match(r'x(\d+)', token)

@@ -16,7 +16,10 @@ def def_constructor(model):
     base_string += parameters_string
     base_string += ": "
     base_string += model.param_handle
-
     def_statement = eval(base_string)
 
     return def_statement
+
+def add_def_statements_attributes(population):
+    for model in population:
+        setattr(model, "def_statement", def_constructor(model))

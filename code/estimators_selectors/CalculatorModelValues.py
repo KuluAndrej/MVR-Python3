@@ -1,4 +1,4 @@
-from numpy import  sum, isnan, ones,  nan, transpose
+from numpy import  sum, isnan, ones,  nan, random
 from numpy.linalg import norm
 import warnings
 
@@ -32,6 +32,21 @@ def calculate_model_values(model, independent_var):
                 return dependent_var_estimation
             else:
                 return nan * ones((independent_var.shape[0], 1))
+        elif hasattr(model, "init_params"):
+            # insert found parameters into the def_statement
+            #model.init_params = 2 * random.rand(model.init_params.shape[0]) - 1
+            #print(model.init_params)
+            model.def_statement_param = lambda row: model.def_statement(row, *model.init_params)
+
+            if not isnan(sum(model.init_params)):
+                try:
+                    dependent_var_estimation = model.def_statement_param(independent_var)
+                except:
+                    dependent_var_estimation = [nan for row in independent_var]
+                return dependent_var_estimation
+            else:
+                return nan * ones((independent_var.shape[0], 1))
+
         else:
             try:
                 dependent_var_estimation = model.def_statement(independent_var)
