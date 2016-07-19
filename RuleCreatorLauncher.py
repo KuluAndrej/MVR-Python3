@@ -27,10 +27,10 @@ def creator():
 
 
     config           = MVRAttributesExtraction.extract_config()
-    print(type(config))
     dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-    init_models_for_rules = Parametrizer.parametrize_population(InitModelsLoader.retrieve_init_models(config))
+    init_models_for_rules = InitModelsLoader.retrieve_init_models(config)
+    init_models_for_rules = Parametrizer.parametrize_population(init_models_for_rules)
 
     DefConstructor.add_def_statements_attributes(init_models_for_rules)
     if config['rules_creation']['regime'] == "create_patterns":

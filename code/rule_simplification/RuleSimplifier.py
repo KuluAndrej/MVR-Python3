@@ -27,8 +27,12 @@ def rule_simplify(population):
             ind = handle.find('x1')
             handle = handle[0:ind] + 'bump_(x0)' + handle[ind+2:]
 
+        # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
+        # STAY CAREFUL
+        handle = model_reconstruct(handle)
         new_handle = handle
         handle = re.sub(r'x(\d+)', r'X[\1]', handle)
+
         population[ind].handle = handle
         if len(backup_handle) > len(new_handle):
             #print(backup_handle, '-->\n', new_handle)

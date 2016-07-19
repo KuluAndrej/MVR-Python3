@@ -9,6 +9,9 @@ import code.genetic_operations.CrossoverPopulation as CrossoverPopulation
 import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
 import code.rule_simplification.RuleSimplifier as RuleSimplifier
 import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+import code.structures.Population as Population
+import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
+
 from numpy import zeros
 
 def data_fitting(data_to_fit, config):
@@ -40,10 +43,9 @@ def data_fitting(data_to_fit, config):
 
 
     if eval(config["model_generation"]["do_init_random_generation"]):
-        population = RandomPopulation.random_population(number_of_variables, config, True)
-    else:
-        population = InitModelsLoader.retrieve_init_models(config)
+        CreateBigRandomInitPopulation.create_big_random_init_population(config)
 
+    population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         if config["flag_type_of_processing"]["flag"] == 'fit_data':
             print("iteration on fitting #", i, sep='')
@@ -53,19 +55,21 @@ def data_fitting(data_to_fit, config):
         if i > init_iteration and (measurements[max(i - window_size,0)] - measurements[i])/measurements[i] < lowest_possible_rate:
             print("break on iteration #", i, "because of stagnation")
             break
-
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
         population.unique_models_selection()
 
         population = RuleSimplifier.rule_simplify(population)
+        # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
+        # STAY CAREFUL
+        population.unique_models_selection()
+
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
         population = Parametrizer.parametrize_population(population)
         population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
-
 
 
         population = SelectBestModels.select_best_models(population, config)

@@ -18,7 +18,6 @@ def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True, ):
 
     Author: Kulunchakov Andrei
     """
-
     population = [model]
     ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
 
@@ -27,7 +26,6 @@ def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True, ):
     population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
 
     fitted = CalculatorModelValues.calculate_model_values(population[0], data_to_fit[:,1:].T)
-    print(population[0],'\n', repr(population[0].optimal_params), sep = '')
 
     if do_plot:
         try:

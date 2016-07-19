@@ -5,6 +5,7 @@ import code.model_processing.FitModelToData as FitModelToData
 from configparser import ConfigParser
 from code.model_processing.StringToModel import strings_to_population
 import code.rule_simplification.CheckReplacementForFitting as CheckReplacementForFitting
+import code.input_output.SaveRule as SaveRule
 def creator(pattern, dict_tokens_info, config):
     """
     Gets a 'model' and creates rules, where this model acts as the 'replacement' model.
@@ -17,26 +18,22 @@ def creator(pattern, dict_tokens_info, config):
     Author: Kulunchakov Andrei
     """
 
-
+    print("Start processing pattern: ", pattern)
     pattern = SetModelRandomParameters.random_parameters(pattern, dict_tokens_info, config)
     data_to_fit = CreateDataToFit.create(pattern, config)
 
-    print(pattern, '\n', repr(pattern.init_params), sep = '')
 
-
-
-    model_replacement = 'lnl_(X[0])'
-    fitted_replace = FitModelToData.fit(strings_to_population([model_replacement]), data_to_fit, dict_tokens_info, config)
-
-
-    tuned_config = ConfigParser().read_dict(config)
+    tuned_config = ConfigParser()
+    tuned_config.read_dict(config)
     tuned_config["model_generation"]["maximum_complexity"] = str(len(pattern) - 1)
-    tuned_config["model_generation"]["size_init_random_models"] = str(len(pattern) - 1)
-    tuned_config["model_generation"]["size_init_random_models"] = 1000
+    tuned_config["model_generation"]["size_init_random_models"] = str(3 * len(pattern) - 1)
+    tuned_config["model_generation"]["number_of_init_random_models"] = str(1000)
 
-    for i in range(int(config["model_generation"]["iterations_of_fitting"])):
+    for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
         best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)
-
+        print(best_found_replacements[0:3], sep = '\n')
         for replacement in best_found_replacements:
-            CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config)
-
+            if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config):
+                print("printed")
+                SaveRule.store(pattern, replacement, config)
+    print("...processed")

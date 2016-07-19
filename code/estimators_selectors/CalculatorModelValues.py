@@ -49,10 +49,12 @@ def calculate_model_values(model, independent_var):
 
         else:
             try:
+
                 dependent_var_estimation = model.def_statement(independent_var)
             except RuntimeWarning:
                 dependent_var_estimation = [nan for row in independent_var]
-
+            except TypeError:
+                dependent_var_estimation = [nan for row in independent_var]
             return dependent_var_estimation
 
     return population

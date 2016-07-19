@@ -1,6 +1,8 @@
 from code.modules.extract_model_tokens_encodings import extract_tokens
 from functools import reduce
 from re import sub, compile
+from code.structures.Model import Model
+from code.structures.Population import Population
 
 def construct_info(model,dict_tokens_info):
     """
@@ -49,8 +51,14 @@ def construct_info(model,dict_tokens_info):
 
 
 def construct_info_population(population,dict_tokens_info):
-    for model in population:
-        if not hasattr(model,'curve_fit_init_params'):
-            p0, bounds = construct_info(model,dict_tokens_info)
-            setattr(model, "curve_fit_init_params", p0)
-            setattr(model, "curve_fit_bounds", bounds)
+    if isinstance(population, Model):
+        if not hasattr(population,'curve_fit_init_params'):
+            p0, bounds = construct_info(population,dict_tokens_info)
+            setattr(population, "curve_fit_init_params", p0)
+            setattr(population, "curve_fit_bounds", bounds)
+    else:
+        for model in population:
+            if not hasattr(model,'curve_fit_init_params'):
+                p0, bounds = construct_info(model,dict_tokens_info)
+                setattr(model, "curve_fit_init_params", p0)
+                setattr(model, "curve_fit_bounds", bounds)
