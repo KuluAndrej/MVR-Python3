@@ -19,7 +19,7 @@ def check(pattern, replacement, dict_tokens_info, config):
 
     for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
 
-        new_pattern = SetModelRandomParameters.random_parameters(pattern, dict_tokens_info, config)
+        new_pattern = SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
         data_to_fit = CreateDataToFit.create(new_pattern, config)
 
         # note, that we get fitted values, not a model!

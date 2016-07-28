@@ -1,4 +1,5 @@
 import os
+import code.structures.Model as Model
 def store(pattern, replacement, config):
     """
 
@@ -15,4 +16,6 @@ def store(pattern, replacement, config):
     DATA_FULL_PATH = parent_dir + filename
 
     with open(DATA_FULL_PATH, "a") as file:
-        file.write(pattern + " " + replacement + '\n')
+        file.write(pattern.handle + " " + replacement.handle + '\n')
+
+

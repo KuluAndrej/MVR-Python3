@@ -1,0 +1,14 @@
+times2_(linear_(X[0]),linear_(X[0])) times2_(X[0],linear_(X[0]))
+times2_(linear_(X[0]),linear_(X[0])) times2_(X[0],linear_(X[0]))
+times2_(linear_(X[0]),linear_(X[0])) parabola_(X[0])
+times2_(linear_(X[0]),linear_(X[0])) parabola_(parabola_(X[0]))
+times2_(linear_(X[0]),linear_(X[0])) parabola_(X[0])
+times2_(linear_(X[0]),linear_(X[0])) times2_(parabola_(X[0]),X[0])
+times2_(linear_(X[0]),linear_(X[0])) parabola_(X[0])
+times2_(linear_(X[0]),linear_(X[0])) parabola_(parabola_(X[0]))
+parabola_(parabola_(X[0])) X[0]
+parabola_(parabola_(X[0])) hvs_(X[0])
+parabola_(parabola_(X[0])) X[0]
+parabola_(parabola_(X[0])) X[0]
+parabola_(parabola_(X[0])) X[0]
+parabola_(parabola_(X[0])) neg_(X[0])

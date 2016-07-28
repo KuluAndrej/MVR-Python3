@@ -1,4 +1,1 @@
-times2_(sinha_(x0),linear_(times2_(x0,sinha_(linear_(times2_(parabola_(x0),sinha_(x0)))))))
-times2_(sinha_(linear_(x0)),sinha_(sinha_(x0)))
-times2_(plus2_(x0,lnl_(times2_(x0,sinha_(linear_(parabola_(x0)))))),linear_(x0))
-times2_(plus2_(x0,lnl_(times2_(x0,sinha_(linear_(times2_(parabola_(x0),sinha_(x0))))))),linear_(x0))
+neg_(neg_(x0))

@@ -92,7 +92,7 @@ def data_fitting(data_to_fit, config):
     print("best generated model has MSE = ", population[0].MSE)
     print("optimal parameters = ", population[0].optimal_params)
     """
-
+    print("The fitting is done")
     if config["flag_type_of_processing"]["flag"] == 'fit_data':
         return population, measurements
     else:

@@ -19,7 +19,9 @@ def creator(pattern, dict_tokens_info, config):
     """
 
     print("Start processing pattern: ", pattern)
-    pattern = SetModelRandomParameters.random_parameters(pattern, dict_tokens_info, config)
+    SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
+
+
     data_to_fit = CreateDataToFit.create(pattern, config)
 
 
@@ -28,12 +30,16 @@ def creator(pattern, dict_tokens_info, config):
     tuned_config["model_generation"]["maximum_complexity"] = str(len(pattern) - 1)
     tuned_config["model_generation"]["size_init_random_models"] = str(3 * len(pattern) - 1)
     tuned_config["model_generation"]["number_of_init_random_models"] = str(1000)
+    tuned_config["model_generation"]["type_selection"] = "MSE"
 
     for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
         best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)
         print(best_found_replacements[0:3], sep = '\n')
         for replacement in best_found_replacements:
             if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config):
-                print("printed")
-                SaveRule.store(pattern, replacement, config)
+                # now we swap pattern and replacement to check if the pattern is also able to fit the replacement
+                # with any set of parameters
+                if CheckReplacementForFitting.check(replacement, pattern, dict_tokens_info, config):
+                    print("printed")
+                    SaveRule.store(pattern, replacement, config)
     print("...processed")
