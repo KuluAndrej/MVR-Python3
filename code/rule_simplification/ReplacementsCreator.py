@@ -1,9 +1,7 @@
 import code.model_processing.SetModelRandomParameters as SetModelRandomParameters
 import code.rule_simplification.CreateDataToFit as CreateDataToFit
 import code.DataFitting as DataFitting
-import code.model_processing.FitModelToData as FitModelToData
 from configparser import ConfigParser
-from code.model_processing.StringToModel import strings_to_population
 import code.rule_simplification.CheckReplacementForFitting as CheckReplacementForFitting
 import code.input_output.SaveRule as SaveRule
 def creator(pattern, dict_tokens_info, config):
@@ -37,9 +35,12 @@ def creator(pattern, dict_tokens_info, config):
         print(best_found_replacements[0:3], sep = '\n')
         for replacement in best_found_replacements:
             if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config):
+                print("Replacement is fittable to the pattern")
+
                 # now we swap pattern and replacement to check if the pattern is also able to fit the replacement
                 # with any set of parameters
                 if CheckReplacementForFitting.check(replacement, pattern, dict_tokens_info, config):
-                    print("printed")
+                    print("Pattern is fittable to the replacement")
                     SaveRule.store(pattern, replacement, config)
+
     print("...processed")
