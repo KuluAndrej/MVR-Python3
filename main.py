@@ -12,6 +12,7 @@ import code.data_processing.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.input_output.SavePopulationToFile as SavePopulationToFile
 import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
+import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
 import matplotlib.pyplot as plt
 from code.primitives.Primitives import *
@@ -63,7 +64,6 @@ elif type_of_fitting == "time_series_processing":
 
 
 
-
 elif type_of_fitting == "fit_and_collect":
     start_label_ind = 0
     start_index     = 0
@@ -81,5 +81,10 @@ elif type_of_fitting == "fit_and_collect":
             population  = DataFitting.data_fitting(data_to_fit, config)
             ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
             SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
+
+elif type_of_fitting == "init_models_creation":
+    config = MVRAttributesExtraction.extract_config()
+    CreateBigRandomInitPopulation.create_big_random_init_population(config)
+
 # after your program ends
 # pr.print_stats(sort="calls")

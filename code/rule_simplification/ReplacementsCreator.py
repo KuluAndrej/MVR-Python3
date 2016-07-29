@@ -16,27 +16,23 @@ def creator(pattern, dict_tokens_info, config):
 
     Author: Kulunchakov Andrei
     """
+    print_intro(pattern)
 
-    print("Start processing pattern: ", pattern)
     SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
 
     data_to_fit = CreateDataToFit.create(pattern, config)
-    tuned_config = tune_config_for_replacement_fitting(config, len(pattern))
+    tuned_config = tune_config_for_replacement_fitting(config, pattern)
 
     for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
         best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)
 
         for replacement in best_found_replacements:
-
             if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=True):
-                # now we swap pattern and replacement to check if the pattern is also able to fit the replacement
-                # with any set of parameters
-                if CheckReplacementForFitting.check(replacement, pattern, dict_tokens_info, config, verbose=True):
                     SaveRule.store(pattern, replacement, config)
 
     print("...processed")
 
-def tune_config_for_replacement_fitting(config, length):
+def tune_config_for_replacement_fitting(config, pattern):
     # copy 'config' file and change some attributes for correct work of replacements creation
     # Inputs:
     #   config      - config file to copy
@@ -46,9 +42,16 @@ def tune_config_for_replacement_fitting(config, length):
 
     tuned_config = ConfigParser()
     tuned_config.read_dict(config)
-    tuned_config["model_generation"]["maximum_complexity"] = str(length - 1)
-    tuned_config["model_generation"]["size_init_random_models"] = str(3 * length - 1)
+    tuned_config["model_generation"]["maximum_complexity"] = str(len(pattern)- 1)
+    tuned_config["model_generation"]["maximum_param_number"] = str(pattern.number_of_parameters - 1)
+    tuned_config["model_generation"]["size_init_random_models"] = str(3 * len(pattern) - 1)
+
     tuned_config["model_generation"]["number_of_init_random_models"] = str(1000)
+
     tuned_config["model_generation"]["type_selection"] = "MSE"
 
+
     return tuned_config
+
+def print_intro(pattern):
+    print("Start processing pattern: ", pattern)

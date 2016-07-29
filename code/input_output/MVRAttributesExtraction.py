@@ -15,7 +15,6 @@ def extract_config(root =''):
     # retrieve attributes of MVR necessary for a future work
     ATTRIBUTES_FILENAME = "config.ini"
     config = configparser.ConfigParser()
-
     config.read(root + ATTRIBUTES_FILENAME)
 
     return config

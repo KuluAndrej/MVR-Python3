@@ -16,6 +16,7 @@ def def_constructor(model):
     base_string += parameters_string
     base_string += ": "
     base_string += model.param_handle
+    #setattr(model, 'str_func', base_string)
     def_statement = eval(base_string)
 
     return def_statement

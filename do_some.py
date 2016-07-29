@@ -12,7 +12,6 @@ from code.structures.Model import Model
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-
 replacement = 'times2_(linear_(X[0]),linear_(X[0]))'
 pattern = "parabola_(X[0])"
 
@@ -23,5 +22,3 @@ print('pattern =', population[0], "replacement =", population[1])
 
 b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True)
 print(b)
-
-
