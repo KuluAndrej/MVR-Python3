@@ -1,1 +1,2 @@
 times2_(linear_(X[0]),linear_(X[0]))
+linear_(parabola_(X[0]))

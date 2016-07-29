@@ -47,14 +47,14 @@ def data_fitting(data_to_fit, config):
 
     population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
-        if config["flag_type_of_processing"]["flag"] == 'fit_data':
-            print("iteration on fitting #", i, sep='')
+        print_intro(config, i)
         if i > 0:
             measurements[i] = population[0].MSE
 
         if i > init_iteration and (measurements[max(i - window_size,0)] - measurements[i])/measurements[i] < lowest_possible_rate:
             print("break on iteration #", i, "because of stagnation")
             break
+
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
@@ -68,32 +68,39 @@ def data_fitting(data_to_fit, config):
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
         population = Parametrizer.parametrize_population(population)
-        population = Evaluator.evaluator(population, data_to_fit, dict_tokens_info, config)
+        population = Evaluator.evaluator(population, data_to_fit, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
 
 
         population = SelectBestModels.select_best_models(population, config)
+        print_results(population, config, i)
 
-        if config["flag_type_of_processing"]["flag"] == 'fit_data':
-            print(len(population), " models are selected")
-            print("best yet generated model", population[0].MSE)
-            for ind in range(3):
-                print(population[ind], "has MSE", population[ind].MSE)
-                if hasattr(population[ind],'optimal_params'):
-                    print(population[ind].optimal_params)
-            print("")
-
-        if config["flag_type_of_processing"]["flag"] == 'fit_data' and \
-                        population[0].MSE < float(config["accuracy_requirement"]["required_accuracy"]):
-            print("break on cycle #", i)
-            break
-
-    """
-    print("best generated model has MSE = ", population[0].MSE)
-    print("optimal parameters = ", population[0].optimal_params)
-    """
-    print("The fitting is done")
     if config["flag_type_of_processing"]["flag"] == 'fit_data':
         return population, measurements
     else:
         return population
+
+def print_intro(config, number_of_iteration):
+    if config["flag_type_of_processing"]["flag"] == 'fit_data':
+            print("iteration on fitting #", number_of_iteration, sep='')
+
+
+def print_results(population, config, number_of_iteration):
+    if config["flag_type_of_processing"]["flag"] == 'fit_data':
+        print(len(population), " models are selected")
+        print("best yet generated model", population[0].MSE)
+        for ind in range(3):
+            print(population[ind], "has MSE", population[ind].MSE)
+            if hasattr(population[ind],'optimal_params'):
+                print(population[ind].optimal_params)
+        print("")
+        return
+
+    if config["flag_type_of_processing"]["flag"] == 'fit_data' and \
+                    population[0].MSE < float(config["accuracy_requirement"]["required_accuracy"]):
+        print("break on cycle #", number_of_iteration)
+        return
+
+    if config["flag_type_of_processing"]["flag"] == 'rules_creation':
+        print(population[0:3], sep = '\n')
+        return

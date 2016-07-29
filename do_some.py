@@ -13,15 +13,15 @@ config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
 
-pattern = 'times2_(linear_(X[0]),linear_(X[0]))'
-replacement = "parabola_(X[0])"
+replacement = 'times2_(linear_(X[0]),linear_(X[0]))'
+pattern = "parabola_(X[0])"
 
 population = Population([Model(pattern), Model(replacement)])
 population = Parametrizer.parametrize_population(population)
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True)
 print(b)
 
 

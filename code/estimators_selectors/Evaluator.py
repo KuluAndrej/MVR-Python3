@@ -1,16 +1,18 @@
 import  code.model_processing.DefConstructor as DefConstructor
 import  code.estimators_selectors.QualityEstimator as QualityEstimator
+import multiprocessing
+
 from scipy.optimize import  curve_fit
 from numpy import nan, ones, inf, random, isnan
 from scipy.optimize import OptimizeWarning
+from joblib import Parallel, delayed
 
-def evaluator(population, data_to_fit, dict_tokens_info, config):
+def evaluator(population, data_to_fit, config):
     """
     Evaluate the optimal parameters for each model from the population
     Inputs:
      population                                         - list of Models to evaluate
      data_to_fit                                        - approximated data; necessary for the quality determination
-     dict_tokens_info                                   - info about parameters of tokens used in optimization
      config.model_generation.is_parametric              - flag signifying if the parameters of superpositions will be tuned
      config.model_generation.maximum_param_number       - specifies maximum number of parameters
      config.model_generation.maximum_complexity         - specifies maximum structural complexity of a model
@@ -99,3 +101,4 @@ def evaluator(population, data_to_fit, dict_tokens_info, config):
             model.def_statement_param = model.def_statement
 
     return population
+
