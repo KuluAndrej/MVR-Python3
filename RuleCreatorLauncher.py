@@ -30,6 +30,7 @@ def creator():
             PatternsCreator.creator(model, dict_tokens_info)
 
     elif config['rules_creation']['regime'] == "create_replacements":
+        print(len(init_models_for_rules),'replacements are to be processed')
         for model in init_models_for_rules:
             ReplacementsCreator.creator(model, dict_tokens_info, config)
 

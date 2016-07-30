@@ -12,13 +12,13 @@ from code.structures.Model import Model
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-replacement = 'times2_(linear_(X[0]),linear_(X[0]))'
-pattern = "parabola_(X[0])"
+replacement = 'parabola_(X[0])'
+pattern = "sinc_(parabola_(expl_(X[0])))"
 
 population = Population([Model(pattern), Model(replacement)])
 population = Parametrizer.parametrize_population(population)
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, False)
 print(b)

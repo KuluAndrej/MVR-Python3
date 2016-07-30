@@ -1,1 +1,0 @@
-sinc_(parabola_(expl_(X[0]))) sinc_(normal_(X[0]))

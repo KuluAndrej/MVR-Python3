@@ -15,7 +15,7 @@ def create_big_random_init_population(config):
         init_models = init_models.union(RandomPopulation.random_population(1, config, True))
         new_size = len(init_models)
         # we stop generation, when our set already contains the majority of newly generated models
-        if (new_size - previous_size) / previous_size < .1:
+        if (new_size - previous_size) / previous_size < .001:
             break
 
     DATA_FULL_PATH = construct_data_path(config)
@@ -42,7 +42,6 @@ def construct_data_path(config):
     parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
 
     DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH
-
     return DATA_FULL_PATH
 
 def print_intro():

@@ -1,6 +1,6 @@
 import os
 import code.structures.Model as Model
-def store(pattern, replacement, config):
+def store(pattern, replacement, config, verbose=False):
     """
 
     Author: Kulunchakov Andrei
@@ -18,4 +18,5 @@ def store(pattern, replacement, config):
     with open(DATA_FULL_PATH, "a") as file:
         file.write(pattern.handle + " " + replacement.handle + '\n')
 
-
+    if verbose:
+        print("wrote the rule", pattern, "->", replacement)

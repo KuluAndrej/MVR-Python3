@@ -1,1 +1,3 @@
-sinha_(lnl_(expl_(normal_(x0))))
+sinha_(linear_(sinha_(bump_(x0))))
+linear_(sinha_(linear_(sinha_(bump_(x0)))))
+lnl_(expl_(bump_(x0)))
