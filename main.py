@@ -16,6 +16,7 @@ import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPop
 import time
 import matplotlib.pyplot as plt
 from code.primitives.Primitives import *
+import code.genetic_operations.GenerateAllPossibleModels as GenerateAllPossibleModels
 
 # get a data structure with the MVR attributes
 config          = MVRAttributesExtraction.extract_config()
@@ -84,7 +85,7 @@ elif type_of_fitting == "fit_and_collect":
 
 elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
-    CreateBigRandomInitPopulation.create_big_random_init_population(config)
-
+    #CreateBigRandomInitPopulation.create_big_random_init_population(config)
+    GenerateAllPossibleModels.generate('data/Rules creation files/init_patterns.txt')
 # after your program ends
 # pr.print_stats(sort="calls")

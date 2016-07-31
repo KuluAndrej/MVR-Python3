@@ -19,7 +19,7 @@ def create_big_random_init_population(config):
             break
 
     DATA_FULL_PATH = construct_data_path(config)
-    file = open(DATA_FULL_PATH, 'w')
+    file = open(DATA_FULL_PATH, 'a')
     desired_numb_rows = int(config["init_rand_models"]["preferable_number_models"])
     for ind, item in enumerate(init_models):
         if desired_numb_rows > ind:
