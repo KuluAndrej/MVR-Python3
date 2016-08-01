@@ -23,9 +23,10 @@ def retrieve_init_models(config, source_of_launching = None):
         if not (line.startswith("#") or len(line) == 0):
             initial_models.append(line)
 
-
     initial_models = strings_to_population(initial_models)
+    initial_models = [model for model in initial_models if len(model) <= int(config["model_generation"]["maximum_complexity"])]
     list(map(lambda model: setattr(model, 'where_from', "init"), initial_models))
+
 
     return Population(initial_models)
 
@@ -45,5 +46,4 @@ def construct_the_filename_with_init_models(config):
     script_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
     parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
-
     return parent_dir + DATA_LOCAL_PATH

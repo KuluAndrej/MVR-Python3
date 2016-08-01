@@ -42,6 +42,8 @@ def construct_data_path(config):
     parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
 
     DATA_FULL_PATH = parent_dir + DATA_LOCAL_PATH
+
+    print(DATA_FULL_PATH)
     return DATA_FULL_PATH
 
 def print_intro():

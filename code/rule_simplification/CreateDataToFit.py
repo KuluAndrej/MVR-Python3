@@ -22,8 +22,9 @@ def create(model, config):
 
 
     dependent_var = CalculatorModelValues.calculate_model_values(model, grid.T)
+    if not dependent_var.shape:
+        dependent_var = dependent_var * np.ones(grid.shape)
 
     dependent_var = dependent_var.reshape(-1,1)
-
 
     return np.hstack((dependent_var, grid))

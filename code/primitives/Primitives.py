@@ -134,3 +134,26 @@ def parabola_(w0, w1, w2, x):
     
     return x * x * w2 +  x * w1 + w0
 
+def unity_():
+    unity_.NumParam = 0
+    unity_.NumVars = 0
+    unity_.InitParams = []
+    unity_.BoundsParams = ([],[])
+
+    return 1
+
+def zero_():
+    zero_.NumParam = 0
+    zero_.NumVars = 0
+    zero_.InitParams = []
+    zero_.BoundsParams = ([],[])
+
+    return 1
+
+def parameter_(w0):
+    parameter_.NumParam = 1
+    parameter_.NumVars = 0
+    parameter_.InitParams = [0.5]
+    parameter_.BoundsParams = ([-np.inf],[np.inf])
+
+    return w0

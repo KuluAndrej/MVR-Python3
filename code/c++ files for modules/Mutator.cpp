@@ -29,7 +29,7 @@ namespace bp = boost::python;
 //char const* mutation(const char* handle_char, int number_variables) {
 const string mutation(const string handle_char, int number_variables) {
 	
-	srand(time(NULL));
+	//srand(time(NULL));
 	string handle = handle_char;
 	
 	pair<vector<pair<int, int> >, vector<int> > tokens_info = find_tokens_positions_range(handle);

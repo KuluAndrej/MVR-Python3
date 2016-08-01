@@ -27,7 +27,7 @@ def data_fitting(data_to_fit, config):
 
     Author: Kulunchakov Andrei, MIPT
     """
-    print("Start data fitting\nNote that the first iteration takes a bit longer than the others")
+    print("Start data fitting. Note that the first iteration takes a bit longer than the others")
 
     # some useful constants for stagnation recognition
     lowest_possible_rate = eval(config["stagnation"]["lowest_possible_rate"])
@@ -45,6 +45,7 @@ def data_fitting(data_to_fit, config):
         CreateBigRandomInitPopulation.create_big_random_init_population(config)
 
     population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
+
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         print_intro(config, i)
         if i > 0:
@@ -59,10 +60,10 @@ def data_fitting(data_to_fit, config):
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
         population.unique_models_selection()
 
-        population = RuleSimplifier.rule_simplify(population)
+        #population = RuleSimplifier.rule_simplify(population)
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
-        population.unique_models_selection()
+        #population.unique_models_selection()
 
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)

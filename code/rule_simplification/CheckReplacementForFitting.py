@@ -14,8 +14,8 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
     Author: Kulunchakov Andrei
 
     """
-
-    print_intro(pattern, replacement)
+    if verbose:
+        print_intro(pattern, replacement)
 
     is_mse_permissible = zeros(int(config["rules_creation"]["iterations_to_check_fitness"]))
     errors             = zeros(int(config["rules_creation"]["iterations_to_check_fitness"]))

@@ -22,7 +22,7 @@ def creator():
     dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
     # load initial superpositions
-    init_models_for_rules = InitModelsLoader.retrieve_init_models(config)
+    init_models_for_rules = InitModelsLoader.retrieve_init_models(config)[:]
     model_preparation(init_models_for_rules)
 
     if config['rules_creation']['regime'] == "create_patterns":
@@ -40,9 +40,12 @@ def model_preparation(init_models_for_rules):
     """
     We set some attributes important for futher creation
     """
+
     init_models_for_rules = Parametrizer.parametrize_population(init_models_for_rules)
     DefConstructor.add_def_statements_attributes(init_models_for_rules)
 
     return init_models_for_rules
+
+
 
 creator()

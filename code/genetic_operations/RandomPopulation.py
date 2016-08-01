@@ -19,7 +19,7 @@ def random_population(number_of_variables, config, is_initial_load):
     """
     number_of_models = int(config["model_generation"]["random_models_number"])
     maximum_required_size = int(config["model_generation"]["random_models_complexity"])
-    required_size = randint(10,maximum_required_size)
+    required_size = randint(2,maximum_required_size)
     if is_initial_load:
         number_of_models = int(config["init_rand_models"]["number_of_init_random_models"])
         required_size = int(config["init_rand_models"]["size_init_random_models"])

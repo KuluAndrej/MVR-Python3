@@ -4,9 +4,10 @@
 
 import itertools, re
 import code.input_output.SavePopulationToFile as SavePopulationToFile
-
+from code.modules.model_reconstructer import model_reconstruct
 import code.model_processing.ExtractAllSubtreesFromTree as ExtractAllSubtreesFromTree
 import code.input_output.LoadPrimitives as LoadPrimitives
+
 def generate(filename, height = 4, number_of_variables = 1):
     """
     Generate all possible models which syntax tree's height is equal to 'height'
@@ -27,8 +28,13 @@ def generate(filename, height = 4, number_of_variables = 1):
         degrees = get_degrees_of_nodes(eval(tree)[1])
         variants_of_tokens = create_tokens_for_all_matching_trees(grouped_primitives, degrees)
         for tokens in variants_of_tokens:
-            created_models.append(create_model(eval(tree)[1], tokens, current_root = [0]))
+            model = create_model(eval(tree)[1], tokens, current_root = [0])
+            model = re.sub(r'X\[(\d+)\]', r'x\1', model)
+            model = model_reconstruct(model)
+            model = re.sub(r'x(\d+)', r'X[\1]', model)
+            created_models.append(model)
 
+    created_models = list(set(created_models))
     print(len(created_models),'models are generated')
     SavePopulationToFile.save_population_to_file(created_models, None, None, None, filename=filename)
 
@@ -77,8 +83,8 @@ def divide_primitives_according_arities(primitives, number_of_variables):
         set_divided_primitives[primitive.number_args].append(primitive)
 
     # process the functions with zero arity
-    set_divided_primitives[0] = ['X['+str(i)+']' for i in range(number_of_variables)]
-
+    set_divided_primitives[0].extend(['X['+str(i)+']' for i in range(number_of_variables)])
+    print(set_divided_primitives[0])
     return set_divided_primitives
 
 
@@ -87,7 +93,10 @@ def create_model(str_tree, tokens, current_root = [0]):
     if str_tree:
         handle = tokens[current_root[0]] + '('
     else:
-        return tokens[current_root[0]]
+        if type(tokens[current_root[0]]) == type(''):
+            return tokens[current_root[0]]
+        else:
+            return tokens[current_root[0]] + '()'
 
     is_first_subling = True
 
@@ -99,6 +108,7 @@ def create_model(str_tree, tokens, current_root = [0]):
                 handle += ','
             else:
                 is_first_subling = False
+
             handle = handle + create_model(elem, tokens, current_root)
 
     return handle + ')'
@@ -116,3 +126,13 @@ print(create_model(l, s[0]))
 """
 
 #generate('data/Rules creation files/init_patterns.txt', height = 4, number_of_variables = 1)
+#s = ExtractAllSubtreesFromTree.generate_all_possible_tree(4)
+#print(s)
+"""
+primitives = LoadPrimitives.load()
+grouped_primitives = divide_primitives_according_arities(primitives, 1)
+tree = '[1,[1,[1,[]]]]'
+degrees = get_degrees_of_nodes(eval(tree)[1])
+variants_of_tokens = create_tokens_for_all_matching_trees(grouped_primitives, degrees)
+print(create_model([1, [1, []]], variants_of_tokens[3], current_root = [0]))
+"""
