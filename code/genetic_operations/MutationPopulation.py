@@ -29,4 +29,6 @@ def mutate_population(population, number_of_variables, config):
     listOfNewModels = StringToModel.strings_to_population(new_generated_superpositions)
     list(map(lambda model: setattr(model, 'where_from', "mutate"), listOfNewModels))
 
+    listOfNewModels = [model for model in listOfNewModels if len(model) <= len(model) <= int(config["model_generation"]["maximum_complexity"])]
+
     return listOfNewModels

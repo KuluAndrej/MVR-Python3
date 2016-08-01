@@ -30,5 +30,5 @@ def random_population(number_of_variables, config, is_initial_load):
     # convert new strings to a population and append it to the existed one
     listOfNewModels = StringToModel.strings_to_population(list_of_new_handles)
     list(map(lambda model: setattr(model, 'where_from', "random"), listOfNewModels))
-
+    listOfNewModels = [model for model in listOfNewModels if len(model) <= len(model) <= int(config["model_generation"]["maximum_complexity"])]
     return listOfNewModels

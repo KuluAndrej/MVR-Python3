@@ -22,7 +22,7 @@ def create(model, config):
 
 
     dependent_var = CalculatorModelValues.calculate_model_values(model, grid.T)
-    if not dependent_var.shape:
+    if type(dependent_var)==type(1) or not dependent_var.shape:
         dependent_var = dependent_var * np.ones(grid.shape)
 
     dependent_var = dependent_var.reshape(-1,1)

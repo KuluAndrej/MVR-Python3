@@ -59,7 +59,6 @@ pair<vector<PrimitiveFunction>, vector<int> > extract_tokens_from_handle(const s
 	for (int i = 0; i < primitives.size(); ++i) {
 		mapNamePrimitive.insert(make_pair(primitives[i].name, primitives[i]));
 	}
-	
 	// now traverse the 'handle'; extract tokens and their positions
 	vector<PrimitiveFunction> tokens_from_handle;
 	vector<int> first_positions;

@@ -33,7 +33,7 @@ import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
 import matplotlib.pyplot as plt
-
+"""
 file = open("data/Rules creation files/init_patterns.txt", 'r')
 file_processed = open("data/Rules creation files/processed.txt", 'r')
 
@@ -58,14 +58,16 @@ file.close()
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-replacement = 'parabola_(X[0])'
-pattern = "sinc_(parabola_(expl_(X[0])))"
+pattern = 'bump_(sinha_(unity_()))'
+replacement = "sinha_(X[0])"
 
 population = Population([Model(pattern), Model(replacement)])
+for model in population:
+    print(model.number_of_terminals)
 population = Parametrizer.parametrize_population(population)
+
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, False)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
 print(b)
-"""

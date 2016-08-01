@@ -28,7 +28,7 @@ def creator(pattern, dict_tokens_info, config):
 
         for replacement in best_found_replacements:
             if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False):
-                    SaveRule.store(pattern, replacement, config, verbose=True)
+                SaveRule.store(pattern, replacement, config, verbose=True)
 
     print("...processed")
 

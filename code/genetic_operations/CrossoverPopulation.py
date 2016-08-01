@@ -35,4 +35,6 @@ def crossover_population(population, config):
         setattr(model, 'parents', [parents[ind - ind%2], parents[ind - ind%2 + 1]])
     list(map(lambda model: setattr(model, 'where_from', "cross"), listOfNewModels))
 
+    listOfNewModels = [model for model in listOfNewModels if len(model) <= len(model) <= int(config["model_generation"]["maximum_complexity"])]
+
     return listOfNewModels

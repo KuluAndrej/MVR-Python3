@@ -148,7 +148,7 @@ def zero_():
     zero_.InitParams = []
     zero_.BoundsParams = ([],[])
 
-    return 1
+    return 0
 
 def parameter_(w0):
     parameter_.NumParam = 1

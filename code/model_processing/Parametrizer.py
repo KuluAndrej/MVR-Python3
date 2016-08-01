@@ -27,6 +27,7 @@ def parametrize_population(population):
     # specify the number of tokens which models consist of
     list(map(lambda ind: setattr(population[ind], 'number_of_tokens', find_number_of_tokens(population[ind].handle)), range(len(population))))
 
+
     return population
 
 

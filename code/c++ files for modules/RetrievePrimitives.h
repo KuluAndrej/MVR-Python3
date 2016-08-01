@@ -157,6 +157,7 @@ void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<Pr
 	}
 	
 	for (size_t i = 0; i < primitives.size(); ++i) {
+		
 		file_primitives_info_for_optimization_txt << primitives[i].name << " " << primitives[i].initParams << " " 
 							<< primitives[i].boundsParams << "\n";
 	}

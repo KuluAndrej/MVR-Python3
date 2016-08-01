@@ -17,6 +17,11 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
     if verbose:
         print_intro(pattern, replacement)
 
+    # If the pattern is a constant function, we do not permit our replacement function to have terminals
+    if pattern.number_of_terminals == 0 and replacement.number_of_terminals > 0:
+        return False
+
+
     is_mse_permissible = zeros(int(config["rules_creation"]["iterations_to_check_fitness"]))
     errors             = zeros(int(config["rules_creation"]["iterations_to_check_fitness"]))
     threshold          = eval(config["rules_creation"]["threshold"])
@@ -33,6 +38,7 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
         #new_pattern = pattern
 
         data_to_fit = CreateDataToFit.create(pattern, config)
+
         fitted_values = FitModelToData.fit(replacement, data_to_fit, dict_tokens_info, config, do_plot)
 
         is_mse_permissible[i] = norm(data_to_fit[:,0] - fitted_values) < threshold
