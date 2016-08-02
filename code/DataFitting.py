@@ -61,10 +61,10 @@ def data_fitting(data_to_fit, config):
 
         population.unique_models_selection()
 
-        #population = RuleSimplifier.rule_simplify(population)
+        population = RuleSimplifier.rule_simplify(population)
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
-        #population.unique_models_selection()
+        population.unique_models_selection()
 
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)

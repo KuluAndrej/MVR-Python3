@@ -37,4 +37,5 @@ def crossover_population(population, config):
 
     listOfNewModels = [model for model in listOfNewModels if len(model) <= len(model) <= int(config["model_generation"]["maximum_complexity"])]
 
+
     return listOfNewModels

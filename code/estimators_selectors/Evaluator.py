@@ -66,6 +66,7 @@ def evaluator(population, data_to_fit, config):
                             popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
                                             p0 = model.curve_fit_init_params, \
                                             ftol=0.005, xtol=0.002)
+
                     except RuntimeError:
                         popt = [nan for i in range(model.number_of_parameters)]
                     except RuntimeWarning:
