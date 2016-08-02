@@ -16,6 +16,7 @@ def parametrize_population(population):
     # extract handles of the superpositions from the population and parametrize them
     # launch only for those of models, which have no set sufficient attributes
 
+
     parametrizing_outputs = [parametrizing(model.handle) if not hasattr(model, 'param_handle') else (model.param_handle, model.number_of_parameters) for model in population]
     # process the outputs of parametrizing
     param_handles_list = [StringIntPairObject.first if not type(StringIntPairObject)==type(()) else StringIntPairObject[0] for StringIntPairObject in parametrizing_outputs]

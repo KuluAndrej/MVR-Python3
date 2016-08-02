@@ -41,6 +41,7 @@ pair<string, int> parametrizing(const char* handle_char) {
 
 	// extract tokens presented in the superposition	
 	pair<vector<PrimitiveFunction>, vector<int> > info_tokens = extract_tokens_from_handle(handle);
+
 	vector<PrimitiveFunction> tokens_from_handle = info_tokens.first; 
 
 	vector<int> first_positions = info_tokens.second;

@@ -12,16 +12,16 @@ from code.modules.model_simplifier_by_rules import simplify_by_rules
 from code.modules.model_reconstructer import model_reconstruct
 import re
 
-def rule_simplify(population):
-
+def rule_simplify(population, config):
+    rules_filename = construct_filename(config)
     fopen = open('log.txt','w')
     for ind, model in enumerate(population):
         handle = model.handle
         handle = re.sub(r'X\[(\d+)\]', r'x\1', handle)
         backup_handle = handle
         handle = model_reconstruct(handle)
-        handle = simplify_by_rules(handle)
-            # here we fix some freaky bug
+        handle = simplify_by_rules(handle, rules_filename)
+        # here we fix some freaky bug
         # only the God knows the reasons of it
         while handle.find('x1') != -1:
             ind = handle.find('x1')
@@ -42,3 +42,9 @@ def rule_simplify(population):
             setattr(population[ind], "backup_handle", backup_handle)
 
     return population
+
+def construct_filename(config):
+    if config["flag_type_of_processing"]["flag"] == "rules_creation":
+        return config["rules_creation"]["rules_folder"] + config["rules_creation"]["rules_filename"]
+    else:
+        return config["rules_creation"]["rules_used_in_fitting"]

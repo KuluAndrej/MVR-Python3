@@ -1,7 +1,0 @@
-frac2_(expl_(linear_(plus2_(x0,x0))),x0)
-plus2_(x0,normal_(linear_(x0)))
-frac2_(x0,sinla_(linear_(plus2_(x0,x0))))
-normal_(linear_(plus2_(x0,x0)))
-lnl_(linear_(times2_(x0,x0)))
-frac2_(x0,sinla_(linear_(x0)))
-normal_(plus2_(x0,x0))

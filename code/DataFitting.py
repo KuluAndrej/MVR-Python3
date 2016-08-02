@@ -61,7 +61,7 @@ def data_fitting(data_to_fit, config):
 
         population.unique_models_selection()
 
-        population = RuleSimplifier.rule_simplify(population)
+        population = RuleSimplifier.rule_simplify(population, config)
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
         population.unique_models_selection()

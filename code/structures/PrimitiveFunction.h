@@ -13,6 +13,7 @@ struct PrimitiveFunction {
     int numberArguments;
     std::string initParams;
     std::string boundsParams;
+    bool commutativeness;
 
     
     PrimitiveFunction& operator =(const PrimitiveFunction& a) {

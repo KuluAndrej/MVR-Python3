@@ -53,12 +53,13 @@ vector<string> read_dummy_linkers() {
 pair<map<string, int>, int> read_info_primitives () {
   int minimum_code_for_var;
   bool isset = false;
-  ifstream input_stream("data/numbParam.txt");
+  ifstream input_stream("code/primitives/Primitives.txt");
   map<string, int> map_tokens;
   
   int useless_feature1;
   string token;
   int counter = 0;
+  input_stream >> token >> token >> token >> token;
   while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
     map_tokens.insert(make_pair(token, counter));
@@ -78,13 +79,14 @@ pair<map<string, int>, int> read_info_primitives () {
 
 
 pair<map<string, int>, vector<int> > read_info_commutativenes () {
-  ifstream input_stream("data/numbParam.txt");
+  ifstream input_stream("code/primitives/Primitives.txt");
   map<string, int> map_tokens;
   vector<int> commutativeness;
   
   int useless_feature1, is_commutative;
   int counter = 0;
   string token;
+  input_stream >> token >> token >> token >> token;
   while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> is_commutative;
     commutativeness.push_back(is_commutative);
@@ -99,7 +101,7 @@ pair<map<string, int>, vector<int> > read_info_commutativenes () {
 
 
 pair<vector<string>, vector<int> > retrieve_tokens() {
-  ifstream input_stream("data/numbParam.txt");
+  ifstream input_stream("code/primitives/Primitives.txt");
   
   int useless_feature;
   vector<string> tokens;
@@ -107,7 +109,7 @@ pair<vector<string>, vector<int> > retrieve_tokens() {
 
   string token_input;
   int number_of_parameters_input;
-
+  input_stream >> token_input >> token_input >> token_input >> token_input;
   while (true) {
     input_stream >> token_input >> number_of_parameters_input >> useless_feature >> useless_feature;
     

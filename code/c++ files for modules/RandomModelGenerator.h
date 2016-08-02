@@ -21,10 +21,7 @@ Author: Kulunchakov Andrei
 #include "RetrievePrimitives.h"
 #include "boost/lexical_cast.hpp"
 #include "../structures/Superposition.h"
-#include <boost/python/def.hpp>
-#include <boost/python/module.hpp>
 
-namespace bp = boost::python;
 using namespace std;  
 
 // return sorted vector of unique values of 'initial_vector'
@@ -154,7 +151,3 @@ string random_model_generation(int number_variables, int required_size) {
 }
 
 
-BOOST_PYTHON_MODULE(random_model_generator) {
-    bp::def("random_model_generation", random_model_generation);
-    	
-}

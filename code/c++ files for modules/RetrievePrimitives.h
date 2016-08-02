@@ -119,8 +119,29 @@ string extract_vector_bounds_params (ifstream& input_file, const string& name) {
 	return matching_results[0];
 }
 
-// Check is the version of 'Primitives.py' is newer than 'Primitives.txt'
+// we extract flag responsible for commutativeness of the primitive as mathematical functions
+bool extract_commutativeness_flag(ifstream& input_file, const string& name) {
+	boost::smatch matching_results;
+	string line;
+	
+	getline(input_file , line);
+	while ( !boost::regex_match(line, matching_results, boost::regex("[\t ]+[\\w_]+.commutative[ ]+=[ ]+(True|False)[ ]*" ) ) ) {		
+    	getline(input_file , line);
+    }
 
+    boost::regex_search(line,  matching_results, boost::regex("(True|False)") ); 
+    string output_string = matching_results[0];
+
+	size_t found = output_string.find(" ");
+	if (found != string::npos) {
+		throw name + string(" token contains excessive blank spaces in the BoundsParams field\n");
+	}
+	return matching_results[0] == "True";
+
+}
+
+
+// Check is the version of 'Primitives.py' is newer than 'Primitives.txt'
 bool checker_version_of_py_file(const string& FILE_PRIMITIVES) {	
 	boost::filesystem::path current_path = boost::filesystem::current_path();
 	boost::filesystem::path current_path_copy = current_path;
@@ -148,12 +169,12 @@ void loader_primitives(string FILE_PRIMITIVES_WITHOUT_EXTENSION, const vector<Pr
   	file_primitives_txt.open ( FILE_PRIMITIVES_TXT.c_str() );
   	file_primitives_info_for_optimization_txt.open(FILE_PRIMITIVES_INFO_FOR_OPTIMIZATION_TXT.c_str());
 
-	file_primitives_txt << "#Name #NumPar #NumArg\n";
+	file_primitives_txt << "#Name #NumPar #NumArg #IsComm\n";
 	file_primitives_info_for_optimization_txt << "#Name #InitParams #BoundsParams\n";
 
 	for (size_t i = 0; i < primitives.size(); ++i) {
 		file_primitives_txt << primitives[i].name << " " << primitives[i].numberParameters << " " 
-												  << primitives[i].numberArguments << "\n";
+						    << primitives[i].numberArguments << " " << primitives[i].commutativeness << "\n";
 	}
 	
 	for (size_t i = 0; i < primitives.size(); ++i) {
@@ -202,6 +223,7 @@ vector< PrimitiveFunction > parse_py_file_with_primitives(const string& FILE_PRI
 				primitive.numberArguments  = extract_parameter( file_primitives, primitive.name);
 				primitive.initParams 	   = extract_vector_init_params (file_primitives, primitive.name);
 				primitive.boundsParams 	   = extract_vector_bounds_params(file_primitives, primitive.name);
+				primitive.commutativeness  = extract_commutativeness_flag(file_primitives, primitive.name);
 
 				primitives.push_back(primitive);
 
@@ -239,7 +261,7 @@ vector< PrimitiveFunction > retriever() {
   		getline(file_primitives, primitive.name);
   		// retrieve primitives
   		
-  		while (file_primitives >> primitive.name >> primitive.numberParameters >> primitive.numberArguments) {
+  		while (file_primitives >> primitive.name >> primitive.numberParameters >> primitive.numberArguments >> primitive.commutativeness) {
   			primitives.push_back(primitive);
   		}
   		file_primitives.close();
