@@ -101,16 +101,17 @@ void print_vector(vector<int> to_print){
 }
 
 string string_constructor_unparametred(vector<vector<int> >& matr, vector<string>& tokens, vector<int>& encoding, int root) {
-
   if (tokens[encoding[root]][0] == 'x' && (tokens[encoding[root]][1] >= '0' ) && 
       tokens[encoding[root]][1] <= '9') {    
     return tokens[encoding[root]];
   }
   string s = tokens[encoding[root]] + "(";
-  for (int i = 0; i < matr[root].size() - 1; ++i) {
+  for (int i = 0; i < int(matr[root].size()) - 1; ++i) {
     s = s + string_constructor_unparametred(matr, tokens, encoding, matr[root][i]) + ",";
   }
-  s = s + string_constructor_unparametred(matr, tokens, encoding, matr[root][matr[root].size() - 1]);
+  if (matr[root].size() > 0) {
+    s = s + string_constructor_unparametred(matr, tokens, encoding, matr[root][matr[root].size() - 1]);
+  }
   s = s + ")";
   return s;
 }

@@ -25,9 +25,14 @@ class Population:
         final_str = ''
         for ind, model in enumerate(self.Models):
             final_str += repr(ind) + ". " + repr(model) + "\n"
+            """
             if hasattr(model, 'optimal_params'):
                 final_str += str([item for item in model.optimal_params])[1:-1]
             final_str += "\n"
+            if hasattr(model, 'MSE'):
+                final_str += str(model.MSE)
+            final_str += "\n"
+            """
         return final_str
 
     def __setitem__(self, index, model):
@@ -38,13 +43,15 @@ class Population:
     def sort(self):
         self.Models = sorted(self.Models, key=lambda model: model.MSE)
 
-    def sort(self,type_of_selection,structural_penalty):
+    def sort(self,type_of_selection,structural_penalty=0):
         if type_of_selection == 'MSE':
-            self.Models = sorted(self.Models, key=lambda model: model.MSE)
+            self.Models = sorted(self.Models, key=lambda model: (model.MSE, len(model), model.number_of_parameters))
         elif type_of_selection == 'Error_structural':
-            self.Models = sorted(self.Models, key=lambda model: model.MSE * (1 + structural_penalty * model.number_of_tokens) )
+            self.Models = sorted(self.Models, key=lambda model: model.MSE * (1 + structural_penalty * len(model)) )
         elif type_of_selection == 'Penalize_params':
             self.Models = sorted(self.Models, key=lambda model: model.Penalized_error)
+        elif type_of_selection == 'len':
+            self.Models = sorted(self.Models, key=lambda model: len(model))
 
     def __getitem__(self, key):
         if isinstance (key, slice):
@@ -53,10 +60,12 @@ class Population:
             return self.Models[key]
         else:
             raise (TypeError, "Invalid argument type.")
+    def __bool__(self):
+        return bool(self.Models)
 
     def append(self,listOfModels):
         if isinstance(listOfModels, Model):
-            self.Models.extend(listOfModels)
+            self.Models.append(listOfModels)
         if isinstance(listOfModels, list) and all(isinstance(model, Model) for model in listOfModels):
             self.Models.extend(listOfModels)
 

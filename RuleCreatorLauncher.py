@@ -13,6 +13,8 @@ import code.input_output.InitModelsLoader as InitModelsLoader
 import code.rule_simplification.PatternsCreator as PatternsCreator
 import code.rule_simplification.ReplacementsCreator as ReplacementsCreator
 import code.model_processing.DefConstructor as DefConstructor
+import code.rule_simplification.RuleSimplifier as  RuleSimplifier
+from code.structures.Population import Population
 
 def creator():
 
@@ -31,8 +33,10 @@ def creator():
 
     elif config['rules_creation']['regime'] == "create_replacements":
         print(len(init_models_for_rules),'replacements are to be processed')
-        for model in init_models_for_rules:
-            ReplacementsCreator.creator(model, dict_tokens_info, config)
+        for ind, model in enumerate(init_models_for_rules):
+            model = RuleSimplifier.rule_simplify(Population([model]), config)[0]
+            if not model in init_models_for_rules[0:ind]:
+                ReplacementsCreator.creator(model, dict_tokens_info, config)
 
 
 

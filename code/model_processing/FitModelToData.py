@@ -4,6 +4,7 @@ import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptim
 import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 import matplotlib.pyplot as plt
 import  code.model_processing.DefConstructor as DefConstructor
+import code.estimators_selectors.QualityEstimator as QualityEstimator
 from numpy import zeros
 
 def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True):
@@ -20,10 +21,11 @@ def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True):
     """
     population = [model]
     ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
-
     population = Parametrizer.parametrize_population(population)
     DefConstructor.add_def_statements_attributes(population)
     population = Evaluator.evaluator(population, data_to_fit, config)
+    population = QualityEstimator.quality_estimator(population, data_to_fit, config)
+
     fitted = CalculatorModelValues.calculate_model_values(population[0], data_to_fit[:,1:].T)
 
     if do_plot:

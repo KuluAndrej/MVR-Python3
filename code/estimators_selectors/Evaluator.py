@@ -61,11 +61,18 @@ def evaluator(population, data_to_fit, config):
                         if bounds_included:
                             popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
                                             p0 = model.curve_fit_init_params, bounds=model.curve_fit_bounds, \
-                                            ftol=0.005, xtol=0.002)
+                                            ftol=0.0005, xtol=0.0002)
                         else:
-                            popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
-                                            p0 = model.curve_fit_init_params, \
-                                            ftol=0.005, xtol=0.002)
+                            try:
+                                popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
+                                                p0 = model.curve_fit_init_params, \
+                                                ftol=0.0005, xtol=0.0002)
+                            except TypeError:
+                                print(model)
+                                print(model.where_from)
+                                if model.where_from == 'cross':
+                                    print(model.parents)
+                                raise
 
                     except RuntimeError:
                         popt = [nan for i in range(model.number_of_parameters)]

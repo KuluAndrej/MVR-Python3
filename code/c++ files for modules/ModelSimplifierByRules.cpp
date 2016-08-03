@@ -48,10 +48,9 @@ void printm(vector<vector<int> > v) {
     printv(v[i]);
   }  
 }
-
 bool check_for_matching(vector<vector<int> >& pattern_matr, vector<int>& pattern_encodings, vector<int>& substitutions, vector<int>& equivalence_classes,
   const vector<vector<int> >& matr, const vector<int>& encodings,  int root, int pattern_root) {
-  if (pattern_matr[pattern_root].size() == 0) {  
+  if (pattern_matr[pattern_root].size() == 0 and pattern_encodings[pattern_root] >= MINIMUM_CODE_OF_VARIABLES) {  
     if (substitutions[pattern_encodings[pattern_root] - MINIMUM_CODE_OF_VARIABLES] ==  UNFILLED_SIBSTITUTION) {
       substitutions[pattern_encodings[pattern_root] - MINIMUM_CODE_OF_VARIABLES] = equivalence_classes[root];    
     } else {
@@ -73,6 +72,7 @@ bool check_for_matching(vector<vector<int> >& pattern_matr, vector<int>& pattern
 return true;
 }
 
+
 vector<int> find_representatives_of_equivalence_classes(vector<int>& equivalence_classes) {
   vector<int> representatives(max_in_vector(equivalence_classes) + 1, -1);
   for (int i = 0; i < equivalence_classes.size(); ++i) {
@@ -85,7 +85,7 @@ vector<int> find_representatives_of_equivalence_classes(vector<int>& equivalence
 
 
 
-void replaceAll( string &s, const string &search, const string &replace ) {
+string replaceAll( string &s, const string &search, const string &replace ) {
     for( int pos = 0; ; pos += replace.length() ) {
         // Locate the substring to replace
         pos = s.find( search, pos );
@@ -96,6 +96,7 @@ void replaceAll( string &s, const string &search, const string &replace ) {
         s = eraser(s, pos, search.length() );
         s.insert( pos, replace );
     }
+    return s;
 }
 
 
@@ -114,13 +115,12 @@ string launch_substitute(vector<vector<int> >& model_matr, vector<int>& model_en
     string substring_in_model = string_constructor_unparametred(model_matr, tokens, model_encoding, representatives[substitutions[i]]);
     
     string var = "x" + SSTR( i );
-    replaceAll(replace_handle, var, substring_in_model);    
+    replace_handle = replaceAll(replace_handle, var, substring_in_model);    
   }  
   return replace_handle;
 }
 
 string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhandle) {
-	
   pair<map<string, int>, int> tokens_info = read_info_primitives ();
   map<string, int> map_tokens = tokens_info.first;
   MINIMUM_CODE_OF_VARIABLES = tokens_info.second;
@@ -141,6 +141,11 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
   vector<string> tokens = tokens_data.first;
   // vector of substitutions for variables from patter trees
   for (int i = 0; i < number_of_rules; ++i) {
+
+    if (rules_pattern[i].size() > modelhandle.size()){
+      continue;
+    }
+
     pair<int, int> token_counters = find_number_of_tokens(rules_pattern[i]);
     
     pair<vector<vector<int> >, vector<int> > pattern_data  = create_incid_matrix_tokens(map_tokens, rules_pattern[i]);
@@ -158,16 +163,15 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
         string inserted_submodel = launch_substitute(model_matr, model_encoding, rules_replace[i], substitutions, representatives, map_tokens, tokens);
         
         string substituted_string = string_constructor_unparametred(model_matr, tokens, model_encoding, canditates_for_search[j]);
-        replaceAll(modelhandle, substituted_string, inserted_submodel);
+        modelhandle = replaceAll(modelhandle, substituted_string, inserted_submodel);
         model_data = create_incid_matrix_tokens(map_tokens, modelhandle);            
         model_matr = model_data.first;  
         model_encoding = model_data.second;
         equivalence_classes = fill_equivalence_classes (model_matr, model_encoding);
         representatives = find_representatives_of_equivalence_classes(equivalence_classes);     
-
         // if the model is simplified, the rules rejected before could be applicable now
         // therefore, we check each rule again
-        i = 0;      
+        i = -1;      
         break;      
       }    
     }
@@ -180,27 +184,29 @@ string Simplifier(pair<vector<string>, vector<string> >& rules, string modelhand
 
 string simplify_by_rules(const string handle, const string filename){
   try {
-  	ifstream file_rules_txt;
-  	file_rules_txt.open(filename.c_str());
-  	
+    
+    ifstream file_rules_txt;
+  	file_rules_txt.open("data/Rules_creation_files/received_rules.txt");
   	vector<string> rules_pattern;
   	vector<string> rules_replace;
 
   	// extract rules from text file
-  	string giglet_string;
+    string giglet_string_pattern, giglet_string_replace;
+  	
   	while( true) {
-  		file_rules_txt >> giglet_string;
-    	rules_pattern.push_back(giglet_string);
-    	file_rules_txt >> giglet_string;
-    	rules_replace.push_back(giglet_string);
-
+      file_rules_txt >> giglet_string_pattern;
+      file_rules_txt >> giglet_string_replace;
+      if (giglet_string_replace != giglet_string_pattern) {
+        rules_pattern.push_back(giglet_string_pattern);      
+        rules_replace.push_back(giglet_string_replace);
+      } else {
+        break;
+      }
       if(file_rules_txt.eof()) break;
-  	}
+    }    
     file_rules_txt.close();
-
   	pair<vector<string>, vector<string> > rules = make_pair(rules_pattern, rules_replace);
     string answer = Simplifier(rules, handle);   
-    
     return answer;
   }
   catch(...) {

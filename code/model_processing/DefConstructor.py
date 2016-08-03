@@ -1,5 +1,8 @@
 from code.primitives.Primitives import *
 
+from code.structures.Population import Population
+from code.structures.Model import Model
+
 def def_constructor(model):
     """
     Constructs a python def definition for 'model'.
@@ -22,5 +25,8 @@ def def_constructor(model):
     return def_statement
 
 def add_def_statements_attributes(population):
-    for model in population:
-        setattr(model, "def_statement", def_constructor(model))
+    if isinstance(population,Model):
+        setattr(population, "def_statement", def_constructor(population))
+    elif isinstance(population,Population):
+        for model in population:
+            setattr(model, "def_statement", def_constructor(model))

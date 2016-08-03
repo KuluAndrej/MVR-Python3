@@ -29,13 +29,8 @@ def data_fitting(data_to_fit, config):
     """
     print("Start data fitting. Note that the first iteration takes a bit longer than the others")
 
-    # some useful constants for stagnation recognition
-    lowest_possible_rate = eval(config["stagnation"]["lowest_possible_rate"])
-    window_size          = eval(config["stagnation"]["window_size"])
-    init_iteration       = eval(config["stagnation"]["init_iteration"])
     # measurements stands for plotting the dynamics of MSE
     measurements = zeros(int(config["accuracy_requirement"]["max_number_cycle_count"]) + 1)
-
 
     dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
     number_of_variables = data_to_fit.shape[-1] - 1
@@ -45,15 +40,14 @@ def data_fitting(data_to_fit, config):
         CreateBigRandomInitPopulation.create_big_random_init_population(config)
 
     population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
+    if not population:
+        return population
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
         print_intro(config, i)
         if i > 0:
             measurements[i] = population[0].MSE
 
-        if i > init_iteration and (measurements[max(i - window_size,0)] - measurements[i])/measurements[i] < lowest_possible_rate:
-            print("break on iteration #", i, "because of stagnation")
-            break
 
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
@@ -65,7 +59,6 @@ def data_fitting(data_to_fit, config):
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
         population.unique_models_selection()
-
 
         ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
         population = Parametrizer.parametrize_population(population)

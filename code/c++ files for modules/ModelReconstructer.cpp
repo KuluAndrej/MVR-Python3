@@ -28,12 +28,10 @@ Author: Kulunchakov Andrei
 
 using namespace std;
 
-/*
 #include <boost/python/def.hpp>
 #include <boost/python/module.hpp>
 
 namespace bp = boost::python;
-*/
 
 using namespace std;  
 const int UNFILLED_INT = -1;
@@ -111,12 +109,11 @@ string model_reconstruct(string modelhandle) {
   return modelhandle;
 }
 
-/*
 BOOST_PYTHON_MODULE(model_reconstructer) {
 	bp::def("model_reconstruct", model_reconstruct);
     	
-}*/
-
+}
+/*
 int main(){
   //string s = "plus2_(minus2_(x0,x0),hyperbola_(linear_(parabola_(x0))))";
   //string s = "inv_(hyperbola_(hyperbola_(linear_(parabola_(x0))))))";
@@ -124,3 +121,4 @@ int main(){
   cout << s << "-->\n" << model_reconstruct(s) << '\n';
   return 0;
 }
+*/

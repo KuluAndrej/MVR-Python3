@@ -14,6 +14,9 @@ using namespace std;
 
 const int NUMBER_OF_TOKENS = 50;  
 
+
+
+
 set<string> read_special_tokens(const string type) {
   set<string> linkers;
   string filename = string("data/Patterns Creation/tokens_") + type + string(".txt");
@@ -51,7 +54,6 @@ vector<string> read_dummy_linkers() {
 }
 
 pair<map<string, int>, int> read_info_primitives () {
-  int minimum_code_for_var;
   bool isset = false;
   ifstream input_stream("code/primitives/Primitives.txt");
   map<string, int> map_tokens;
@@ -63,18 +65,17 @@ pair<map<string, int>, int> read_info_primitives () {
   while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
     map_tokens.insert(make_pair(token, counter));
-    if (!isset && token[0] == 'x' && (token.size() > 1) &&  isdigit(token[1])) {
-      minimum_code_for_var = counter;
-      isset = true;
-    }
     counter++;
 
     if(input_stream.eof()) break;
   }
-  
+  map_tokens.insert(make_pair(string("x0"), counter));
+  counter++;
+  map_tokens.insert(make_pair(string("x1"), counter));
+  counter++;
 
   input_stream.close();
-  return make_pair(map_tokens, minimum_code_for_var);
+  return make_pair(map_tokens, map_tokens.size()-2);
 }
 
 

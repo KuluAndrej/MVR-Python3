@@ -31,24 +31,36 @@ import code.ObserverTheBestFunction as ObserverTheBestFunction
 import code.input_output.SavePopulationToFile as SavePopulationToFile
 import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
-import time
+import time, re
 import matplotlib.pyplot as plt
+from code.modules.model_reconstructer import model_reconstruct
 """
-file = open("data/Rules creation files/init_patterns.txt", 'r')
-file_processed = open("data/Rules creation files/processed.txt", 'r')
+fname = "data/Rules_creation_files/init_patterns.txt"
+file = open(fname, 'r')
+file_processed = open("data/Rules_creation_files/processed.txt", 'r')
 
 models = file.readlines()
 processed_models = file_processed.readlines()
 models = [item for item in models if not item in processed_models]
 models = list(map(Model, models))
+
+
+
+for ind, model in enumerate(models):
+    models[ind].handle = re.sub(r'x(\d+)', r'X[\1]', model_reconstruct(model.second_handle))
+
+
+
 models = [item for item in models if len(item) > 1 and item]
 models = sorted(models, key =  lambda x: len(x))
 
 population = Population(models)
+population.unique_models_selection()
+population.sort("len")
 population = Parametrizer.parametrize_population(population)
 
 file.close()
-file = open("data/Rules creation files/init_patterns.txt", 'w')
+file = open(fname, 'w')
 
 for model in population:
     file.write(model.handle)
@@ -58,8 +70,8 @@ file.close()
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'bump_(sinha_(unity_()))'
-replacement = "sinha_(X[0])"
+pattern = 'normal_(parameter_())'
+replacement = "parameter_()"
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -71,3 +83,4 @@ print('pattern =', population[0], "replacement =", population[1])
 
 b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
 print(b)
+

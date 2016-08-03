@@ -46,4 +46,5 @@ def construct_the_filename_with_init_models(config):
     script_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
     parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+
     return parent_dir + DATA_LOCAL_PATH

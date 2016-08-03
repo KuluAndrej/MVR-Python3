@@ -3,8 +3,10 @@ import code.rule_simplification.CreateDataToFit as CreateDataToFit
 import code.DataFitting as DataFitting
 import code.rule_simplification.CheckReplacementForFitting as CheckReplacementForFitting
 import code.input_output.SaveRule as SaveRule
-
+from code.structures.Population import Population
 from configparser import ConfigParser
+
+
 def creator(pattern, dict_tokens_info, config):
     """
     Gets a 'model' and creates rules, where this model acts as the 'replacement' model.
@@ -22,15 +24,21 @@ def creator(pattern, dict_tokens_info, config):
 
     data_to_fit = CreateDataToFit.create(pattern, config)
     tuned_config = tune_config_for_replacement_fitting(config, pattern)
-
     for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
         best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)
+        fitting_replacements = Population([])
+        if best_found_replacements:
+            for replacement in best_found_replacements:
+                if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False):
+                    fitting_replacements.append(replacement)
 
-        for replacement in best_found_replacements:
-            if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False):
-                SaveRule.store(pattern, replacement, config, verbose=True)
+            if fitting_replacements:
+                SaveRule.store(pattern, fitting_replacements[0], config, verbose=True)
 
     print("...processed")
+
+def choose_best_replacement(fitting_replacements):
+    fitting_replacements.sort("MSE",0)
 
 def tune_config_for_replacement_fitting(config, pattern):
     # copy 'config' file and change some attributes for correct work of replacements creation
@@ -43,7 +51,7 @@ def tune_config_for_replacement_fitting(config, pattern):
     tuned_config = ConfigParser()
     tuned_config.read_dict(config)
     tuned_config["model_generation"]["maximum_complexity"] = str(len(pattern)- 1)
-    tuned_config["model_generation"]["maximum_param_number"] = str(pattern.number_of_parameters - 1)
+    tuned_config["model_generation"]["maximum_param_number"] = str(pattern.number_of_parameters)
     tuned_config["model_generation"]["size_init_random_models"] = str(3 * len(pattern) - 1)
 
     tuned_config["model_generation"]["number_of_init_random_models"] = str(1000)

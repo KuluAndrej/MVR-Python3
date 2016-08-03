@@ -33,24 +33,15 @@ def hvs_(w0, x):
     return x * (w0 < x)
 
 @handicraft_exception_handler
-def sinla_(w0, w1, x):
-    sinla_.NumParam = 2
-    sinla_.NumVars = 1
-    sinla_.InitParams = [0,4]
-    sinla_.BoundsParams = ([-np.inf,-np.inf],[np.inf,np.inf])
-    sinla_.commutative = False
+def sina_(w0, w1, x):
+    sina_.NumParam = 2
+    sina_.NumVars = 1
+    sina_.InitParams = [0,4]
+    sina_.BoundsParams = ([-np.inf,-np.inf],[np.inf,np.inf])
+    sina_.commutative = False
 
     return np.sin(w1 * x + w0)
 
-@handicraft_exception_handler
-def sinha_(w0, w1, x):
-    sinha_.NumParam = 2
-    sinha_.NumVars = 1
-    sinha_.InitParams = [0,9]
-    sinha_.BoundsParams = ([-np.inf,-np.inf],[np.inf,np.inf])
-    sinha_.commutative = False
-
-    return np.sin(w1 * x + w0)
 
 @handicraft_exception_handler
 def lnl_(w0, w1, x):
