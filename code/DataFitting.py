@@ -38,8 +38,8 @@ def data_fitting(data_to_fit, config):
 
     if eval(config["init_rand_models"]["do_init_random_generation"]):
         CreateBigRandomInitPopulation.create_big_random_init_population(config)
-
     population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
+
     if not population:
         return population
 
@@ -47,15 +47,13 @@ def data_fitting(data_to_fit, config):
         print_intro(config, i)
         if i > 0:
             measurements[i] = population[0].MSE
-
-
         population.append(CrossoverPopulation.crossover_population(population, config))
         population.append(MutationPopulation.mutate_population(population, number_of_variables, config))
         population.append(RandomPopulation.random_population(number_of_variables, config, False))
 
         population.unique_models_selection()
-
         population = RuleSimplifier.rule_simplify(population, config)
+
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
         population.unique_models_selection()

@@ -23,11 +23,10 @@ def construct_info(model,dict_tokens_info):
     """
     # function detect is 'string' represents a variable
     def is_var(string):
-        pattern = compile("x[0-9]*")
+        pattern = compile("X\[\d+\]*")
         return pattern.match(string)
 
-    handle = sub(r'X\[(\d+)\]', r'x\1', model.handle)
-    tokens_names = extract_tokens(handle).split('&')
+    tokens_names = extract_tokens(model.handle).split('&')
 
     preproc_init_values = [dict_tokens_info[token][0] for token in tokens_names if not is_var(token)]
     preproc_left_bounds  = [dict_tokens_info[token][1][0] for token in tokens_names if not is_var(token)]

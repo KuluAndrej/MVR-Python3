@@ -22,9 +22,10 @@ def parametrize_population(population):
 
     return population
 
-def parametrize_model(model):
-    if not hasattr(model, 'param_handle'):
+def parametrize_model(model, reparametrize = False):
+    if reparametrize or not hasattr(model, 'param_handle'):
         parametrizing_outputs = parametrizing(model.handle)
+
     else:
         parametrizing_outputs = (model.param_handle, model.number_of_parameters)
 

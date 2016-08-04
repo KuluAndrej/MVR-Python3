@@ -70,8 +70,8 @@ file.close()
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'normal_(parameter_())'
-replacement = "parameter_()"
+pattern = 'expl_(frac2_(X[0],parameter_()))'
+replacement = "expl_(X[0])"
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -81,6 +81,6 @@ population = Parametrizer.parametrize_population(population)
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True, True)
 print(b)
 

@@ -27,6 +27,7 @@ def def_constructor(model):
 def add_def_statements_attributes(population):
     if isinstance(population,Model):
         setattr(population, "def_statement", def_constructor(population))
+        return population
     elif isinstance(population,Population):
         for model in population:
             setattr(model, "def_statement", def_constructor(model))

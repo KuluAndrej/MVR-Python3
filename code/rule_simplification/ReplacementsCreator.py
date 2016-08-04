@@ -5,7 +5,7 @@ import code.rule_simplification.CheckReplacementForFitting as CheckReplacementFo
 import code.input_output.SaveRule as SaveRule
 from code.structures.Population import Population
 from configparser import ConfigParser
-
+from numpy import nan, isnan, isinf
 
 def creator(pattern, dict_tokens_info, config):
     """
@@ -23,6 +23,10 @@ def creator(pattern, dict_tokens_info, config):
     SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
 
     data_to_fit = CreateDataToFit.create(pattern, config)
+    if isnan(data_to_fit[0,0]) or isinf(data_to_fit[0,0]):
+        print("Incorrect values:",data_to_fit[0,0], " are produced")
+        return
+
     tuned_config = tune_config_for_replacement_fitting(config, pattern)
     for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
         best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)

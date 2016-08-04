@@ -10,6 +10,5 @@ def strings_to_population(handles):
 
     """
     population = list(map(Model, handles))
-
     return population
 

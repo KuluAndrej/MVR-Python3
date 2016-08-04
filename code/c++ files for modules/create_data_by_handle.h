@@ -12,8 +12,8 @@
 
 using namespace std;  
 
-pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, int>& map_tokens, const string& handle) {
 
+pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, int>& map_tokens, const string& handle) {
   pair<int, int> counters = find_number_of_tokens(handle);
   int number_tokens = counters.first + counters.second;
   vector<vector<int> > matr(number_tokens);  
@@ -29,7 +29,6 @@ pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, 
       // the root is detected
       waiting_tokens.push(current_token);
       string token (handle.begin() + left, handle.begin() + right + 1);
-
       encodings[current_token] = map_tokens[token];          
       right++;
       break;  
@@ -40,7 +39,7 @@ pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, 
     if (handle[right] == ')') {
       waiting_tokens.pop();
     }
-    if (!is_a_token_processed_now && (handle[right] >= 'a') && (handle[right] <= 'z')) {
+    if (!is_a_token_processed_now && isalpha(handle[right])) {
       is_a_token_processed_now = true;
       left = right;
     }
@@ -55,14 +54,14 @@ pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, 
       is_a_token_processed_now = false;      
     }
     // if a variable is found
-    if (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+    if (right < handle.size()-1 && handle[right] == 'X' && 
+        (handle[right+1] == '[')) {
       // new variable is detected
       current_token++;
       matr[waiting_tokens.top()].push_back(current_token);
+      right+=2;
       //waiting_tokens.push(current_token);
-      while (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+      while (right < handle.size()-1 && isdigit(handle[right])) {
         right++;
       }
       string token (handle.begin() + left, handle.begin() + right + 1);
@@ -70,7 +69,6 @@ pair<vector<vector<int> >, vector<int> > create_incid_matrix_tokens(map<string, 
       is_a_token_processed_now = false;      
     }
   }
-  
   return make_pair(matr, encodings);
 }
 
@@ -113,7 +111,7 @@ pair<vector<vector<int> >, vector<string> > create_matrix_tokens(const string& h
     if (handle[right] == ')') {
       waiting_tokens.pop();
     }
-    if (!is_a_token_processed_now && (handle[right] >= 'a') && (handle[right] <= 'z')) {
+    if (!is_a_token_processed_now && isalpha(handle[right])) {
       is_a_token_processed_now = true;
       left = right;
     }
@@ -128,16 +126,17 @@ pair<vector<vector<int> >, vector<string> > create_matrix_tokens(const string& h
       is_a_token_processed_now = false;      
     }
     // if a variable is found
-    if (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+    if (right < handle.size()-1 && handle[right] == 'X' && 
+        (handle[right+1] == '[')) {
       // new variable is detected
       current_token++;
       matr[waiting_tokens.top()][current_token] = 1;
+      right+=2;
       //waiting_tokens.push(current_token);
-      while (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+      while (right < handle.size()-1 && isdigit(handle[right])) {
         right++;
       }
+
       string temp (handle.begin() + left, handle.begin() + right + 1);
       tokens[current_token] = temp;
       is_a_token_processed_now = false;      
@@ -151,11 +150,10 @@ vector<string> create_tokens_of_model(const string& handle) {
   
   pair<int, int> counters = find_number_of_tokens(handle);
   int number_tokens = counters.first + counters.second;
-
   vector<string> tokens(number_tokens); 
   
   //check if the handle is the only variable
-  if (handle[0] == 'x' && isdigit(handle[1])) {
+  if (handle[0] == 'X' && handle[1] == '[') {
     tokens[0] = handle;
     return tokens;
   }
@@ -181,7 +179,7 @@ vector<string> create_tokens_of_model(const string& handle) {
     if (handle[right] == ')') {
       waiting_tokens.pop();
     }
-    if (!is_a_token_processed_now && (handle[right] >= 'a') && (handle[right] <= 'z')) {
+    if (!is_a_token_processed_now && isalpha(handle[right])) {
       is_a_token_processed_now = true;
       left = right;
     }
@@ -195,19 +193,22 @@ vector<string> create_tokens_of_model(const string& handle) {
       is_a_token_processed_now = false;      
     }
     // if a variable is found
-    if (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+    if (right < handle.size()-1 && handle[right] == 'X' && handle[right+1] == '[') {
       // new variable is detected
       current_token++;
+      right+=2;
+
       //waiting_tokens.push(current_token);
-      while (right < handle.size()-1 && handle[right] == 'x' && 
-        (handle[right+1] >= '0') && (handle[right+1] <= '9')) {
+      while (right <= handle.size()-1 && isdigit(handle[right])) {
         right++;
       }
+
       string temp (handle.begin() + left, handle.begin() + right + 1);
       tokens[current_token] = temp;
+
       is_a_token_processed_now = false;      
     }
+
   }
   
   return tokens;

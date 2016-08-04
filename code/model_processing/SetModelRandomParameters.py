@@ -11,8 +11,7 @@ def set_random_parameters(model, dict_tokens_info, config):
 
     random_parameters = np.zeros(model.number_of_parameters)
 
-    processed_handle= re.sub(r'X\[(\d+)\]', r'x\1', model.handle)
-    tokens = extract_tokens(processed_handle).split('&')
+    tokens = extract_tokens(model.handle).split('&')
 
     inf_replace = float(config["rules_creation"]["inf_replace"])
     cur_pos_in_random_parameters = 0
@@ -34,4 +33,4 @@ def set_random_parameters(model, dict_tokens_info, config):
     return model
 
 def is_var(token):
-    return re.match(r'x(\d+)', token)
+    return re.match(r'X\[(\d+)\]', token)

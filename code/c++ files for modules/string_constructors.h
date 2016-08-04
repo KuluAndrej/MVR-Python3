@@ -69,30 +69,6 @@ vector<pair<int, int> >  parameter_range_constructor(vector<vector<int> >& matr,
 }
 
 
-
-string string_constructor(vector<vector<int> >& matr, vector<string>& tokens, 
-                        vector<pair<int, int> >& range_parameters, vector<int>& number_parameters, vector<int>& encoding,
-                        int root) {
-  if (tokens[encoding[root] - 1][0] == 'x' && (tokens[encoding[root] - 1][1] >= '1' ) && 
-      tokens[encoding[root] - 1][1] <= '9') {
-    string s = "x(:," + SSTR( tokens[encoding[root] - 1][1] - '0') + ")";
-    return s;
-  }
-  string s = tokens[encoding[root] - 1] + "(";
-  if (number_parameters[encoding[root]-1] == 0) {
-    s = s + "[],";
-  } else {
-    s = s + "w(" + SSTR( range_parameters[root].first ) + ":" + 
-                   SSTR( range_parameters[root].second ) + "),";
-  }
-  for (int i = 0; i < matr[root].size() - 1; ++i) {
-    s = s + string_constructor(matr, tokens, range_parameters, number_parameters, encoding, matr[root][i]) + ",";
-  }
-  s = s + string_constructor(matr, tokens, range_parameters, number_parameters, encoding, matr[root][matr[root].size() - 1]);
-  s = s + ")";
-  return s;
-}
-
 void print_vector(vector<int> to_print){
   for (int i = 0; i < to_print.size(); ++i) {
     cout << to_print[i] << " ";
@@ -101,8 +77,8 @@ void print_vector(vector<int> to_print){
 }
 
 string string_constructor_unparametred(vector<vector<int> >& matr, vector<string>& tokens, vector<int>& encoding, int root) {
-  if (tokens[encoding[root]][0] == 'x' && (tokens[encoding[root]][1] >= '0' ) && 
-      tokens[encoding[root]][1] <= '9') {    
+  
+  if (tokens[encoding[root]][0] == 'X' && tokens[encoding[root]][1] == '[') {    
     return tokens[encoding[root]];
   }
   string s = tokens[encoding[root]] + "(";
@@ -117,31 +93,3 @@ string string_constructor_unparametred(vector<vector<int> >& matr, vector<string
 }
 
 
-string from_parametred_to_unparametred(const string& s) {
-  string unparametred_handle;
-  int start_position = (s[0] == '@') ? 6 : 0;
-  for (int i = start_position; i < s.size(); ++i) {
-    if (s[i] == '[') {
-      i+=2;
-      continue;
-    }
-    if (s[i] == 'w') {
-      while (s[i] != ')') ++i;
-      ++i;
-      continue;
-    }
-    if (s[i] == 'x' && s[i + 1] == '(') {
-      unparametred_handle.push_back('x');
-      i+=4;
-      while(s[i] != ')') {
-        unparametred_handle.push_back(s[i]);
-        ++i;
-      }
-      
-      continue;
-    }
-
-    unparametred_handle.push_back(s[i]);
-  }
-  return unparametred_handle;
-}

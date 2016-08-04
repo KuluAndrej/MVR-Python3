@@ -18,9 +18,10 @@ def rule_simplify(population, config):
     rules_filename = construct_filename(config)
     fopen = open('log.txt','w')
     for ind, model in enumerate(population):
-        backup_handle = re.sub(r'X\[(\d+)\]', r'x\1', model.handle)
+        backup_handle = model.handle
         handle = model_reconstruct(backup_handle)
         handle = simplify_by_rules(handle, rules_filename)
+
         # here we fix some freaky bug
         # only the God knows the reasons of it
         while handle.find('x1') != -1:
@@ -30,21 +31,18 @@ def rule_simplify(population, config):
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
         handle = model_reconstruct(handle)
+
         new_handle = handle
-        handle = re.sub(r'x(\d+)', r'X[\1]', handle)
 
         population[ind].handle = handle
 
         if len(backup_handle) > len(new_handle):
             #print(backup_handle, '-->\n', new_handle)
             #print(model_reconstruct(backup_handle))
-            print(backup_handle,file = fopen)
-
             setattr(population[ind], "backup_handle", backup_handle)
             population[ind].renew_tokens()
-            Parametrizer.parametrize_model(population[ind])
-            DefConstructor.add_def_statements_attributes(population[ind])
-
+            population[ind] = Parametrizer.parametrize_model(population[ind], reparametrize = True)
+            population[ind] = DefConstructor.add_def_statements_attributes(population[ind])
 
     return population
 

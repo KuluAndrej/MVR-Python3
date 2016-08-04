@@ -33,9 +33,9 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
         if hasattr(pattern, 'optimal_params'):
             delattr(pattern, 'optimal_params')
 
+
         while True:
             SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
-            #new_pattern = pattern
             data_to_fit = CreateDataToFit.create(pattern, config)
             if max(abs(data_to_fit[:,0])) < eval(config["rules_creation"]["maximum_value"]):
                 break

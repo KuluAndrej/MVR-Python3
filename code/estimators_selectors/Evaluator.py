@@ -69,9 +69,6 @@ def evaluator(population, data_to_fit, config):
                                                 ftol=0.0005, xtol=0.0002)
                             except TypeError:
                                 print(model)
-                                print(model.where_from)
-                                if model.where_from == 'cross':
-                                    print(model.parents)
                                 raise
 
                     except RuntimeError:

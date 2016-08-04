@@ -6,13 +6,11 @@ class Model:
     def __init__(self, handle):
         # name of a model
         self.handle = handle
-        self.second_handle = re.sub(r'X\[(\d+)\]', r'x\1', self.handle)
-        self.tokens = extract_tokens(self.second_handle).split('&')
+        self.tokens = extract_tokens(self.handle).split('&')
         self.number_of_terminals = len([item for item in self.tokens if re.match(r'x(\d+)', item)])
 
     def renew_tokens(self):
-        self.second_handle = re.sub(r'X\[(\d+)\]', r'x\1', self.handle)
-        self.tokens = extract_tokens(self.second_handle).split('&')
+        self.tokens = extract_tokens(self.handle).split('&')
         self.number_of_terminals = len([item for item in self.tokens if re.match(r'x(\d+)', item)])
 
 

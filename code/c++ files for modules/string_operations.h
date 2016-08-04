@@ -59,19 +59,21 @@ pair<map<string, int>, int> read_info_primitives () {
   map<string, int> map_tokens;
   
   int useless_feature1;
-  string token;
+  string token, last_token;
   int counter = 0;
   input_stream >> token >> token >> token >> token;
   while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> useless_feature1;
-    map_tokens.insert(make_pair(token, counter));
-    counter++;
-
+    if (map_tokens.empty() or token != last_token) {
+      map_tokens.insert(make_pair(token, counter));
+      counter++;
+      last_token = token;
+    }
     if(input_stream.eof()) break;
   }
-  map_tokens.insert(make_pair(string("x0"), counter));
+  map_tokens.insert(make_pair(string("X[0]"), counter));
   counter++;
-  map_tokens.insert(make_pair(string("x1"), counter));
+  map_tokens.insert(make_pair(string("X[1]"), counter));
   counter++;
 
   input_stream.close();
@@ -86,13 +88,16 @@ pair<map<string, int>, vector<int> > read_info_commutativenes () {
   
   int useless_feature1, is_commutative;
   int counter = 0;
-  string token;
+  string token, last_token;
   input_stream >> token >> token >> token >> token;
   while (true) {
     input_stream >> token >> useless_feature1 >> useless_feature1 >> is_commutative;
-    commutativeness.push_back(is_commutative);
-    map_tokens.insert(make_pair(token, counter));    
-    counter++;
+    if (map_tokens.empty() or token != last_token) {
+      commutativeness.push_back(is_commutative);
+      map_tokens.insert(make_pair(token, counter));    
+      counter++;
+      last_token = token;
+    }
     if(input_stream.eof()) break;
   }
 
@@ -113,14 +118,20 @@ pair<vector<string>, vector<int> > retrieve_tokens() {
   input_stream >> token_input >> token_input >> token_input >> token_input;
   while (true) {
     input_stream >> token_input >> number_of_parameters_input >> useless_feature >> useless_feature;
-    
-    tokens.push_back(token_input);
-    number_parameters.push_back(number_of_parameters_input);
+    if (tokens.empty() or token_input != tokens.back()) {
+      tokens.push_back(token_input);
+      number_parameters.push_back(number_of_parameters_input);
+    }
     if(input_stream.eof()) break;
   }
-
+  tokens.push_back("X[0]");
+  number_parameters.push_back(0);
+  tokens.push_back("X[1]");
+  number_parameters.push_back(0);
+  
   input_stream.close();
   
+
   return make_pair(tokens, number_parameters);
 }
 
@@ -128,7 +139,7 @@ vector<int> find_positions_of_tokens(const string& handle) {
   vector<int> positions;
   bool is_token_processed = false;
   for (int i = 0; i < handle.size(); ++i) {
-    if ((i + 1 < handle.size()) && (handle[i] == 'x') && (isdigit(handle[i + 1])) ) {
+    if ((i + 1 < handle.size()) && handle[i] == 'X' && handle[i + 1] == '[' ) {
       positions.push_back(i);
       continue;
     }
@@ -153,7 +164,7 @@ pair<int, int> find_number_of_tokens(const string& handle) {
     if (handle[i] == '_') {
       counter_tokens++;
     } else {
-      if (i < handle.size()-1 && handle[i] == 'x' && (handle[i+1] >= '0') && (handle[i+1] <= '9')) {
+      if (i < handle.size()-1 && handle[i] == 'X' && handle[i+1] == '[') {
         counter_variables++;
       }
     }

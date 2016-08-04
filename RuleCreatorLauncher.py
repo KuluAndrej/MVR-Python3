@@ -36,7 +36,8 @@ def creator():
         for ind, model in enumerate(init_models_for_rules):
             model = RuleSimplifier.rule_simplify(Population([model]), config)[0]
             if not model in init_models_for_rules[0:ind]:
-                ReplacementsCreator.creator(model, dict_tokens_info, config)
+                if len(model) > 1:
+                    ReplacementsCreator.creator(model, dict_tokens_info, config)
 
 
 
