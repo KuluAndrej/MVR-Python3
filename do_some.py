@@ -34,7 +34,6 @@ import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPop
 import time, re
 import matplotlib.pyplot as plt
 from code.modules.model_reconstructer import model_reconstruct
-"""
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
 file_processed = open("data/Rules_creation_files/processed.txt", 'r')
@@ -47,7 +46,7 @@ models = list(map(Model, models))
 
 
 for ind, model in enumerate(models):
-    models[ind].handle = re.sub(r'x(\d+)', r'X[\1]', model_reconstruct(model.second_handle))
+    models[ind].handle = model_reconstruct(model.handle)
 
 
 
@@ -83,4 +82,5 @@ print('pattern =', population[0], "replacement =", population[1])
 
 b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
 print(b)
+"""
 

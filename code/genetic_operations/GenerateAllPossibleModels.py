@@ -29,9 +29,7 @@ def generate(filename, height = 4, number_of_variables = 1):
         variants_of_tokens = create_tokens_for_all_matching_trees(grouped_primitives, degrees)
         for tokens in variants_of_tokens:
             model = create_model(eval(tree)[1], tokens, current_root = [0])
-            model = re.sub(r'X\[(\d+)\]', r'x\1', model)
             model = model_reconstruct(model)
-            model = re.sub(r'x(\d+)', r'X[\1]', model)
             created_models.append(model)
 
     created_models = list(set(created_models))

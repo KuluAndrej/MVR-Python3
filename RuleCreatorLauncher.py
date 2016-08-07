@@ -34,10 +34,14 @@ def creator():
     elif config['rules_creation']['regime'] == "create_replacements":
         print(len(init_models_for_rules),'replacements are to be processed')
         for ind, model in enumerate(init_models_for_rules):
+            if ind < 15521:
+                continue
             model = RuleSimplifier.rule_simplify(Population([model]), config)[0]
             if not model in init_models_for_rules[0:ind]:
                 if len(model) > 1:
                     ReplacementsCreator.creator(model, dict_tokens_info, config)
+            else:
+                print("already processed")
 
 
 
