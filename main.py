@@ -98,7 +98,7 @@ elif type_of_fitting == "fit_and_collect":
 
 elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
-    CreateBigRandomInitPopulation.create_big_random_init_population(config)
-    #GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt')
+    #CreateBigRandomInitPopulation.create_big_random_init_population(config)
+    GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt',number_of_variables = 2)
 # after your program ends
 # pr.print_stats(sort="calls")

@@ -32,16 +32,20 @@ def creator():
             PatternsCreator.creator(model, dict_tokens_info)
 
     elif config['rules_creation']['regime'] == "create_replacements":
+        processed_patterns = open("data/Rules_creation_files/init_patterns_proc.txt").readlines()
+        processed_patterns = [item.strip() for item in processed_patterns]
         print(len(init_models_for_rules),'replacements are to be processed')
+
         for ind, model in enumerate(init_models_for_rules):
-            if ind < 15521:
+            if ind < 3566:
                 continue
+
             model = RuleSimplifier.rule_simplify(Population([model]), config)[0]
-            if not model in init_models_for_rules[0:ind]:
-                if len(model) > 1:
-                    ReplacementsCreator.creator(model, dict_tokens_info, config)
+            if filtering(model, processed_patterns, init_models_for_rules, ind):
+                ReplacementsCreator.creator(model, dict_tokens_info, config)
             else:
-                print("already processed")
+                #print("already processed")
+                pass
 
 
 
@@ -55,6 +59,12 @@ def model_preparation(init_models_for_rules):
 
     return init_models_for_rules
 
-
-
+def filtering(model, processed_patterns, init_models_for_rules, ind):
+    if model in init_models_for_rules[0:ind] or model.handle in processed_patterns:
+        return False
+    if len(model) == 1:
+        return False
+    if not model.tokens.count("X[0]"):
+        return False
+    return True
 creator()

@@ -51,7 +51,7 @@ class Population:
         elif type_of_selection == 'Penalize_params':
             self.Models = sorted(self.Models, key=lambda model: model.Penalized_error)
         elif type_of_selection == 'len':
-            self.Models = sorted(self.Models, key=lambda model: len(model))
+            self.Models = sorted(self.Models, key=lambda model: (len(model), len(model.handle)))
 
     def __getitem__(self, key):
         if isinstance (key, slice):

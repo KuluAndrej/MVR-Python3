@@ -33,12 +33,16 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
         if hasattr(pattern, 'optimal_params'):
             delattr(pattern, 'optimal_params')
 
-
-        while True:
+        attempts = 0
+        while attempts < 1000:
             SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
             data_to_fit = CreateDataToFit.create(pattern, config)
             if max(abs(data_to_fit[:,0])) < eval(config["rules_creation"]["maximum_value"]):
                 break
+            attempts += 1
+
+        if attempts == 1000:
+            return False
 
         fitted_values = FitModelToData.fit(replacement, data_to_fit, dict_tokens_info, config, do_plot)
 

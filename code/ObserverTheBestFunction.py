@@ -14,7 +14,6 @@ def observer_the_best_function(population, data_to_fit):
      data_to_fit    - initial values to be approximated
     Author: Kulunchakov Andrei, MIPT
     """
-    print(data_to_fit.shape[1])
     if (data_to_fit.shape[1] == 2):
         draw_2d_plot(population, data_to_fit)
 

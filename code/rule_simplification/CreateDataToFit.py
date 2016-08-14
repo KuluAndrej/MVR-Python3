@@ -16,9 +16,20 @@ def create(model, config):
     """
 
     grid_limits = eval(config["rules_creation"]["range_independent_var"])
-    grid = np.linspace(grid_limits[0], grid_limits[1],
+    num_vars = eval(config["rules_creation"]["number_of_vars"])
+
+    if num_vars == 1:
+        grid = np.linspace(grid_limits[0], grid_limits[1],
                        int(config["rules_creation"]["number_of_samples"]))
-    grid = grid.reshape(-1,1)
+        grid = grid.reshape(-1,1)
+    elif num_vars == 2:
+        grid = np.linspace(grid_limits[0], grid_limits[1],
+                       int(config["rules_creation"]["number_of_samples"]))
+        second_var = grid + np.random.normal(0, 0.5, len(grid))
+        grid = np.vstack((grid, second_var)).T
+    else:
+        raise("Too many variables")
+
 
 
     dependent_var = CalculatorModelValues.calculate_model_values(model, grid.T)

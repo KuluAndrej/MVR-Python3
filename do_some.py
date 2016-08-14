@@ -37,7 +37,6 @@ import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 
 import matplotlib.pyplot as plt
 from code.modules.model_reconstructer import model_reconstruct
-"""
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
 file_processed = open("data/Rules_creation_files/processed.txt", 'r')
@@ -55,7 +54,7 @@ for ind, model in enumerate(models):
 
 
 models = [item for item in models if len(item) > 1 and item]
-models = sorted(models, key =  lambda x: len(x))
+models = sorted(models, key =  lambda x: (len(x), len(x.handle)))
 
 population = Population(models)
 population.unique_models_selection()
@@ -69,7 +68,6 @@ for model in population:
     file.write(model.handle)
 
 file.close()
-"""
 """
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
