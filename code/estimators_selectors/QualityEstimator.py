@@ -32,6 +32,7 @@ def quality_estimator(population, data_to_fit, config):
                 continue
 
             dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
+
             setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
 
     for model in population:

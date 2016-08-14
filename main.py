@@ -23,7 +23,7 @@ config          = MVRAttributesExtraction.extract_config()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
-if type_of_fitting == "fit_data":
+if type_of_fitting == "labeled_fit_data":
     label = 'heart_rate'
     index_to_observe = 27
 
@@ -38,6 +38,19 @@ if type_of_fitting == "fit_data":
     ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
     print(repr(population[0].optimal_params))
     print()
+
+if type_of_fitting == "fit_data":
+
+    data_to_fit = DataLoader.retrieve_data(config)
+
+    start = time.time()
+    population, measurements = DataFitting.data_fitting(data_to_fit, config)
+    print(time.time() - start, population[0].MSE)
+    plt.plot(measurements)
+    plt.show()
+    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    print(repr(population[0].optimal_params))
+
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
@@ -80,12 +93,12 @@ elif type_of_fitting == "fit_and_collect":
                 continue
             print('... iteration number', iteration)
             population  = DataFitting.data_fitting(data_to_fit, config)
-            ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+            ObserverTheBestFunction.observer_the_best_function(population, data_to_fit, config)
             SavePopulationToFile.save_population_to_file(population, config, label, iteration + 1)
 
 elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
-    #CreateBigRandomInitPopulation.create_big_random_init_population(config)
-    GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt')
+    CreateBigRandomInitPopulation.create_big_random_init_population(config)
+    #GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt')
 # after your program ends
 # pr.print_stats(sort="calls")

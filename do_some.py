@@ -32,8 +32,12 @@ import code.input_output.SavePopulationToFile as SavePopulationToFile
 import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time, re
+import numpy as np
+import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
+
 import matplotlib.pyplot as plt
 from code.modules.model_reconstructer import model_reconstruct
+"""
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
 file_processed = open("data/Rules_creation_files/processed.txt", 'r')
@@ -66,6 +70,7 @@ for model in population:
 
 file.close()
 """
+"""
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
@@ -83,4 +88,3 @@ print('pattern =', population[0], "replacement =", population[1])
 b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
 print(b)
 """
-

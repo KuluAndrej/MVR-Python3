@@ -14,7 +14,6 @@ def calculate_model_values(model, independent_var):
     Author: Kulunchakov Andrei, MIPT
     """
 
-
     # now estimate the error of approximation for each model
     with warnings.catch_warnings(record=True) as w:
          # Cause all warnings to always be triggered.
@@ -28,7 +27,7 @@ def calculate_model_values(model, independent_var):
                 try:
                     dependent_var_estimation = model.def_statement_param(independent_var)
                 except:
-                    dependent_var_estimation = [nan for row in independent_var]
+                    dependent_var_estimation = nan * ones((independent_var.shape[0], 1))
                 return dependent_var_estimation
             else:
                 return nan * ones((independent_var.shape[0], 1))
@@ -42,7 +41,7 @@ def calculate_model_values(model, independent_var):
                 try:
                     dependent_var_estimation = model.def_statement_param(independent_var)
                 except:
-                    dependent_var_estimation = [nan for row in independent_var]
+                    dependent_var_estimation = nan * ones((independent_var.shape[0], 1))
                 return dependent_var_estimation
             else:
                 return nan * ones((independent_var.shape[0], 1))
@@ -52,9 +51,9 @@ def calculate_model_values(model, independent_var):
 
                 dependent_var_estimation = model.def_statement(independent_var)
             except RuntimeWarning:
-                dependent_var_estimation = [nan for row in independent_var]
+                dependent_var_estimation = nan * ones((independent_var.shape[0], 1))
             except TypeError:
-                dependent_var_estimation = [nan for row in independent_var]
+                dependent_var_estimation = nan * ones((independent_var.shape[0], 1))
             return dependent_var_estimation
 
     return population

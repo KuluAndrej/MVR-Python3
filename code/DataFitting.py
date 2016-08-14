@@ -84,8 +84,10 @@ def print_results(population, config, number_of_iteration):
         print("best yet generated model", population[0].MSE)
         for ind in range(3):
             print(population[ind], "has MSE", population[ind].MSE)
+            """
             if hasattr(population[ind],'optimal_params'):
                 print(population[ind].optimal_params)
+            """
         print("")
         return
 
