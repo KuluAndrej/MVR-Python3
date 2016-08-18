@@ -36,6 +36,7 @@ import numpy as np
 import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 
 import matplotlib.pyplot as plt
+"""
 from code.modules.model_reconstructer import model_reconstruct
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
@@ -72,8 +73,8 @@ file.close()
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'lnl_(plus2_(unity_(),X[0]))'
-replacement = "lnl_(X[0])"
+pattern = 'hypot_(sinc_(X[0]),neg_(X[1]))'
+replacement = "hypot_(sinc_(X[0]),X[1])"
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -83,6 +84,5 @@ population = Parametrizer.parametrize_population(population)
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True, True)
 print(b)
-"""

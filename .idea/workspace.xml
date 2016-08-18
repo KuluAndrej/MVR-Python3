@@ -7,14 +7,13 @@
     <list default="true" id="16bc3f1c-d7bf-4d32-ac14-52f0190fd811" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RuleCreatorLauncher.py" afterPath="$PROJECT_DIR$/RuleCreatorLauncher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/ObserverTheBestFunction.py" afterPath="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/rule_simplification/CheckReplacementForFitting.py" afterPath="$PROJECT_DIR$/code/rule_simplification/CheckReplacementForFitting.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/DataFitting.py" afterPath="$PROJECT_DIR$/code/DataFitting.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py" afterPath="$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/model_processing/FitModelToData.py" afterPath="$PROJECT_DIR$/code/model_processing/FitModelToData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py" afterPath="$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/structures/Population.py" afterPath="$PROJECT_DIR$/code/structures/Population.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/rules.txt" afterPath="$PROJECT_DIR$/data/rules.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/init_models.txt" afterPath="$PROJECT_DIR$/data/init_models.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/do_some.py" afterPath="$PROJECT_DIR$/do_some.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <ignored path="MVR_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,12 +34,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RuleCreatorLauncher.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RuleCreatorLauncher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RuleCreatorLauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24431819">
-              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+              <folding>
+                <element signature="e#216#291#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,7 +50,17 @@
         <entry file="file://$PROJECT_DIR$/code/rule_simplification/ReplacementsCreator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataFitting.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,8 +70,30 @@
         <entry file="file://$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+              <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalculatorModelValues.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="82" selection-start-line="29" selection-start-column="82" selection-end-line="29" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="do_some.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/do_some.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.78409094">
+              <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,29 +102,29 @@
         <entry file="file://$PROJECT_DIR$/code/rule_simplification/CheckReplacementForFitting.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="do_some.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/do_some.py">
+      <file leaf-file-name="FitModelToData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/model_processing/FitModelToData.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="64" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="64" />
+              <caret line="36" column="25" selection-start-line="34" selection-start-column="86" selection-end-line="36" selection-end-column="25" />
               <folding>
-                <element signature="e#0#75#0" expanded="true" />
+                <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Population.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/structures/Population.py">
+      <file leaf-file-name="ObserverTheBestFunction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="86" selection-start-line="53" selection-start-column="86" selection-end-line="53" selection-end-column="86" />
+              <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -139,7 +172,6 @@
         <option value="$PROJECT_DIR$/code/genetic_operations/MutationPopulation.py" />
         <option value="$PROJECT_DIR$/code/genetic_operations/CrossoverPopulation.py" />
         <option value="$PROJECT_DIR$/code/primitives/Primitives.py" />
-        <option value="$PROJECT_DIR$/code/model_processing/FitModelToData.py" />
         <option value="$PROJECT_DIR$/code/model_processing/DefConstructor.py" />
         <option value="$PROJECT_DIR$/code/model_processing/Parametrizer.py" />
         <option value="$PROJECT_DIR$/code/input_output/SaveRule.py" />
@@ -154,15 +186,16 @@
         <option value="$PROJECT_DIR$/code/genetic_operations/GenerateAllPossibleModels.py" />
         <option value="$PROJECT_DIR$/code/input_output/CreateBigRandomInitPopulation.py" />
         <option value="$PROJECT_DIR$/code/estimators_selectors/QualityEstimator.py" />
-        <option value="$PROJECT_DIR$/code/DataFitting.py" />
-        <option value="$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py" />
         <option value="$PROJECT_DIR$/code/ObserverTheBestFunction.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py" />
-        <option value="$PROJECT_DIR$/do_some.py" />
         <option value="$PROJECT_DIR$/code/structures/Population.py" />
         <option value="$PROJECT_DIR$/code/rule_simplification/CheckReplacementForFitting.py" />
+        <option value="$PROJECT_DIR$/code/DataFitting.py" />
+        <option value="$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py" />
+        <option value="$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py" />
         <option value="$PROJECT_DIR$/RuleCreatorLauncher.py" />
+        <option value="$PROJECT_DIR$/code/model_processing/FitModelToData.py" />
+        <option value="$PROJECT_DIR$/do_some.py" />
       </list>
     </option>
   </component>
@@ -197,6 +230,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -216,9 +250,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MVR_py" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MVR_py" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,7 +293,7 @@
       <recent name="$PROJECT_DIR$/code" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.RuleCreatorLauncher">
+  <component name="RunManager" selected="Python.do_some">
     <configuration default="false" name="do_some" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -467,8 +514,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RuleCreatorLauncher" />
-        <item index="1" class="java.lang.String" itemvalue="Python.do_some" />
+        <item index="0" class="java.lang.String" itemvalue="Python.do_some" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RuleCreatorLauncher" />
         <item index="2" class="java.lang.String" itemvalue="Python.main" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in MVR_py" />
         <item index="4" class="java.lang.String" itemvalue="Python.ReplacementsCreator" />
@@ -530,11 +577,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -798,13 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/model_processing/FitModelToData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="36" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/estimators_selectors/Evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4318182">
@@ -827,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3778409">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10795455">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,15 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08238637">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8352273">
-          <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,15 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08238637">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,45 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.97159094">
           <caret line="10" column="58" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#79#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/rule_simplification/ReplacementsCreator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1903409">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding>
-            <element signature="e#73#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/do_some.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="64" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,7 +909,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16193181">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13352273">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="e#73#148#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -937,6 +926,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="86" selection-start-line="53" selection-start-column="86" selection-end-line="53" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/rule_simplification/ReplacementsCreator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/DataFitting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -944,7 +948,33 @@
     <entry file="file://$PROJECT_DIR$/code/rule_simplification/CreateDataToFit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/estimators_selectors/CalculatorModelValues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="82" selection-start-line="29" selection-start-column="82" selection-end-line="29" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RuleCreatorLauncher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#216#291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/ObserverTheBestFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -952,16 +982,28 @@
     <entry file="file://$PROJECT_DIR$/code/rule_simplification/CheckReplacementForFitting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RuleCreatorLauncher.py">
+    <entry file="file://$PROJECT_DIR$/code/model_processing/FitModelToData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24431819">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="25" selection-start-line="34" selection-start-column="86" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/do_some.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78409094">
+          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

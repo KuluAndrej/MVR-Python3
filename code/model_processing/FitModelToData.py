@@ -5,6 +5,8 @@ import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 import matplotlib.pyplot as plt
 import  code.model_processing.DefConstructor as DefConstructor
 import code.estimators_selectors.QualityEstimator as QualityEstimator
+import code.ObserverTheBestFunction as ObserverTheBestFunction
+
 from numpy import zeros
 
 def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True):
@@ -30,14 +32,12 @@ def fit(model, data_to_fit, dict_tokens_info, config, do_plot = True):
 
     if do_plot:
         try:
-            line_up, = plt.plot(data_to_fit[:,1], data_to_fit[:,0], 'b', label='Pattern')
-            line_down, = plt.plot(data_to_fit[:,1], fitted, 'g', label='Replacement '+model.handle)
-            plt.legend(handles=[line_up, line_down])
-            plt.show()
+            ObserverTheBestFunction.observer_the_best_function(population,data_to_fit)
 
             return fitted
 
         except:
+
             plt.plot(data_to_fit[:,1], data_to_fit[:,0], 'b', data_to_fit[:,1], zeros(data_to_fit[:,0].shape), 'g')
             plt.show()
 
