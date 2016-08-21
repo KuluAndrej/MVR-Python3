@@ -2,7 +2,7 @@ import code.model_processing.SetModelRandomParameters as SetModelRandomParameter
 import code.rule_simplification.CreateDataToFit as CreateDataToFit
 import code.model_processing.FitModelToData as FitModelToData
 from code.model_processing.StringToModel import strings_to_population
-from numpy import zeros
+from numpy import zeros, array, isnan
 from numpy.linalg import norm
 
 def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=False):
@@ -40,13 +40,15 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
             if max(abs(data_to_fit[:,0])) < eval(config["rules_creation"]["maximum_value"]):
                 break
             attempts += 1
-
         if attempts == 1000:
-            return False
+            print("Did not succeed in creating data with finite values.")
+            return (False,None)
 
         fitted_values = FitModelToData.fit(replacement, data_to_fit, dict_tokens_info, config, do_plot)
+        if any(isnan(fitted_values)):
+            return (False,None)
 
-        is_mse_permissible[i] = norm(data_to_fit[:,0] - fitted_values) < threshold
+        is_mse_permissible[i] = check_fitness(data_to_fit[:,0], fitted_values, config)
         errors[i] = norm(data_to_fit[:,0] - fitted_values)
 
     is_fitted = sum(is_mse_permissible) > is_mse_permissible.shape[0] * (1 - float(config["rules_creation"]["fraction_of_misfittings"]))
@@ -57,7 +59,13 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
         else:
             print(replacement, "is NOT fittable to the ", pattern)
 
-    return is_fitted
+    return (is_fitted, is_mse_permissible)
+
+
+def check_fitness(data_to_fit, fitted_values,config):
+    maximum_l0 = float(config["rules_creation"]["maximum_l0"])
+    differences = array(abs(data_to_fit - fitted_values))
+    return not any(differences > maximum_l0)
 
 def print_intro(pattern, replacement):
     print(replacement, "is being fitted to", pattern)

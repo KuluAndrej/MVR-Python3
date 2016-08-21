@@ -7,7 +7,8 @@ from code.structures.Population import Population
 from configparser import ConfigParser
 from numpy import nan, isnan, isinf
 
-def creator(pattern, dict_tokens_info, config):
+
+def creator(pattern, init_models_to_fit, dict_tokens_info, config):
     """
     Gets a 'model' and creates rules, where this model acts as the 'replacement' model.
     Inputs:
@@ -19,30 +20,46 @@ def creator(pattern, dict_tokens_info, config):
     Author: Kulunchakov Andrei
     """
     print_intro(pattern)
+    # prepare initial population
 
     SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
-
     data_to_fit = CreateDataToFit.create(pattern, config)
-    if isnan(data_to_fit[0,0]) or isinf(data_to_fit[0,0]):
-        print("Incorrect values:",data_to_fit[0,0], " are produced")
+    tuned_config = tune_config_for_replacement_fitting(config, pattern)
+
+    if not check_correctness(data_to_fit):
         return
 
-    tuned_config = tune_config_for_replacement_fitting(config, pattern)
-    for i in range(int(config["rules_creation"]["iterations_of_fitting"])):
-        best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config)
-        fitting_replacements = Population([])
-        if best_found_replacements:
-            for replacement in best_found_replacements:
-                if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False):
-                    fitting_replacements.append(replacement)
+    proper_init_models = filter_init_models(init_models_to_fit, pattern)
+    best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config,\
+                                                       dict_tokens_info, proper_init_models)
 
-            if fitting_replacements:
-                SaveRule.store(pattern, fitting_replacements[0], config, verbose=True)
+    for replacement in best_found_replacements:
+        if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False)[0]:
+            SaveRule.store(pattern, replacement, config, verbose=True)
+            break
 
+    clearUnnecessaryAttributes(init_models_to_fit)
     print("...processed")
 
-def choose_best_replacement(fitting_replacements):
-    fitting_replacements.sort("MSE",0)
+def filter_init_models(init_models_to_fit, pattern):
+    number_of_parameters = pattern.number_of_parameters
+    proper_length = len(pattern)
+
+    proper_models = []
+    for model in init_models_to_fit:
+        if len(model) < proper_length and model.number_of_terminals < number_of_parameters:
+            if model.vars[0] <= pattern.vars[0] and model.vars[1] <= pattern.vars[1]:
+                if model.vars[0] >= model.vars[1]:
+                    proper_models.append(model)
+    return Population(proper_models)
+
+def clearUnnecessaryAttributes(init_models_to_fit):
+    # To maintain correct flow of the program, we should remove all attributes, which
+    # were set to initial population in Evaluator in DataFitting, namely "optimal_params"
+    for model in init_models_to_fit:
+        if hasattr(model, "optimal_params"):
+            delattr(model, "optimal_params")
+
 
 def tune_config_for_replacement_fitting(config, pattern):
     # copy 'config' file and change some attributes for correct work of replacements creation
@@ -67,3 +84,10 @@ def tune_config_for_replacement_fitting(config, pattern):
 
 def print_intro(pattern):
     print("Start processing pattern: ", pattern)
+
+def check_correctness(data_to_fit):
+    if isnan(data_to_fit[0,0]) or isinf(data_to_fit[0,0]):
+        print("Incorrect values:",data_to_fit[0,0], " are produced")
+        return False
+
+    return True

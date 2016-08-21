@@ -31,3 +31,4 @@ def add_def_statements_attributes(population):
     elif isinstance(population,Population):
         for model in population:
             setattr(model, "def_statement", def_constructor(model))
+        return population

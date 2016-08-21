@@ -27,6 +27,8 @@ def set_random_parameters(model, dict_tokens_info, config):
                 right_bound = bounds[1][i] if not np.isinf(bounds[1][i]) else inf_replace * np.sign(bounds[1][i])
                 rand_param  = np.random.uniform(left_bound, right_bound)
                 random_parameters[cur_pos_in_random_parameters + i] = rand_param
+                if left_bound == 0:
+                    random_parameters[cur_pos_in_random_parameters + i] = abs(rand_param)
             cur_pos_in_random_parameters += numb_token_params
 
     setattr(model, "init_params", random_parameters)

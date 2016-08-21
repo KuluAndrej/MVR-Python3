@@ -78,7 +78,7 @@ def normal_(w0, w1, x):
     normal_.NumParam = 2
     normal_.NumVars = 1
     normal_.InitParams = [0,1]
-    normal_.BoundsParams = ([-np.inf,-np.inf],[np.inf,np.inf])
+    normal_.BoundsParams = ([-np.inf,0],[np.inf,np.inf])
     normal_.commutative = False
 
     return (1/w1) * np.exp(-(x - w0)**2/w1)

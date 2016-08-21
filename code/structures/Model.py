@@ -8,11 +8,12 @@ class Model:
         self.handle = handle
         self.tokens = extract_tokens(self.handle).split('&')
         self.number_of_terminals = len([item for item in self.tokens if re.match(r'x(\d+)', item)])
+        self.vars = [bool(self.tokens.count("X[0]")),bool(self.tokens.count("X[1]"))]
 
     def renew_tokens(self):
         self.tokens = extract_tokens(self.handle).split('&')
         self.number_of_terminals = len([item for item in self.tokens if re.match(r'x(\d+)', item)])
-
+        self.vars = [bool(self.tokens.count("X[0]")),bool(self.tokens.count("X[1]"))]
 
     def __len__(self):
         return len(self.tokens)

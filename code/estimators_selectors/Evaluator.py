@@ -3,7 +3,7 @@ import  code.estimators_selectors.QualityEstimator as QualityEstimator
 from scipy.optimize import  curve_fit
 from numpy import nan, ones, inf, random, isnan
 from scipy.optimize import OptimizeWarning
-
+import time
 def evaluator(population, data_to_fit, config):
     """
     Evaluate the optimal parameters for each model from the population
@@ -61,12 +61,12 @@ def evaluator(population, data_to_fit, config):
                         if bounds_included:
                             popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
                                             p0 = model.curve_fit_init_params, bounds=model.curve_fit_bounds, \
-                                            ftol=0.0005, xtol=0.0002)
+                                            ftol=0.01, xtol=0.01)
                         else:
                             try:
                                 popt, _ = curve_fit(model.def_statement, independent_var, dependent_var,\
                                                 p0 = model.curve_fit_init_params, \
-                                                ftol=0.0005, xtol=0.0002)
+                                                ftol=0.01, xtol=0.01)
                             except TypeError:
                                 print(model)
                                 raise
@@ -95,7 +95,6 @@ def evaluator(population, data_to_fit, config):
                         best_MSE = model.MSE
                         best_fit_params = popt
                 setattr(model, "optimal_params", best_fit_params)
-
                 continue
             else:
                 if not hasattr(model, "optimal_params"):

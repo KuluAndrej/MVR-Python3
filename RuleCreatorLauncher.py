@@ -14,18 +14,25 @@ import code.rule_simplification.PatternsCreator as PatternsCreator
 import code.rule_simplification.ReplacementsCreator as ReplacementsCreator
 import code.model_processing.DefConstructor as DefConstructor
 import code.rule_simplification.RuleSimplifier as  RuleSimplifier
-from code.structures.Population import Population
+import time
+
+import code.model_processing.Parametrizer as Parametrizer
+import code.input_output.InitModelsLoader as InitModelsLoader
+import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
+import code.rule_simplification.RuleSimplifier as RuleSimplifier
+import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+import code.structures.Population as Population
 
 def creator():
-
-
 
     config           = MVRAttributesExtraction.extract_config()
     dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
     # load initial superpositions
-    init_models_for_rules = InitModelsLoader.retrieve_init_models(config)[:]
-    model_preparation(init_models_for_rules)
+    print("Start retrieving initial models")
+    init_models_for_rules = model_preparation(InitModelsLoader.retrieve_init_models(config)[:])
+    init_models_to_fit = init_population_preparation(config,dict_tokens_info)
+
 
     if config['rules_creation']['regime'] == "create_patterns":
         for model in init_models_for_rules:
@@ -37,17 +44,27 @@ def creator():
         print(len(init_models_for_rules),'replacements are to be processed')
 
         for ind, model in enumerate(init_models_for_rules):
-            if ind < 11500:
+            if ind < 11566:
                 continue
-
-            model = RuleSimplifier.rule_simplify(Population([model]), config)[0]
+            start = time.time()
+            model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]
             if filtering(model, processed_patterns, init_models_for_rules, ind):
-                ReplacementsCreator.creator(model, dict_tokens_info, config)
+                ReplacementsCreator.creator(model, init_models_to_fit,  dict_tokens_info, config)
+                print("elapsed time:",time.time() - start)
             else:
                 #print("already processed")
                 pass
 
 
+
+def init_population_preparation(config,dict_tokens_info):
+    population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
+    ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
+    population = Parametrizer.parametrize_population(population)
+    population = DefConstructor.add_def_statements_attributes(population)
+
+    print(len(population), "initial models are retrieved")
+    return population
 
 def model_preparation(init_models_for_rules):
     """
@@ -60,11 +77,13 @@ def model_preparation(init_models_for_rules):
     return init_models_for_rules
 
 def filtering(model, processed_patterns, init_models_for_rules, ind):
-    if model in init_models_for_rules[0:ind] or model.handle in processed_patterns:
+    #if model in init_models_for_rules[0:ind] or model.handle in processed_patterns:
+    #    return False
+    if model in init_models_for_rules[0:ind]:
         return False
     if len(model) == 1:
         return False
-    if not model.tokens.count("X[0]"):
+    if (not model.tokens.count("X[0]")) and model.tokens.count("X[1]"):
         return False
     return True
 

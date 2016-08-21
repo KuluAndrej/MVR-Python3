@@ -37,6 +37,21 @@ import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
 
 import matplotlib.pyplot as plt
 """
+lines = open("data/Rules_creation_files/proc_rules.txt",'r').readlines()
+array = []
+for ind, line in enumerate(lines):
+    if ind % 2 == 0:
+        array.append((line, lines[ind+1]))
+
+array = sorted(array, key = lambda x: float(x[1].split()[0]))
+
+file = open("data/Rules_creation_files/proc_rules.txt",'w')
+for item in array:
+    file.write(item[0]+item[1])
+
+file.close()
+"""
+"""
 from code.modules.model_reconstructer import model_reconstruct
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
@@ -69,12 +84,14 @@ for model in population:
     file.write(model.handle)
 
 file.close()
+
+"""
 """
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'hypot_(sinc_(X[0]),neg_(X[1]))'
-replacement = "hypot_(sinc_(X[0]),X[1])"
+pattern = 'normal_(zero_())'
+replacement = 'parameter_()'
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -84,5 +101,13 @@ population = Parametrizer.parametrize_population(population)
 DefConstructor.add_def_statements_attributes(population)
 print('pattern =', population[0], "replacement =", population[1])
 
-b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, True, True)
-print(b)
+b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
+print(b[0])
+"""
+fname = "data/Rules_creation_files/received_rules.txt"
+file = open(fname, 'r')
+
+models = file.readlines()
+models = [item.split()[0] for item in models]
+print(len(models),len(set(models)))
+

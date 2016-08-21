@@ -13,7 +13,7 @@ def retrieve_init_models(config, source_of_launching = None):
      init_models    - handles of the initial models from the specified file (list of strings)
     """
 
-    DATA_FULL_PATH = construct_the_filename_with_init_models(config)
+    DATA_FULL_PATH = construct_the_filename_with_init_models(config, source_of_launching)
     # extract the initial models
     initial_models = []
 
@@ -31,8 +31,8 @@ def retrieve_init_models(config, source_of_launching = None):
     return Population(initial_models)
 
 
-def construct_the_filename_with_init_models(config):
-    if inspect.stack()[2][3] == "data_fitting":
+def construct_the_filename_with_init_models(config, source_of_launching):
+    if inspect.stack()[2][3] == "data_fitting" or source_of_launching == "DataFitting":
         DATA_LOCAL_PATH = config["data_extraction"]["init_models_filename"]
     elif config["flag_type_of_processing"]["flag"] == "rules_creation":
         DATA_LOCAL_PATH = config["rules_creation"]["rules_folder"]
