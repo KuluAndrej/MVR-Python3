@@ -32,14 +32,13 @@ def creator(pattern, init_models_to_fit, dict_tokens_info, config):
     proper_init_models = filter_init_models(init_models_to_fit, pattern)
     best_found_replacements = DataFitting.data_fitting(data_to_fit, tuned_config,\
                                                        dict_tokens_info, proper_init_models)
-
+    clearUnnecessaryAttributes(init_models_to_fit)
     for replacement in best_found_replacements:
         if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False)[0]:
             SaveRule.store(pattern, replacement, config, verbose=True)
-            break
+            return True
 
-    clearUnnecessaryAttributes(init_models_to_fit)
-    print("...processed")
+    return False
 
 def filter_init_models(init_models_to_fit, pattern):
     number_of_parameters = pattern.number_of_parameters
