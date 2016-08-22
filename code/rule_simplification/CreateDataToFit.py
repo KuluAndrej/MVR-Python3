@@ -17,15 +17,11 @@ def create(model, config):
 
     grid_limits = eval(config["rules_creation"]["range_independent_var"])
     num_vars = eval(config["rules_creation"]["number_of_vars"])
-
+    grid = np.random.uniform(low=grid_limits[0],high= grid_limits[1], size = int(config["rules_creation"]["number_of_samples"]))
     if num_vars == 1:
-        grid = np.linspace(grid_limits[0], grid_limits[1],
-                       int(config["rules_creation"]["number_of_samples"]))
         grid = grid.reshape(-1,1)
     elif num_vars == 2:
-        grid = np.linspace(grid_limits[0], grid_limits[1],
-                       int(config["rules_creation"]["number_of_samples"]))
-        second_var = grid + np.random.normal(0, 0.5, len(grid))
+        second_var = np.random.uniform(low=grid_limits[0],high= grid_limits[1], size = int(config["rules_creation"]["number_of_samples"]))
         grid = np.vstack((grid, second_var)).T
     else:
         raise("Too many variables")

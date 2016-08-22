@@ -21,7 +21,6 @@ def creator(pattern, init_models_to_fit, dict_tokens_info, config):
     """
     print_intro(pattern)
     # prepare initial population
-
     SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
     data_to_fit = CreateDataToFit.create(pattern, config)
     tuned_config = tune_config_for_replacement_fitting(config, pattern)
@@ -36,8 +35,10 @@ def creator(pattern, init_models_to_fit, dict_tokens_info, config):
     for replacement in best_found_replacements:
         if CheckReplacementForFitting.check(pattern, replacement, dict_tokens_info, config, do_plot=False, verbose=False)[0]:
             SaveRule.store(pattern, replacement, config, verbose=True)
+            clearUnnecessaryAttributes(best_found_replacements)
             return True
 
+    clearUnnecessaryAttributes(best_found_replacements)
     return False
 
 def filter_init_models(init_models_to_fit, pattern):
@@ -55,10 +56,10 @@ def filter_init_models(init_models_to_fit, pattern):
 def clearUnnecessaryAttributes(init_models_to_fit):
     # To maintain correct flow of the program, we should remove all attributes, which
     # were set to initial population in Evaluator in DataFitting, namely "optimal_params"
-    for model in init_models_to_fit:
-        if hasattr(model, "optimal_params"):
-            delattr(model, "optimal_params")
-
+    for ind in range(len(init_models_to_fit)):
+        if hasattr(init_models_to_fit[ind], "optimal_params"):
+            delattr(init_models_to_fit[ind], "optimal_params")
+    return init_models_to_fit
 
 def tune_config_for_replacement_fitting(config, pattern):
     # copy 'config' file and change some attributes for correct work of replacements creation

@@ -26,7 +26,7 @@ from datetime import date
 import datetime
 
 def creator():
-    file_output = open("data/output.txt","w")
+    file_output = open("data/output.txt","a+")
     file_output.write(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + "\n")
 
     config           = MVRAttributesExtraction.extract_config()
@@ -48,20 +48,21 @@ def creator():
         print(len(init_models_for_rules),'patterns are to be processed')
 
         for ind, model in enumerate(init_models_for_rules):
-            file_output.write(model.handle)
+            file_output.write(model.handle + "\n")
             if ind < 0:
                 continue
             start = time.time()
             model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]
+
             if filtering(model, processed_patterns, init_models_for_rules, ind):
-                file_output.write("\nstart fitting\n")
+                file_output.write("start fitting\n")
                 if ReplacementsCreator.creator(model, init_models_to_fit,  dict_tokens_info, config):
                     file_output.write("...Success...\n")
                 else:
                     file_output.write("...Fail...\n")
                 print("elapsed time:",time.time() - start)
             else:
-                file_output.write("\nis not processed.\n")
+                file_output.write("--> %s is not processed.\n" % model.handle)
                 pass
 
 

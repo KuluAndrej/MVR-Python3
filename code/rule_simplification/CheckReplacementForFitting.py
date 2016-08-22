@@ -36,6 +36,7 @@ def check(pattern, replacement, dict_tokens_info, config, do_plot=True, verbose=
         attempts = 0
         while attempts < 1000:
             SetModelRandomParameters.set_random_parameters(pattern, dict_tokens_info, config)
+
             data_to_fit = CreateDataToFit.create(pattern, config)
             if max(abs(data_to_fit[:,0])) < eval(config["rules_creation"]["maximum_value"]):
                 break

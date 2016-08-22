@@ -86,12 +86,11 @@ for model in population:
 file.close()
 """
 
-
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'normal_(neg_(X[0]))'
-replacement = 'normal_(X[0])'
+pattern = 'hvs_(bump_(X[0]))'
+replacement = 'neg_(zero_())'
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -106,21 +105,31 @@ print(b[0])
 
 """
 fname = "data/Rules_creation_files/received_rules.txt"
+init_patterns_file = "data/Rules_creation_files/init_patterns.txt"
 fname2 = "data/Rules_creation_files/received_rules_done.txt"
 file = open(fname, 'r')
 file2 = open(fname2, 'r')
 
-models = file.readlines()
-models = [item.split()[0] for item in models]
+models = open(init_patterns_file, 'r').readlines()
+models = [item.strip() for item in models]
 print("new set:",len(models),len(set(models)))
 
+done_models = file2.readlines()
+done_patterns = [item.split()[0] for item in done_models]
+done_replaces = [item.split()[1] for item in done_models]
+done_rules = [[Model(item.split()[0]),Model(item.split()[1])] for item in done_models]
+unique_patterns = list(set(done_patterns))
 
-models2 = file2.readlines()
-models2 = [item.split()[0] for item in models2]
-print("old set:",len(models2),len(set(models2)))
+done_rules = [done_rules[done_patterns.index(item)] for item in unique_patterns]
 
-
-for model in models2:
-    if models.count(model) == 0:
-        print(model)
+done_rules = sorted(done_rules, key =  lambda x: models.index(x[0].handle))
+#print(done_rules)
+#Population = Population(list(map(Model, done_patterns)))
+#print("population size =", len(Population))
+#print("old set:",len(done_patterns),len(set(done_patterns)))
+with open(fname2,'w') as file:
+    for rule in done_rules:
+        file.write(repr(rule[0]) + " " + repr(rule[1]) + "\n")
+    file.close()
 """
+
