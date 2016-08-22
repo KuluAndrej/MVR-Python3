@@ -49,13 +49,15 @@ def creator():
 
         for ind, model in enumerate(init_models_for_rules):
             file_output.write(model.handle + "\n")
-            if ind < 0:
+            if ind < 2734:
                 continue
             start = time.time()
             model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]
 
-            if filtering(model, processed_patterns, init_models_for_rules, ind):
+            if filtering(model, init_models_for_rules, ind):
                 file_output.write("start fitting\n")
+                print_intro(model, ind)
+
                 if ReplacementsCreator.creator(model, init_models_to_fit,  dict_tokens_info, config):
                     file_output.write("...Success...\n")
                 else:
@@ -65,6 +67,8 @@ def creator():
                 file_output.write("--> %s is not processed.\n" % model.handle)
                 pass
 
+def print_intro(pattern, ind):
+    print("Iteration %d. Start processing pattern: %s" % (ind, pattern))
 
 
 def init_population_preparation(config,dict_tokens_info):
@@ -86,7 +90,7 @@ def model_preparation(init_models_for_rules):
 
     return init_models_for_rules
 
-def filtering(model, processed_patterns, init_models_for_rules, ind):
+def filtering(model, init_models_for_rules, ind):
     #if model in init_models_for_rules[0:ind] or model.handle in processed_patterns:
     #    return False
     if model in init_models_for_rules[0:ind]:

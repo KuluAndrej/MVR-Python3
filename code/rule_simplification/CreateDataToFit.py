@@ -18,6 +18,7 @@ def create(model, config):
     grid_limits = eval(config["rules_creation"]["range_independent_var"])
     num_vars = eval(config["rules_creation"]["number_of_vars"])
     grid = np.random.uniform(low=grid_limits[0],high= grid_limits[1], size = int(config["rules_creation"]["number_of_samples"]))
+    grid = np.array(sorted(grid))
     if num_vars == 1:
         grid = grid.reshape(-1,1)
     elif num_vars == 2:
@@ -25,7 +26,6 @@ def create(model, config):
         grid = np.vstack((grid, second_var)).T
     else:
         raise("Too many variables")
-
 
 
     dependent_var = CalculatorModelValues.calculate_model_values(model, grid.T)

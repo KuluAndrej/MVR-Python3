@@ -13,4 +13,4 @@ hypot_ 0 2
 times2_ 0 2
 linear_ 2 1
 parabola_ 3 1
-x0 0 1
+X[0] 0 1

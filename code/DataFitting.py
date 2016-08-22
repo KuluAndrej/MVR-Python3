@@ -15,7 +15,7 @@ import time
 
 from numpy import zeros
 import inspect
-def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None):
+def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None, verbose = True):
     """
     Fit given data by superpositions of primitive functions
 
@@ -28,7 +28,8 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
 
     Author: Kulunchakov Andrei, MIPT
     """
-    print("Start data fitting...")
+    if verbose:
+        print("Start data fitting...")
     start = time.time()
 
     # measurements stands for plotting the dynamics of MSE
@@ -45,6 +46,7 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
         CreateBigRandomInitPopulation.create_big_random_init_population(config)
     if not init_population:
         population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
+        population = Population.Population(population.Models)
         if not population:
             print("Empty population.")
             return population
@@ -68,16 +70,15 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
 
             ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
             population = Parametrizer.parametrize_population(population)
-
-        print(len(population),"models to evaluator")
+        if verbose:
+            print(len(population),"models to evaluator")
         population = Evaluator.evaluator(population, data_to_fit, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
         population = SelectBestModels.select_best_models(population, config)
         print_results(population, measurements, config, i)
-
-    print("...time elapsed on fitting:",time.time() - start)
-
-    print(population[0:3], sep = '\n')
+    if verbose:
+        print("...time elapsed on fitting:",time.time() - start)
+        print(population[0:3], sep = '\n')
     if config["flag_type_of_processing"]["flag"] == 'fit_data':
         return population, measurements
     else:

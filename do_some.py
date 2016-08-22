@@ -89,8 +89,8 @@ file.close()
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'hvs_(bump_(X[0]))'
-replacement = 'neg_(zero_())'
+pattern = 'bump_(parameter_())'
+replacement = 'zero_()'
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
