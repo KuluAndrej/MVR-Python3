@@ -21,13 +21,6 @@ def rule_simplify(population, config):
         backup_handle = model.handle
         handle = model_reconstruct(backup_handle)
         handle = simplify_by_rules(handle, rules_filename)
-
-        # here we fix some freaky bug
-        # only the God knows the reasons of it
-        while handle.find('x1') != -1:
-            ind = handle.find('x1')
-            handle = handle[0:ind] + 'bump_(x0)' + handle[ind+2:]
-
         # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
         # STAY CAREFUL
         handle = model_reconstruct(handle)

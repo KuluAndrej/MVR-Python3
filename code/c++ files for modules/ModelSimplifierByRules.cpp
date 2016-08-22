@@ -114,7 +114,7 @@ string launch_substitute(vector<vector<int> >& model_matr, vector<int>& model_en
     
     string substring_in_model = string_constructor_unparametred(model_matr, tokens, model_encoding, representatives[substitutions[i]]);
     
-    string var = "x" + SSTR( i );
+    string var = "X[" + SSTR( i ) + "]";
     replace_handle = replaceAll(replace_handle, var, substring_in_model);    
   }  
   return replace_handle;

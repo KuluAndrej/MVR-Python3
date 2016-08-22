@@ -84,14 +84,14 @@ for model in population:
     file.write(model.handle)
 
 file.close()
+"""
 
-"""
-"""
+
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
 
-pattern = 'normal_(zero_())'
-replacement = 'parameter_()'
+pattern = 'normal_(neg_(X[0]))'
+replacement = 'normal_(X[0])'
 
 population = Population([Model(pattern), Model(replacement)])
 for model in population:
@@ -103,11 +103,24 @@ print('pattern =', population[0], "replacement =", population[1])
 
 b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_info, config, False, True)
 print(b[0])
+
 """
 fname = "data/Rules_creation_files/received_rules.txt"
+fname2 = "data/Rules_creation_files/received_rules_done.txt"
 file = open(fname, 'r')
+file2 = open(fname2, 'r')
 
 models = file.readlines()
 models = [item.split()[0] for item in models]
-print(len(models),len(set(models)))
+print("new set:",len(models),len(set(models)))
 
+
+models2 = file2.readlines()
+models2 = [item.split()[0] for item in models2]
+print("old set:",len(models2),len(set(models2)))
+
+
+for model in models2:
+    if models.count(model) == 0:
+        print(model)
+"""

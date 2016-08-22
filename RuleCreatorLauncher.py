@@ -41,13 +41,17 @@ def creator():
     elif config['rules_creation']['regime'] == "create_replacements":
         processed_patterns = open("data/Rules_creation_files/init_patterns_proc.txt").readlines()
         processed_patterns = [item.strip() for item in processed_patterns]
-        print(len(init_models_for_rules),'replacements are to be processed')
+        print(len(init_models_for_rules),'patterns are to be processed')
 
         for ind, model in enumerate(init_models_for_rules):
-            if ind < 11566:
+            if ind < 39679:
                 continue
+            if ind > 39681:
+                return
             start = time.time()
+            print(model,'-->')
             model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]
+            print(model)
             if filtering(model, processed_patterns, init_models_for_rules, ind):
                 ReplacementsCreator.creator(model, init_models_to_fit,  dict_tokens_info, config)
                 print("elapsed time:",time.time() - start)
