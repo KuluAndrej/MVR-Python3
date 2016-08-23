@@ -6,6 +6,7 @@ sina_ 2 1 0
 lnl_ 2 1 0
 expl_ 2 1 0
 plus2_ 0 2 1
+minus2_ 0 2 0
 normal_ 2 1 0
 frac2_ 0 2 0
 neg_ 0 1 0

@@ -49,7 +49,7 @@ def creator():
 
         for ind, model in enumerate(init_models_for_rules):
             file_output.write(model.handle + "\n")
-            if ind < 2734:
+            if ind < 38095:
                 continue
             start = time.time()
             model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]

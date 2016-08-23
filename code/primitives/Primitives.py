@@ -72,6 +72,14 @@ def plus2_(x, y):
 
     return x + y
 
+def minus2_(x, y):
+    minus2_.NumParam = 0
+    minus2_.NumVars = 2
+    minus2_.InitParams = []
+    minus2_.BoundsParams = ([],[])
+    minus2_.commutative = False
+
+    return x - y
 
 def normal_(w0, w1, x):
     
