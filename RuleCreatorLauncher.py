@@ -49,11 +49,13 @@ def creator():
 
         for ind, model in enumerate(init_models_for_rules):
             file_output.write(model.handle + "\n")
-            if ind < 38095:
+            if ind < 0:
                 continue
             start = time.time()
+            prev = model.handle
             model = RuleSimplifier.rule_simplify(Population.Population([model]), config)[0]
-
+            if not prev == model.handle:
+                continue
             if filtering(model, init_models_for_rules, ind):
                 file_output.write("start fitting\n")
                 print_intro(model, ind)
@@ -94,6 +96,8 @@ def filtering(model, init_models_for_rules, ind):
     #if model in init_models_for_rules[0:ind] or model.handle in processed_patterns:
     #    return False
     if model in init_models_for_rules[0:ind]:
+        return False
+    if model.handle.count("minu") == 0:
         return False
     if len(model) == 1:
         return False

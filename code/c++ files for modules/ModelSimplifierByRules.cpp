@@ -186,7 +186,7 @@ string simplify_by_rules(const string handle, const string filename){
   try {
     
     ifstream file_rules_txt;
-  	file_rules_txt.open("data/Rules_creation_files/received_rules.txt");
+  	file_rules_txt.open("data/rules.txt");
   	vector<string> rules_pattern;
   	vector<string> rules_replace;
 

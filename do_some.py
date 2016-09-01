@@ -51,6 +51,7 @@ for item in array:
 
 file.close()
 """
+"""
 from code.modules.model_reconstructer import model_reconstruct
 fname = "data/Rules_creation_files/init_patterns.txt"
 file = open(fname, 'r')
@@ -67,9 +68,8 @@ for ind, model in enumerate(models):
     models[ind].handle = model_reconstruct(model.handle)
 
 
-
 models = [item for item in models if len(item) > 1 and item]
-models = sorted(models, key =  lambda x: (len(x), len(x.handle)))
+models = sorted(models, key =  lambda x: (len(x), len(x.handle), x.handle))
 
 population = Population(models)
 population.unique_models_selection()
@@ -80,9 +80,10 @@ file.close()
 file = open(fname, 'w')
 
 for model in population:
-    file.write(model.handle)
+    file.write(model.handle + "\n")
 
 file.close()
+"""
 """
 config           = MVRAttributesExtraction.extract_config()
 dict_tokens_info = ReadTokensInfoForOptimization.read_info_tokens_for_optimization(config)
@@ -102,82 +103,81 @@ b = CheckReplacementForFitting.check(population[0], population[1], dict_tokens_i
 print(b[0])
 
 """
-"""
 
-fname = "data/Rules_creation_files/received_rules.txt"
-init_patterns_file = "data/Rules_creation_files/init_patterns.txt"
-fname2 = "data/Rules_creation_files/received_rules_done.txt"
-primititives = open("code/primitives/Primitives.txt").readlines()[1:]
+def plot_build():
+    fname = "data/Rules_creation_files/received_rules.txt"
+    init_patterns_file = "data/Rules_creation_files/init_patterns.txt"
+    fname2 = "data/Rules_creation_files/received_rules_done.txt"
+    primititives = open("code/primitives/Primitives.txt").readlines()[1:]
 
-file = open(fname, 'r')
-file2 = open(fname2, 'r')
+    file = open(fname, 'r')
+    file2 = open(fname2, 'r')
 
-models = open(fname, 'r').readlines()
-models = [item.split()[0].strip() for item in models]
-models = [Model(item) for item in models]
-models = [Parametrizer.parametrize_model(item) for item in models]
-models_no_x1 = [item for item in models if not item.handle.count("X[1]")]
-#models_no_x1 = models
-print("new set:",len(models_no_x1),len(set(models_no_x1)))
-strcompl = [len(item) for item in models_no_x1]
-param = [item.number_of_parameters for item in models_no_x1]
+    models = open(fname, 'r').readlines()
+    models = [item.split()[0].strip() for item in models]
+    models = [Model(item) for item in models]
+    models = [Parametrizer.parametrize_model(item) for item in models]
+    models_no_x1 = [item for item in models if not item.handle.count("X[1]")]
+    #models_no_x1 = models
+    print("new set:",len(models_no_x1),len(set(models_no_x1)))
+    strcompl = [len(item) for item in models_no_x1]
+    param = [item.number_of_parameters for item in models_no_x1]
 
-compl = np.unique(strcompl)
-pars  = np.unique(param)
+    compl = np.unique(strcompl)
+    pars  = np.unique(param)
 
-frequencies = np.zeros(len(primititives))
-for ind, func in enumerate(primititives):
-    primitive = func.split()[0]
-    for pattern in models_no_x1:
-        if pattern.handle.count(primitive):
-            frequencies[ind]+=1
-frequencies = frequencies / len(models_no_x1)
+    frequencies = np.zeros(len(primititives))
+    for ind, func in enumerate(primititives):
+        primitive = func.split()[0]
+        for pattern in models_no_x1:
+            if pattern.handle.count(primitive):
+                frequencies[ind]+=1
+    frequencies = frequencies / len(models_no_x1)
 
-for ind, func in enumerate(primititives):
-    primitive = func.split()[0]
-    print()
-print('\n'.join([repr(item)[0:4] for item in frequencies]))
-funcs = [item.split()[0] for item in primititives]
+    for ind, func in enumerate(primititives):
+        primitive = func.split()[0]
+        print()
+    print('\n'.join([repr(item)[0:4] for item in frequencies]))
+    funcs = [item.split()[0] for item in primititives]
 
-argumentless = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==0]
-univariate_funcs = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==1]
-bivariate_funcs = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==2]
+    argumentless = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==0]
+    univariate_funcs = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==1]
+    bivariate_funcs = [item.split()[0].strip("_") for item in primititives if int(item.split()[2])==2]
 
-freq_argumentless = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==0]
-freq_univariate_funcs = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==1]
-freq_bivariate_funcs = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==2]
+    freq_argumentless = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==0]
+    freq_univariate_funcs = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==1]
+    freq_bivariate_funcs = [frequencies[ind] for ind,item in enumerate(primititives) if int(item.split()[2])==2]
 
-for_sticks = []
+    for_sticks = []
 
-width = 0.5       # the width of the bars
-ind = 2*np.arange(len(argumentless))  # the x locations for the groups
-print(ind)
-for_sticks.extend(ind)
-fig, ax = plt.subplots()
-rects1 = ax.bar(ind, freq_argumentless, width, color='r')
-ind = max(ind) + 2 + 2*np.arange(len(univariate_funcs))
-for_sticks.extend(ind)
-print(ind)
-rects2 = ax.bar(ind, freq_univariate_funcs, width, color='y')
-ind = max(ind) + 2 + 2*np.arange(len(bivariate_funcs))
-for_sticks.extend(ind)
-print(ind)
-rects3 = ax.bar(ind, freq_bivariate_funcs, width, color='b')
+    width = 0.5       # the width of the bars
+    ind = 2*np.arange(len(argumentless))  # the x locations for the groups
+    print(ind)
+    for_sticks.extend(ind)
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(ind, freq_argumentless, width, color='r')
+    ind = max(ind) + 2 + 2*np.arange(len(univariate_funcs))
+    for_sticks.extend(ind)
+    print(ind)
+    rects2 = ax.bar(ind, freq_univariate_funcs, width, color='y')
+    ind = max(ind) + 2 + 2*np.arange(len(bivariate_funcs))
+    for_sticks.extend(ind)
+    print(ind)
+    rects3 = ax.bar(ind, freq_bivariate_funcs, width, color='b')
 
-# add some text for labels, title and axes ticks
-ax.set_ylabel('Scores')
-ax.set_title('Scores by group and gender')
-ax.set_xticks(np.array(for_sticks) + width / 2)
-ax.set_xticklabels(tuple(argumentless + univariate_funcs + bivariate_funcs))
-font = {'family' : 'normal',
-        'weight' : 'bold',
-        'size'   : 13}
+    # add some text for labels, title and axes ticks
+    ax.set_ylabel('Scores')
+    ax.set_title('Scores by group and gender')
+    ax.set_xticks(np.array(for_sticks) + width / 2)
+    ax.set_xticklabels(tuple(argumentless + univariate_funcs + bivariate_funcs))
+    font = {'family' : 'normal',
+            'weight' : 'bold',
+            'size'   : 13}
 
-ax.legend((rects1[0], rects2[0],rects3[0]), ('Argumentless functions', 'Univariate functions', 'Bivariate functions'))
-plt.rc('font', **font)
+    ax.legend((rects1[0], rects2[0],rects3[0]), ('Argumentless functions', 'Univariate functions', 'Bivariate functions'))
+    plt.rc('font', **font)
 
-plt.show()
-"""
+    plt.show()
 
 """
 for j in pars:
@@ -217,3 +217,19 @@ with open(fname2,'w') as file:
     file.close()
 
 """
+
+def transform_rules():
+    data = open("data/rules.txt", 'r').readlines()
+    outp = open("data/rules.txt", 'w')
+
+    for line in data:
+        if line.count("sina_") > 0:
+            backup = line
+            backup = backup.replace("sina_", "sinla_")
+            line = line.replace("sina_", "sinha_")
+            outp.write(backup)
+            outp.write(line)
+        else:
+            outp.write(line)
+    outp.close()
+transform_rules()

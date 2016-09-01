@@ -15,6 +15,7 @@ import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
 import matplotlib.pyplot as plt
+import code.ResultsCollector as ResultsCollector
 from code.primitives.Primitives import *
 import code.genetic_operations.GenerateAllPossibleModels as GenerateAllPossibleModels
 
@@ -40,15 +41,16 @@ if type_of_fitting == "labeled_fit_data":
     print()
 
 if type_of_fitting == "fit_data":
-
     data_to_fit = DataLoader.retrieve_data(config)
 
     start = time.time()
     population, measurements = DataFitting.data_fitting(data_to_fit, config)
+    ResultsCollector.collect(population, config, measurements, "fit models to options")
+
     print(time.time() - start, population[0].MSE)
-    plt.plot(measurements)
-    plt.show()
-    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    #plt.plot(measurements)
+    #plt.show()
+    #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
     print(repr(population[0].optimal_params))
 
 
@@ -98,7 +100,7 @@ elif type_of_fitting == "fit_and_collect":
 
 elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
-    #CreateBigRandomInitPopulation.create_big_random_init_population(config)
-    GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt',number_of_variables = 2)
+    CreateBigRandomInitPopulation.create_big_random_init_population(config)
+    #GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt',number_of_variables = 2)
 # after your program ends
 # pr.print_stats(sort="calls")

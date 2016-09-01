@@ -66,7 +66,8 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
             # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
             # STAY CAREFUL
             # Miss rule simplification
-            #population.unique_models_selection()
+            population = RuleSimplifier.rule_simplify(population, config)
+            population.unique_models_selection()
 
             ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
             population = Parametrizer.parametrize_population(population)
