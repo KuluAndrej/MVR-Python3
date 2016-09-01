@@ -41,17 +41,21 @@ if type_of_fitting == "labeled_fit_data":
     print()
 
 if type_of_fitting == "fit_data":
-    data_to_fit = DataLoader.retrieve_data(config)
+    for ii in range(1000):
+        if ii < 0:
+            continue
+        ResultsCollector.collect(ii, config, None, "fit models to options")
+        data_to_fit = DataLoader.retrieve_data(config)
 
-    start = time.time()
-    population, measurements = DataFitting.data_fitting(data_to_fit, config)
-    ResultsCollector.collect(population, config, measurements, "fit models to options")
+        start = time.time()
+        population, measurements = DataFitting.data_fitting(data_to_fit, config)
+        ResultsCollector.collect(population, config, measurements, "fit models to options")
 
-    print(time.time() - start, population[0].MSE)
-    #plt.plot(measurements)
-    #plt.show()
-    #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
-    print(repr(population[0].optimal_params))
+        print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
+        #plt.plot(measurements)
+        #plt.show()
+        #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+        print(repr(population[0].optimal_params))
 
 
 elif type_of_fitting == "time_series_processing":

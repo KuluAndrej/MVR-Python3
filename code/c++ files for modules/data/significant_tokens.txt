@@ -1,0 +1,7 @@
+sinc_ 2 1
+sinla_ 2 1
+sinha_ 2 1
+lnl_ 2 1
+expl_ 2 1
+normal_ 2 1
+parabola_ 3 1

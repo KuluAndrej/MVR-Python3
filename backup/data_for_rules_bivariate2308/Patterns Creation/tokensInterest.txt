@@ -1,0 +1,16 @@
+bump_ 2 1
+sinc_ 2 1
+hvs_ 1 1
+sinla_ 2 1
+sinha_ 2 1
+lnl_ 2 1
+expl_ 2 1
+plus2_ 0 2
+normal_ 2 1
+frac2_ 0 2
+neg_ 0 1
+hypot_ 0 2
+times2_ 0 2
+linear_ 2 1
+parabola_ 3 1
+X[0] 0 1

@@ -13,16 +13,15 @@ from code.modules.model_reconstructer import model_reconstruct
 import code.model_processing.DefConstructor as DefConstructor
 import code.model_processing.Parametrizer as Parametrizer
 import re
+import code.ResultsCollector as ResultsCollector
+from code.structures.Population import Population
 
 def rule_simplify(population, config):
     rules_filename = construct_filename(config)
     fopen = open('log.txt','w')
     for ind, model in enumerate(population):
         backup_handle = model.handle
-        handle = model_reconstruct(backup_handle)
-        handle = simplify_by_rules(handle, rules_filename)
-        # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
-        # STAY CAREFUL
+        handle = simplify_by_rules(model_reconstruct(backup_handle), rules_filename)
         handle = model_reconstruct(handle)
 
         new_handle = handle
@@ -36,6 +35,7 @@ def rule_simplify(population, config):
             population[ind].renew_tokens()
             population[ind] = Parametrizer.parametrize_model(population[ind], reparametrize = True)
             population[ind] = DefConstructor.add_def_statements_attributes(population[ind])
+            ResultsCollector.collect([backup_handle, population[ind]], config, None, "fit models to options")
 
     return population
 

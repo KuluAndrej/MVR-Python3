@@ -12,6 +12,7 @@ import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptim
 import code.structures.Population as Population
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
+import code.ResultsCollector as ResultsCollector
 
 from numpy import zeros
 import inspect
@@ -66,8 +67,8 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
             # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
             # STAY CAREFUL
             # Miss rule simplification
-            population = RuleSimplifier.rule_simplify(population, config)
-            population.unique_models_selection()
+            #population = RuleSimplifier.rule_simplify(population, config)
+            #population.unique_models_selection()
 
             ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
             population = Parametrizer.parametrize_population(population)
@@ -77,6 +78,8 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
         population = SelectBestModels.select_best_models(population, config)
         print_results(population, measurements, config, i)
+        ResultsCollector.collect(population, config, measurements, "fit models to options")
+
     if verbose:
         print("...time elapsed on fitting:",time.time() - start)
         print(population[0:3], sep = '\n')
