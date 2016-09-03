@@ -232,4 +232,144 @@ def transform_rules():
         else:
             outp.write(line)
     outp.close()
-transform_rules()
+
+def compare_trajectories(file_rules, file):
+    file_rules = open(file_rules,'r')
+    file = open(file,'r')
+
+    matrix_of_measurements_rules = np.zeros(25)
+    count = 0
+    for line in file_rules.readlines():
+        if line[0]=='[' and line[-2]==']':
+            if len(eval(line)) == 25:
+                matrix_of_measurements_rules += np.array(eval(line[:-1]))
+                count  += 1
+    matrix_of_measurements_rules /= count
+
+    matrix_of_measurements = np.zeros(25)
+    count = 0
+    for line in file.readlines():
+        if line[0]=='[' and line[-2]==']':
+            if len(eval(line)) == 25:
+                matrix_of_measurements += np.array(eval(line[:-1]))
+                count  += 1
+
+    matrix_of_measurements /= count
+    plt.plot(matrix_of_measurements_rules,'b',matrix_of_measurements,'r')
+    plt.show()
+    matrix_of_measurements_rules /= matrix_of_measurements
+    print(matrix_of_measurements_rules)
+
+def compare_lengths():
+    file_rules = open("results/with rules",'r')
+    file = open("results/without rules",'r')
+
+
+def rewrite_strings_from_file_to_file():
+    file_rules = open("results/Сентябрь 01, 2016/fit models to options",'r')
+    file1 = open("results/Сентябрь 02, 2016/fit models to options2",'r')
+    lines = file1.readlines()
+    file_rules.close()
+    file1.close()
+
+    start_line_index = -1
+    file_rules_write = open("results/Сентябрь 01, 2016/fit models to options",'a')
+    file_write = open("results/Сентябрь 01, 2016/fit models to options2",'w')
+    print(len(lines))
+    for ind, line in enumerate(lines):
+        if ind >= start_line_index:
+            file_rules_write.write(line)
+        else:
+            file_write.write(line)
+
+    file_write.close()
+    file_rules_write.close()
+
+def find_number_of_launches(filename = "results/without rules MSE"):
+    source = open(filename,'r')
+    count = 0
+    for line in source.readlines():
+        if line.startswith("Launch"):
+            count += 1
+
+    print(count)
+
+def recopy_content_of_file():
+    source = open("results/Сентябрь 01, 2016/fit models to options2",'r')
+    destiny = open("results/without rules",'w')
+
+    for line in source.readlines():
+        destiny.write(line)
+
+    source.close()
+    destiny.close()
+
+def parse_file(filename = "results/Only MSE/without rules MSE"):
+    file = open(filename,'r')
+    """
+    for line in file.readlines():
+        if line.startswith("Launch"):
+            launches.append([])
+        else:
+            launches[-1].append(line)
+
+    return launches[1:]
+    """
+    launches = [[]]
+    for line in file.readlines():
+        if line[0]=='[' and line[-2]==']':
+            if len(eval(line)) == 25:
+                launches.append([])
+        else:
+            launches[-1].append(line)
+
+
+    return launches[::2]
+
+
+def process_one_launch(launch):
+    populations = []
+    for line in launch:
+        if re.match("\d+. (.*)",line):
+            pieces = line.split()
+            index = int(pieces[0][:-1])
+            func  = pieces[1].strip()
+            if index == 0:
+                populations.append([])
+            populations[-1].append(Model(func))
+    return populations
+
+def get_average_lengths(launches):
+    last_populations = []
+    for ind, launch in enumerate(launches):
+        pops = process_one_launch(launch)
+        if pops:
+            last_populations.append(process_one_launch(launch)[-1])
+    average_lengths = []
+    for item in last_populations:
+        average_lengths.append([])
+        for model in item:
+            average_lengths[-1].append(len(model))
+        try:
+            average_lengths[-1] = np.mean(average_lengths[-1])
+        except:
+            print(average_lengths)
+
+    return np.mean(average_lengths)
+
+def analysis_populations():
+    launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
+    av_length = get_average_lengths(launches)
+    print(av_length)
+
+    launches = parse_file(filename = "results/With parsimony pressure 0.01/without rules")
+    av_length = get_average_lengths(launches)
+    print(av_length)
+
+
+find_number_of_launches("results/without rules MSE")
+find_number_of_launches("results/with rules MSE")
+compare_trajectories("results/with rules MSE", "results/without rules MSE")
+#analysis_populations()
+#launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
+

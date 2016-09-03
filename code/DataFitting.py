@@ -16,7 +16,7 @@ import code.ResultsCollector as ResultsCollector
 
 from numpy import zeros
 import inspect
-def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None, verbose = True):
+def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None, verbose = True, use_simplification = True):
     """
     Fit given data by superpositions of primitive functions
 
@@ -67,8 +67,9 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
             # NOTE THAT IT CAN RUIN YOUR CLASSIFICATION MACHINE
             # STAY CAREFUL
             # Miss rule simplification
-            #population = RuleSimplifier.rule_simplify(population, config)
-            #population.unique_models_selection()
+            if use_simplification:
+                population = RuleSimplifier.rule_simplify(population, config)
+                population.unique_models_selection()
 
             ConstructScipyOptimizeAttributes.construct_info_population(population,dict_tokens_info)
             population = Parametrizer.parametrize_population(population)
@@ -78,7 +79,7 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
         population = SelectBestModels.select_best_models(population, config)
         print_results(population, measurements, config, i)
-        ResultsCollector.collect(population, config, measurements, "fit models to options")
+        ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
 
     if verbose:
         print("...time elapsed on fitting:",time.time() - start)

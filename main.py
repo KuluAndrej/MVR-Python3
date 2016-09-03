@@ -42,20 +42,30 @@ if type_of_fitting == "labeled_fit_data":
 
 if type_of_fitting == "fit_data":
     for ii in range(1000):
-        if ii < 0:
-            continue
-        ResultsCollector.collect(ii, config, None, "fit models to options")
-        data_to_fit = DataLoader.retrieve_data(config)
+        if ii >= 0:
 
-        start = time.time()
-        population, measurements = DataFitting.data_fitting(data_to_fit, config)
-        ResultsCollector.collect(population, config, measurements, "fit models to options")
+            data_to_fit = DataLoader.retrieve_data(config)
+            start = time.time()
 
-        print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
-        #plt.plot(measurements)
-        #plt.show()
-        #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
-        print(repr(population[0].optimal_params))
+            use_simplification = False
+            ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
+
+            population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
+            ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
+
+        if ii >= 0:
+
+            use_simplification = True
+            ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
+
+            population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
+            ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
+
+            print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
+            #plt.plot(measurements)
+            #plt.show()
+            #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+            print(repr(population[0].optimal_params))
 
 
 elif type_of_fitting == "time_series_processing":
@@ -106,5 +116,3 @@ elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
     CreateBigRandomInitPopulation.create_big_random_init_population(config)
     #GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt',number_of_variables = 2)
-# after your program ends
-# pr.print_stats(sort="calls")

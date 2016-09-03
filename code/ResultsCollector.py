@@ -1,6 +1,6 @@
 import datetime, inspect
 
-def collect(results, config, measurements, regime):
+def collect(results, config, measurements, regime, use_simplification = False):
     """
 
     :param results:   information to store
@@ -12,8 +12,11 @@ def collect(results, config, measurements, regime):
     """
     results_dir = config["data_extraction"]["results_dir"]
     data = datetime.datetime.now().strftime("%B %d, %Y")
-    filename = results_dir + data + "/" +regime + str(2)
-    check_dir_existence(results_dir + data)
+    if use_simplification:
+        filename = results_dir + "/" + "with rules MSE"
+    else:
+        filename = results_dir + "/" + "without rules MSE"
+
     if type(results) == type(0):
         file = open(filename, 'a+')
         file.write("\nLaunch =" + str(results))

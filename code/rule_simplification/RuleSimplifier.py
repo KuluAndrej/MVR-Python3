@@ -35,7 +35,7 @@ def rule_simplify(population, config):
             population[ind].renew_tokens()
             population[ind] = Parametrizer.parametrize_model(population[ind], reparametrize = True)
             population[ind] = DefConstructor.add_def_statements_attributes(population[ind])
-            ResultsCollector.collect([backup_handle, population[ind]], config, None, "fit models to options")
+            ResultsCollector.collect([backup_handle, population[ind]], config, None, "fit models to options", use_simplification=True)
 
     return population
 
