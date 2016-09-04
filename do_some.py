@@ -34,6 +34,7 @@ import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPop
 import time, re
 import numpy as np
 import code.estimators_selectors.CalculatorModelValues as CalculatorModelValues
+import matplotlib.patches as mpatches
 
 import matplotlib.pyplot as plt
 """
@@ -233,9 +234,9 @@ def transform_rules():
             outp.write(line)
     outp.close()
 
-def compare_trajectories(file_rules, file):
-    file_rules = open(file_rules,'r')
-    file = open(file,'r')
+def compare_trajectories(filename_rules, filename):
+    file_rules = open(filename_rules,'r')
+    file = open(filename,'r')
 
     matrix_of_measurements_rules = np.zeros(25)
     count = 0
@@ -256,6 +257,14 @@ def compare_trajectories(file_rules, file):
 
     matrix_of_measurements /= count
     plt.plot(matrix_of_measurements_rules,'b',matrix_of_measurements,'r')
+    plt.rc('text', usetex=True)
+    plt.rcParams.update({'font.size': 12})
+
+    red_patch = mpatches.Patch(color='red', label='With rule rewriting')
+    blue_patch = mpatches.Patch(color='blue', label='Without rule rewriting')
+    plt.legend(handles=[red_patch, blue_patch])
+
+    plt.title(r'Evolution of error for \lambda = 0')
     plt.show()
     matrix_of_measurements_rules /= matrix_of_measurements
     print(matrix_of_measurements_rules)
@@ -357,19 +366,21 @@ def get_average_lengths(launches):
 
     return np.mean(average_lengths)
 
-def analysis_populations():
-    launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
+def analysis_populations(fname_rules, fname):
+    launches = parse_file(filename = fname_rules)
     av_length = get_average_lengths(launches)
     print(av_length)
 
-    launches = parse_file(filename = "results/With parsimony pressure 0.01/without rules")
+    launches = parse_file(filename = fname)
     av_length = get_average_lengths(launches)
     print(av_length)
 
+fname_rules = "results/with rules MSE"
+fname = "results/without rules MSE"
 
-find_number_of_launches("results/without rules MSE")
-find_number_of_launches("results/with rules MSE")
-compare_trajectories("results/with rules MSE", "results/without rules MSE")
-#analysis_populations()
+find_number_of_launches(fname)
+find_number_of_launches(fname)
+compare_trajectories(fname_rules, fname)
+#analysis_populations(fname_rules, fname)
 #launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
 

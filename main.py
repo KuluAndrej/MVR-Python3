@@ -42,9 +42,9 @@ if type_of_fitting == "labeled_fit_data":
 
 if type_of_fitting == "fit_data":
     for ii in range(1000):
-        if ii >= 0:
+        data_to_fit = DataLoader.retrieve_data(config)
+        if ii >= 49:
 
-            data_to_fit = DataLoader.retrieve_data(config)
             start = time.time()
 
             use_simplification = False
@@ -53,7 +53,7 @@ if type_of_fitting == "fit_data":
             population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
             ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
 
-        if ii >= 0:
+        if ii >= 49:
 
             use_simplification = True
             ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
