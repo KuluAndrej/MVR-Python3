@@ -41,10 +41,26 @@ if type_of_fitting == "labeled_fit_data":
     print()
 
 if type_of_fitting == "fit_data":
+    data_to_fit = DataLoader.retrieve_data(config)
+    #CreateBigRandomInitPopulation.create_big_random_init_population(config)
+    """
+
+    start = time.time()
+    use_simplification = False
+
+    population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
+    print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
+    plt.plot(measurements)
+    plt.show()
+    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    print(repr(population[0].optimal_params))
+    """
     for ii in range(1000):
         data_to_fit = DataLoader.retrieve_data(config)
-        if ii >= 49:
+        if ii % 5 == 0:
+            CreateBigRandomInitPopulation.create_big_random_init_population(config)
 
+        if ii >= 78:
             start = time.time()
 
             use_simplification = False
@@ -53,8 +69,7 @@ if type_of_fitting == "fit_data":
             population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
             ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
 
-        if ii >= 49:
-
+        if ii >= 78:
             use_simplification = True
             ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
 
@@ -66,7 +81,6 @@ if type_of_fitting == "fit_data":
             #plt.show()
             #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
             print(repr(population[0].optimal_params))
-
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')

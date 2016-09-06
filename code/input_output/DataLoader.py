@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import code.data_processing.DataPreprocesser as DataPreprocesser
 
 def retrieve_data(config):
     """
@@ -24,9 +25,9 @@ def retrieve_data(config):
 
     # retrieve the data to fit from the specified file
     data_to_fit = np.loadtxt(DATA_FULL_PATH, delimiter = ',')
+    data_to_fit = DataPreprocesser.data_preprocesser(data_to_fit)
 
-
-    print('data = ', data_to_fit.shape)
+    print('data.shape = ', data_to_fit.shape)
     return data_to_fit
 
 def retrieve_ts(config,label):

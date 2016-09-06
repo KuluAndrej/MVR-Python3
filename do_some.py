@@ -234,7 +234,19 @@ def transform_rules():
             outp.write(line)
     outp.close()
 
-def compare_trajectories(filename_rules, filename):
+def square_under_curve(xs, ys):
+    square = 0
+    if len(xs) != len(ys):
+        raise Exception("Different lengths of inputs")
+
+    for ind, val in enumerate(xs):
+        if ind == 0:
+            continue
+        square += (ys[ind]+ys[ind-1]) * (xs[ind]-xs[ind-1]) / 2
+
+    return square
+
+def compare_trajectories(filename_rules, filename, plotting = True):
     file_rules = open(filename_rules,'r')
     file = open(filename,'r')
 
@@ -256,18 +268,27 @@ def compare_trajectories(filename_rules, filename):
                 count  += 1
 
     matrix_of_measurements /= count
-    plt.plot(matrix_of_measurements_rules,'b',matrix_of_measurements,'r')
-    plt.rc('text', usetex=True)
-    plt.rcParams.update({'font.size': 12})
+    print("Square under rules-curve:",
+        square_under_curve(range(len(matrix_of_measurements_rules)), matrix_of_measurements_rules))
+    print("Square under second-curve:",
+        square_under_curve(range(len(matrix_of_measurements)), matrix_of_measurements))
+    print("Difference:",
+        square_under_curve(range(len(matrix_of_measurements_rules)), matrix_of_measurements_rules)
+        - square_under_curve(range(len(matrix_of_measurements)), matrix_of_measurements))
+    if plotting:
+        plt.plot(matrix_of_measurements_rules,'b',matrix_of_measurements,'r')
+        plt.rc('text', usetex=True)
+        plt.rcParams.update({'font.size': 12})
 
-    red_patch = mpatches.Patch(color='red', label='With rule rewriting')
-    blue_patch = mpatches.Patch(color='blue', label='Without rule rewriting')
-    plt.legend(handles=[red_patch, blue_patch])
+        red_patch = mpatches.Patch(color='blue', label='With rule rewriting')
+        blue_patch = mpatches.Patch(color='red', label='Without rule rewriting')
+        plt.legend(handles=[red_patch, blue_patch])
 
-    plt.title(r'Evolution of error for \lambda = 0')
-    plt.show()
-    matrix_of_measurements_rules /= matrix_of_measurements
+        plt.title(r'Evolution of error for \lambda = 0')
+        plt.show()
+    matrix_of_measurements_rules = (matrix_of_measurements - matrix_of_measurements_rules) / matrix_of_measurements
     print(matrix_of_measurements_rules)
+
 
 def compare_lengths():
     file_rules = open("results/with rules",'r')
@@ -375,12 +396,24 @@ def analysis_populations(fname_rules, fname):
     av_length = get_average_lengths(launches)
     print(av_length)
 
+def find_ranges():
+    data = np.loadtxt("data/data_to_fit.txt",delimiter=',')
+    var1 = data[:,1]
+    var2 = data[:,2]
+
+    print("range for first variable:", min(var1), max(var1))
+    print("range for second variable:", min(var2), max(var2))
+
+
 fname_rules = "results/with rules MSE"
 fname = "results/without rules MSE"
 
+
+
 find_number_of_launches(fname)
 find_number_of_launches(fname)
-compare_trajectories(fname_rules, fname)
+#compare_trajectories(fname_rules, fname, plotting = False)
+#ompare_trajectories(fname_rules, fname)
 #analysis_populations(fname_rules, fname)
 #launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
 
