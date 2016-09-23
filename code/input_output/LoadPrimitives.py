@@ -15,7 +15,7 @@ def load():
     for line in file.readlines():
         if not line.startswith('#'):
             pieces = line.split()
-            list_primitives.append(Primitive(pieces[0], int(pieces[1]),int(pieces[2])))
+            list_primitives.append(Primitive(pieces[0], int(pieces[1]), int(pieces[2])))
 
 
     return list_primitives

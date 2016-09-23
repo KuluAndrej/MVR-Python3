@@ -130,15 +130,17 @@ elif type_of_fitting == "activity_prediction":
 
     for activity in activities:
         data_to_fit_whole = DataLoader.retrieve_activity_data(config, "0", activity)
-        print(data_to_fit_whole[0])
         for ind_file, data_to_fit_4_columns in enumerate(data_to_fit_whole):
+            if activity == "jogging" and ind_file < 85:
+                continue
+            print("Process %s and file %d" % (activity, ind_file))
             data_to_fit_pred_X = data_to_fit_4_columns[:,[1,0]]
             data_to_fit_pred_Y = data_to_fit_4_columns[:,[2,0]]
             data_to_fit_pred_Z = data_to_fit_4_columns[:,[3,0]]
 
-            best_fitting_models_X = DataFitting.data_fitting(data_to_fit_pred_X, config)
-            best_fitting_models_Y = DataFitting.data_fitting(data_to_fit_pred_Y, config)
-            best_fitting_models_Z = DataFitting.data_fitting(data_to_fit_pred_Z, config)
+            best_fitting_models_X = DataFitting.data_fitting(data_to_fit_pred_X, config, plot_verbose=False)
+            best_fitting_models_Y = DataFitting.data_fitting(data_to_fit_pred_Y, config, plot_verbose=False)
+            best_fitting_models_Z = DataFitting.data_fitting(data_to_fit_pred_Z, config, plot_verbose=False)
 
             SavePopulationToFile.save_activity_population_to_file(best_fitting_models_X, best_fitting_models_Y,
                 best_fitting_models_Z,config, user_name = 0, activity = activity, number_of_file=ind_file)

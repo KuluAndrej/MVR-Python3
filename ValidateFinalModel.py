@@ -6,17 +6,17 @@ Author: Kulunchakov Andrei, MIPT
 """
 
 
-import code.DataLoader as DataLoader
-import code.MVRAttributesExtraction as MVRAttributesExtraction
-import code.DataPreprocesser as DataPreprocesser
-import code.SegmentatorTS as SegmentatorTS
+import code.input_output.DataLoader as DataLoader
+import code.input_output.MVRAttributesExtraction as MVRAttributesExtraction
+import code.data_processing.DataPreprocesser as DataPreprocesser
+import code.data_processing.SegmentatorTS as SegmentatorTS
 import code.ObserverTheBestFunction as ObserverTheBestFunction
-import code.QualityEstimator as QualityEstimator
-import code.Evaluator as Evaluator
-import code.Parametrizer as Parametrizer
-import code.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
-import code.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
-from code.StringToModel import strings_to_population
+import code.estimators_selectors.QualityEstimator as QualityEstimator
+import code.estimators_selectors.Evaluator as Evaluator
+import code.model_processing.Parametrizer as Parametrizer
+import code.input_output.ReadTokensInfoForOptimization as ReadTokensInfoForOptimization
+import code.input_output.ConstructScipyOptimizeAttributes as ConstructScipyOptimizeAttributes
+from code.model_processing.StringToModel import strings_to_population
 from numpy import empty, insert
 from code.structures.Population import Population
 import matplotlib.pyplot as plt
@@ -40,7 +40,8 @@ def validate_final_model(label, index_to_observe):
         lines_file_content = open(files_path + filename, 'r').readlines()[0:last_non_empty_str+1]
         population = empty(len(lines_file_content) // 2, dtype = object)
 
-        """for ind, entity in enumerate(lines_file_content):
+        """
+        for ind, entity in enumerate(lines_file_content):
             model_name = entity.split(' ')[-1]
             population[ind] = re.sub(r'X\[(\d+)\]', r'x\1', model_name.strip())"""
         for ind, entity in enumerate(lines_file_content):

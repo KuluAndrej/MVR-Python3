@@ -18,7 +18,7 @@ import code.ObserverTheBestFunction as ObserverTheBestFunction
 from numpy import zeros
 import inspect
 def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None,
-                 verbose = True, use_simplification = True, plot_verbose = True):
+                 verbose = True, use_simplification = False, plot_verbose = True):
     """
     Fit given data by superpositions of primitive functions
 
@@ -108,7 +108,7 @@ def print_intro(config, number_of_iteration):
 def print_results(population, measurements, config, number_of_iteration):
     measurements.append(population[0].MSE)
 
-    if config["flag_type_of_processing"]["flag"] in ['fit_data', 'labeled_fit_data']:
+    if config["flag_type_of_processing"]["flag"] in ['fit_data', 'labeled_fit_data', 'activity_prediction']:
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
         for ind in range(3):
