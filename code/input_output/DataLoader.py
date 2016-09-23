@@ -1,5 +1,5 @@
 import numpy as np
-import os
+import os, re
 import code.data_processing.DataPreprocesser as DataPreprocesser
 
 def retrieve_data(config):
@@ -54,4 +54,27 @@ def retrieve_ts(config,label):
     data_to_fit = np.vstack((data_to_fit, np.linspace(-1,1, len(data_to_fit)))).T
 
     return data_to_fit
+
+
+def retrieve_activity_data(config,user,activity):
+    DATA_LOCAL_DIR = config["activity_prediction"]["directory"] + user + '/'
+    files = os.listdir(DATA_LOCAL_DIR)
+    activity_files = list(filter(lambda x: x.startswith(activity), files))
+    activity_files = sorted(activity_files, key=natural_keys)
+    array_of_data = []
+
+    for file in activity_files:
+        A = np.loadtxt("ts_processing/human_activity/0/"+file, delimiter=',')
+        for i in range(A.shape[1]):
+            mn = min(A[:,i])
+            mx = max(A[:,i])
+            A[:,i] = (2 * A[:,i] - (mn + mx)) / (max(A[:,i]) - min(A[:,i]))
+        array_of_data.append(A)
+
+    return array_of_data
+
+def atoi(text):
+    return int(text) if text.isdigit() else text
+def natural_keys(text):
+    return [ atoi(c) for c in re.split('(\d+)', text) ]
 

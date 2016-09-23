@@ -2,16 +2,6 @@ import math
 import numpy as np
 from code.primitives.Decorators import handicraft_exception_handler
 
-@handicraft_exception_handler
-def bump_(w0, w1, x):
-    bump_.NumParam = 2
-    bump_.NumVars = 1
-    bump_.InitParams = [0,1]
-    bump_.BoundsParams = ([-1,-1],[1,1])
-    bump_.commutative = False
-
-
-    return x * np.logical_and(w0 < x, x < w1)
 
 def sinc_(w0, w1, x):
     sinc_.NumParam = 2
@@ -21,17 +11,6 @@ def sinc_(w0, w1, x):
     sinc_.commutative = False
 
     return np.sinc(w1 * x + w0)
-
-@handicraft_exception_handler
-def hvs_(w0, x):
-    hvs_.NumParam = 1
-    hvs_.NumVars = 1
-    hvs_.InitParams = [0]
-    hvs_.BoundsParams = ([-1],[1])
-    hvs_.commutative = False
-
-    return x * (w0 < x)
-
 
 
 @handicraft_exception_handler
@@ -114,15 +93,6 @@ def frac2_(x, y):
 
     return x / y
 
-@handicraft_exception_handler
-def neg_(x):
-    neg_.NumParam = 0
-    neg_.NumVars = 1
-    neg_.InitParams = []
-    neg_.BoundsParams = ([],[])
-    neg_.commutative = False
-
-    return -x
 
 def hypot_(x, y):
     hypot_.NumParam = 0
@@ -160,30 +130,3 @@ def parabola_(w0, w1, w2, x):
     parabola_.commutative = False
 
     return x * x * w2 +  x * w1 + w0
-
-def unity_():
-    unity_.NumParam = 0
-    unity_.NumVars = 0
-    unity_.InitParams = []
-    unity_.BoundsParams = ([],[])
-    unity_.commutative = False
-
-    return 1
-
-def zero_():
-    zero_.NumParam = 0
-    zero_.NumVars = 0
-    zero_.InitParams = []
-    zero_.BoundsParams = ([],[])
-    zero_.commutative = False
-
-    return 0
-
-def parameter_(w0):
-    parameter_.NumParam = 1
-    parameter_.NumVars = 0
-    parameter_.InitParams = [0.5]
-    parameter_.BoundsParams = ([-0.2],[0.2])
-    parameter_.commutative = False
-
-    return w0

@@ -13,10 +13,12 @@ import code.structures.Population as Population
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
 import code.ResultsCollector as ResultsCollector
+import code.ObserverTheBestFunction as ObserverTheBestFunction
 
 from numpy import zeros
 import inspect
-def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None, verbose = True, use_simplification = True):
+def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population = None,
+                 verbose = True, use_simplification = True, plot_verbose = True):
     """
     Fit given data by superpositions of primitive functions
 
@@ -45,7 +47,9 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
 
     if eval(config["init_rand_models"]["do_init_random_generation"]):
         CreateBigRandomInitPopulation.create_big_random_init_population(config)
+
     if not init_population:
+
         population = InitModelsLoader.retrieve_init_models(config, source_of_launching="DataFitting")
         population = Population.Population(population.Models)
         if not population:
@@ -55,6 +59,7 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
         population = init_population
 
     for i in range(int(config["accuracy_requirement"]["max_number_cycle_count"])):
+
         print_intro(config, i)
 
         if not init_population:
@@ -75,29 +80,35 @@ def data_fitting(data_to_fit, config, dict_tokens_info = None, init_population =
             population = Parametrizer.parametrize_population(population)
         if verbose:
             print(len(population),"models to evaluator")
+
         population = Evaluator.evaluator(population, data_to_fit, config)
         population = QualityEstimator.quality_estimator(population, data_to_fit, config)
         population = SelectBestModels.select_best_models(population, config)
         print_results(population, measurements, config, i)
-        ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
+        if plot_verbose:
+            ObserverTheBestFunction.observer_the_best_function(population, data_to_fit, iter = i)
+
+        if plot_verbose and population[0].MSE < eval(config["accuracy_requirement"]["required_accuracy"]):
+            print("Accuracy is reached. Breaking from the cycle.")
+            break
 
     if verbose:
         print("...time elapsed on fitting:",time.time() - start)
         print(population[0:3], sep = '\n')
-    if config["flag_type_of_processing"]["flag"] == 'fit_data':
+    if config["flag_type_of_processing"]["flag"] == 'fit_data' or config["flag_type_of_processing"]["flag"] == 'labeled_fit_data':
         return population, measurements
     else:
         return population
 
 def print_intro(config, number_of_iteration):
-    if config["flag_type_of_processing"]["flag"] == 'fit_data':
+    if config["flag_type_of_processing"]["flag"] in ['fit_data', 'labeled_fit_data']:
             print("iteration on fitting #", number_of_iteration, sep='')
 
 
 def print_results(population, measurements, config, number_of_iteration):
     measurements.append(population[0].MSE)
 
-    if config["flag_type_of_processing"]["flag"] == 'fit_data':
+    if config["flag_type_of_processing"]["flag"] in ['fit_data', 'labeled_fit_data']:
         print(len(population), " models are selected")
         print("best yet generated model", population[0].MSE)
         for ind in range(3):

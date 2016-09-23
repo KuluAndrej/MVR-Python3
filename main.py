@@ -3,7 +3,6 @@ Main file of the MVR project.
 
 Author: Kulunchakov Andrei, MIPT
 """
-
 import code.input_output.MVRAttributesExtraction as MVRAttributesExtraction
 import code.input_output.DataLoader as DataLoader
 import code.DataFitting as DataFitting
@@ -15,6 +14,7 @@ import code.input_output.CutSegmentStoreToFile as CutSegmentStoreToFile
 import code.input_output.CreateBigRandomInitPopulation as CreateBigRandomInitPopulation
 import time
 import matplotlib.pyplot as plt
+
 import code.ResultsCollector as ResultsCollector
 from code.primitives.Primitives import *
 import code.genetic_operations.GenerateAllPossibleModels as GenerateAllPossibleModels
@@ -24,6 +24,7 @@ config          = MVRAttributesExtraction.extract_config()
 type_of_fitting = config["flag_type_of_processing"]["flag"]
 print(type_of_fitting)
 
+
 if type_of_fitting == "labeled_fit_data":
     label = 'heart_rate'
     index_to_observe = 27
@@ -31,8 +32,9 @@ if type_of_fitting == "labeled_fit_data":
     CutSegmentStoreToFile.data_cutter_loader(label, index_to_observe, config)
     data_to_fit = DataLoader.retrieve_data(config)
 
+    data_to_fit = DataLoader.retrieve_data(config)
     start = time.time()
-    population, measurements = DataFitting.data_fitting(data_to_fit, config)
+    population, measurements = DataFitting.data_fitting(data_to_fit, config, verbose = True)
     print(time.time() - start, population[0].MSE)
     plt.plot(measurements)
     plt.show()
@@ -41,46 +43,38 @@ if type_of_fitting == "labeled_fit_data":
     print()
 
 if type_of_fitting == "fit_data":
-    data_to_fit = DataLoader.retrieve_data(config)
+    plot_verbose = False
+    if plot_verbose:
+        plt.axis([-1,1,-1,1])
+        plt.ion()
+        plt.show()
+    data_to_fit = []
+    activities = eval(config["activity_prediction"]["activities"])
+
+    for activity in activities:
+        data_to_fit_whole = DataLoader.retrieve_activity_data(config, "0", activity)
+        for ind_file, data_to_fit_4_columns in enumerate(data_to_fit_whole):
+            data_to_fit_pred_X = data_to_fit_4_columns[:,[1,0]]
+            data_to_fit_pred_Y = data_to_fit_4_columns[:,[2,0]]
+            data_to_fit_pred_Z = data_to_fit_4_columns[:,[3,0]]
+            data_to_fit = data_to_fit_pred_X[:len(data_to_fit_pred_X)//2,:]
+            break
+
+
     #CreateBigRandomInitPopulation.create_big_random_init_population(config)
-    """
 
+    print(data_to_fit.shape)
     start = time.time()
-    use_simplification = False
 
-    population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
+    population, measurements = DataFitting.data_fitting(data_to_fit, config,
+                                                        use_simplification = False, plot_verbose = False)
+
     print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
-    plt.plot(measurements)
-    plt.show()
-    ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
+    if not plot_verbose:
+        plt.plot(measurements)
+        plt.show()
+        ObserverTheBestFunction.draw_2d_plot(population, data_to_fit)
     print(repr(population[0].optimal_params))
-    """
-    for ii in range(1000):
-        data_to_fit = DataLoader.retrieve_data(config)
-        if ii % 5 == 0:
-            CreateBigRandomInitPopulation.create_big_random_init_population(config)
-
-        if ii >= 78:
-            start = time.time()
-
-            use_simplification = False
-            ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
-
-            population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
-            ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
-
-        if ii >= 78:
-            use_simplification = True
-            ResultsCollector.collect(ii, config, None, "fit models to options",use_simplification=use_simplification)
-
-            population, measurements = DataFitting.data_fitting(data_to_fit, config, use_simplification = use_simplification)
-            ResultsCollector.collect(population, config, measurements, "fit models to options", use_simplification = use_simplification)
-
-            print("time elapsed =", time.time() - start, ",\npopulation MSE =", population[0].MSE)
-            #plt.plot(measurements)
-            #plt.show()
-            #ObserverTheBestFunction.observer_the_best_function(population, data_to_fit)
-            print(repr(population[0].optimal_params))
 
 elif type_of_fitting == "time_series_processing":
     labels_ts_to_retrieve = config["time_series_processing"]["labels"].split(', ')
@@ -130,3 +124,21 @@ elif type_of_fitting == "init_models_creation":
     config = MVRAttributesExtraction.extract_config()
     CreateBigRandomInitPopulation.create_big_random_init_population(config)
     #GenerateAllPossibleModels.generate('data/Rules_creation_files/init_patterns.txt',number_of_variables = 2)
+
+elif type_of_fitting == "activity_prediction":
+    activities = eval(config["activity_prediction"]["activities"])
+
+    for activity in activities:
+        data_to_fit_whole = DataLoader.retrieve_activity_data(config, "0", activity)
+        print(data_to_fit_whole[0])
+        for ind_file, data_to_fit_4_columns in enumerate(data_to_fit_whole):
+            data_to_fit_pred_X = data_to_fit_4_columns[:,[1,0]]
+            data_to_fit_pred_Y = data_to_fit_4_columns[:,[2,0]]
+            data_to_fit_pred_Z = data_to_fit_4_columns[:,[3,0]]
+
+            best_fitting_models_X = DataFitting.data_fitting(data_to_fit_pred_X, config)
+            best_fitting_models_Y = DataFitting.data_fitting(data_to_fit_pred_Y, config)
+            best_fitting_models_Z = DataFitting.data_fitting(data_to_fit_pred_Z, config)
+
+            SavePopulationToFile.save_activity_population_to_file(best_fitting_models_X, best_fitting_models_Y,
+                best_fitting_models_Z,config, user_name = 0, activity = activity, number_of_file=ind_file)

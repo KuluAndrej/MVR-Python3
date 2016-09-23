@@ -5,8 +5,10 @@ from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import axes3d, Axes3D
+from pylab import figure, plot, ion, linspace, arange, sin, pi
+import time
 
-def observer_the_best_function(population, data_to_fit):
+def observer_the_best_function(population, data_to_fit, iter = 0):
     """
     Draw on the same plot initial and predicted values
     Inputs:
@@ -15,13 +17,13 @@ def observer_the_best_function(population, data_to_fit):
     Author: Kulunchakov Andrei, MIPT
     """
     if (data_to_fit.shape[1] == 2):
-        draw_2d_plot(population, data_to_fit)
+        draw_2d_plot_updating(population, data_to_fit, iter)
 
     if (data_to_fit.shape[1] == 3):
         draw_3d_plot(population, data_to_fit)
 
 
-def draw_2d_plot(population, data_to_fit):
+def draw_2d_plot(population, data_to_fit, iter = 0):
     independent_var = data_to_fit[:,1:]
     independent_var = transpose(independent_var)
     dependent_var = data_to_fit[:,0]
@@ -33,8 +35,34 @@ def draw_2d_plot(population, data_to_fit):
     dependent_var_estimation = dependent_var_estimation.reshape(1,-1)
 
     plt.plot(independent_var[0], dependent_var[0], 'r--', independent_var[0], dependent_var_estimation[0], 'b')
+    plt.title(model.handle)
     plt.show()
 
+
+def draw_2d_plot_updating(population, data_to_fit, iter = 0):
+    import warnings
+
+    def fxn():
+        warnings.warn("deprecated", DeprecationWarning)
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        fxn()
+        independent_var = data_to_fit[:,1:]
+        independent_var = transpose(independent_var)
+        dependent_var = data_to_fit[:,0]
+
+        model = population[0]
+
+        dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
+        dependent_var            = dependent_var.reshape(1,-1)
+        dependent_var_estimation = dependent_var_estimation.reshape(1,-1)
+
+        plt.clf()
+        plt.plot(independent_var[0], dependent_var[0], 'r--', independent_var[0], dependent_var_estimation[0], 'b')
+        plt.title(model.handle)
+        plt.draw()
+        plt.pause(0.01)
 
 def draw_3d_plot(population, data_to_fit):
 

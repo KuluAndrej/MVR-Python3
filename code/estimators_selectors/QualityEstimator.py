@@ -33,7 +33,8 @@ def quality_estimator(population, data_to_fit, config):
 
             dependent_var_estimation = CalculatorModelValues.calculate_model_values(model,independent_var)
 
-            setattr(model, "MSE", norm(dependent_var - dependent_var_estimation))
+            setattr(model, "MSE", norm(dependent_var - dependent_var_estimation,
+                                       eval(config["model_generation"]["mse_norm"])))
 
     for model in population:
         if isnan(model.MSE):

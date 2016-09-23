@@ -18,7 +18,7 @@ from code.structures.Population import Population
 
 def rule_simplify(population, config):
     rules_filename = construct_filename(config)
-    fopen = open('log.txt','w')
+
     for ind, model in enumerate(population):
         backup_handle = model.handle
         handle = simplify_by_rules(model_reconstruct(backup_handle), rules_filename)

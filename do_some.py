@@ -246,7 +246,7 @@ def square_under_curve(xs, ys):
 
     return square
 
-def compare_trajectories(filename_rules, filename, plotting = True):
+def compare_trajectories(filename_rules, filename, plotting = True, do_monte_carlo = False):
     file_rules = open(filename_rules,'r')
     file = open(filename,'r')
 
@@ -255,8 +255,14 @@ def compare_trajectories(filename_rules, filename, plotting = True):
     for line in file_rules.readlines():
         if line[0]=='[' and line[-2]==']':
             if len(eval(line)) == 25:
-                matrix_of_measurements_rules += np.array(eval(line[:-1]))
-                count  += 1
+                if do_monte_carlo:
+                    if np.random.choice([0,1],size = 1, p = [.3,.7]):
+                        matrix_of_measurements_rules += np.array(eval(line[:-1]))
+                        count  += 1
+                else:
+                    matrix_of_measurements_rules += np.array(eval(line[:-1]))
+                    count  += 1
+
     matrix_of_measurements_rules /= count
 
     matrix_of_measurements = np.zeros(25)
@@ -264,8 +270,13 @@ def compare_trajectories(filename_rules, filename, plotting = True):
     for line in file.readlines():
         if line[0]=='[' and line[-2]==']':
             if len(eval(line)) == 25:
-                matrix_of_measurements += np.array(eval(line[:-1]))
-                count  += 1
+                if do_monte_carlo:
+                    if np.random.choice([0,1],size = 1, p = [.3,.7]):
+                        matrix_of_measurements += np.array(eval(line[:-1]))
+                        count  += 1
+                else:
+                    matrix_of_measurements += np.array(eval(line[:-1]))
+                    count  += 1
 
     matrix_of_measurements /= count
     print("Square under rules-curve:",
@@ -273,8 +284,8 @@ def compare_trajectories(filename_rules, filename, plotting = True):
     print("Square under second-curve:",
         square_under_curve(range(len(matrix_of_measurements)), matrix_of_measurements))
     print("Difference:",
-        square_under_curve(range(len(matrix_of_measurements_rules)), matrix_of_measurements_rules)
-        - square_under_curve(range(len(matrix_of_measurements)), matrix_of_measurements))
+        - square_under_curve(range(len(matrix_of_measurements_rules)), matrix_of_measurements_rules)
+        + square_under_curve(range(len(matrix_of_measurements)), matrix_of_measurements))
     if plotting:
         plt.plot(matrix_of_measurements_rules,'b',matrix_of_measurements,'r')
         plt.rc('text', usetex=True)
@@ -404,16 +415,23 @@ def find_ranges():
     print("range for first variable:", min(var1), max(var1))
     print("range for second variable:", min(var2), max(var2))
 
+import numpy as np
+from matplotlib import pyplot as plt
 
-fname_rules = "results/with rules MSE"
-fname = "results/without rules MSE"
+plt.axis([-50,50,0,10000])
+plt.ion()
+plt.show()
+
+x = np.arange(-50, 51)
+for pow in range(1,5):   # plot x^1, x^2, ..., x^4
+    y = [Xi**pow for Xi in x]
+    plt.plot(x, y)
+    plt.draw()
+    plt.pause(1)
 
 
-
-find_number_of_launches(fname)
-find_number_of_launches(fname)
 #compare_trajectories(fname_rules, fname, plotting = False)
-#ompare_trajectories(fname_rules, fname)
+#compare_trajectories(fname_rules, fname, do_monte_carlo = False)
 #analysis_populations(fname_rules, fname)
 #launches = parse_file(filename = "results/With parsimony pressure 0.01/with rules")
 

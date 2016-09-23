@@ -2,12 +2,12 @@ import code.genetic_operations.RandomPopulation as RandomPopulation
 import code.input_output.MVRAttributesExtraction as MVRAttributesExtraction
 import os
 
-def create_big_random_init_population(config):
+def create_big_random_init_population(config, number_of_vars = 1):
 
     print_intro()
     if not config:
         config = MVRAttributesExtraction.extract_config()
-    number_of_vars = 2
+
     init_models = set(RandomPopulation.random_population(number_of_vars, config, True))
 
     while True:

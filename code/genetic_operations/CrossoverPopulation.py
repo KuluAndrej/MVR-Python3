@@ -21,8 +21,11 @@ def crossover_population(population, config):
     new_generated_superpositions = []
     parents = []
 
+    probabilities = np.exp(-np.linspace(0,1,len(population)))
+    probabilities /= sum(probabilities)
+
     for i in range(crossings_number):
-        models_to_cross = np.random.choice(population, 2)
+        models_to_cross = np.random.choice(population, 2, p = probabilities)
         # extract handles
         models_to_cross = [obj.handle for obj in models_to_cross]
         parents.extend(models_to_cross)
